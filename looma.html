@@ -72,7 +72,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   pointer-events:none;z-index:40;mix-blend-mode:screen;opacity:0;transition:opacity .6s}
 #stage:hover .glow{opacity:1}
 
-.slide{position:absolute;inset:0;padding:96px 120px 140px;opacity:0;visibility:hidden;
+.slide{position:absolute;inset:0;padding:96px 120px 160px;text-wrap:pretty;opacity:0;visibility:hidden;
   transition:opacity .8s var(--ease), visibility 0s linear .8s, transform .9s var(--ease), filter .8s;
   transform:scale(1.015);filter:blur(6px)}
 .slide.active{opacity:1;visibility:visible;transform:none;filter:none;transition:opacity .8s var(--ease), transform 1.1s var(--ease), filter .8s}
@@ -93,8 +93,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .body{font-size:var(--t-body);line-height:1.5;color:var(--muted);font-weight:300}
 .lbl{font-size:var(--t-label);letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
 .rule{height:1px;background:var(--line);width:100%}
-.top{display:grid;grid-template-columns:680px 1fr;gap:40px;align-items:start}
-.top .col{display:flex;flex-direction:column;gap:22px;padding-top:6px}
+.top{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.top .col{display:flex;flex-direction:column;gap:20px}
+.top .col .lbl{line-height:24px}
 
 /* ---------- controls ---------- */
 .chrome{position:absolute;left:0;right:0;bottom:0;height:120px;z-index:50;pointer-events:none}
@@ -114,7 +115,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .arrow:hover{border-color:var(--red);background:rgba(254,93,87,.10);transform:scale(1.06)}
 .arrow svg{width:22px;height:22px;stroke:var(--text);fill:none;stroke-width:1.6}
 .arrow[disabled]{opacity:.3;pointer-events:none}
-.hint{position:absolute;left:50%;bottom:118px;transform:translateX(-50%);font-size:var(--t-label);color:var(--faint);transition:opacity .6s;pointer-events:none}
+.hint{position:absolute;right:120px;bottom:124px;font-size:var(--t-label);color:var(--faint);transition:opacity .6s;pointer-events:none}
 
 /* ---------- S1 cover ---------- */
 #s1{padding:0;background:#080606}
@@ -124,7 +125,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   linear-gradient(180deg,rgba(0,0,0,0) 51%,rgba(0,0,0,.49) 78%,rgba(0,0,0,.63) 100%),
   radial-gradient(ellipse 62% 62% at 50% 50%,rgba(0,0,0,0) 45%,rgba(0,0,0,.7) 100%),
   linear-gradient(90deg,#080606 0%,rgba(8,6,6,.85) 37%,rgba(8,6,6,0) 68%)}
-#s1 .bar{position:absolute;left:120px;right:120px;top:84px;display:flex;justify-content:space-between;align-items:center;z-index:3;font:500 var(--t-label)/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+#s1 .bar{position:absolute;left:120px;right:120px;top:45px;display:flex;justify-content:flex-end;gap:40px;align-items:center;z-index:3;font:500 var(--t-label)/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65)}
 #s1 .bar span{font:inherit;color:inherit;letter-spacing:inherit}
 #s1 .logo{position:absolute;left:56px;top:330px;width:900px;height:auto;mix-blend-mode:screen;z-index:2}
 #s1 .tag{position:absolute;left:120px;top:650px;z-index:3;font:italic 400 var(--t-h2)/1.3 var(--serif);color:var(--text)}
@@ -144,19 +145,19 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 #crew .crew{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:56px;height:440px}
 #crew .crew img{width:100%;height:440px;min-height:0;object-fit:cover;border-radius:32px;box-shadow:0 0 0 1px var(--line),0 40px 80px -30px rgba(0,0,0,.9);transition:transform 1s var(--ease)}
 /* ---------- S2 contents ---------- */
-#s2{display:grid;grid-template-columns:1fr 1fr;gap:80px}
-#s2 .num{font-size:var(--t-display);font-weight:300;letter-spacing:-.01em;line-height:1}
-#s2 .big{font-family:var(--serif);font-size:var(--t-h1);font-weight:500;line-height:1;margin-bottom:64px}
-.toc{display:flex;flex-direction:column}
-.toc button{display:grid;grid-template-columns:120px 1fr 40px;align-items:center;text-align:left;padding:34px 0;border-bottom:1px solid var(--line);position:relative;font-size:var(--t-lead)}
+#s2{display:flex;flex-direction:column}
+.toc{display:flex;flex-direction:column;margin-top:auto;border-top:1px solid var(--line)}
+.toc button{display:grid;grid-template-columns:120px 1fr 600px 40px;align-items:center;text-align:left;padding:32px 0;border-bottom:1px solid var(--line);position:relative}
 .toc button::after{content:"";position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--red);box-shadow:0 0 12px var(--red);transition:width .6s var(--ease)}
-.toc button:hover::after{width:100%}
-.toc .k{color:var(--faint);font-size:var(--t-body);transition:color .3s}
-.toc .t{transition:transform .5s var(--ease), color .3s}
+.toc button:hover::after,.toc button.on::after{width:100%}
+.toc .k{color:var(--faint);font-family:var(--serif);font-size:var(--t-h2);line-height:1;transition:color .3s}
+.toc .t{font-family:var(--serif);font-size:64px;line-height:1;color:var(--muted);transition:transform .5s var(--ease), color .3s}
+.toc .d{font-size:var(--t-small);line-height:1.45;color:var(--faint)}
 .toc svg{width:28px;height:28px;stroke:var(--red);fill:none;stroke-width:1.6;opacity:0;transform:translateX(-12px);transition:all .4s var(--ease)}
-.toc button:hover .t{transform:translateX(16px);color:#fff}
-.toc button:hover .k{color:var(--red)}
-.toc button:hover svg{opacity:1;transform:none}
+.toc button.on .k,.toc button:hover .k{color:var(--red)}
+.toc button.on .t,.toc button:hover .t{color:var(--text)}
+.toc button:hover .t{transform:translateX(16px)}
+.toc button.on svg,.toc button:hover svg{opacity:1;transform:none}
 
 /* ---------- S3 about ---------- */
 #s3{display:flex;flex-direction:column;gap:64px}
@@ -164,7 +165,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .cols .c{display:flex;flex-direction:column;gap:18px}
 .cols .c p{font-size:var(--t-lead);line-height:1.4;color:var(--text);font-weight:300}
 .quote{font-family:var(--serif);font-size:var(--t-h1);line-height:1;font-weight:400;letter-spacing:-.01em;margin-top:auto}
-.quote span{display:block}
+.quote>span{display:block}
 .quote em{font-style:italic;color:var(--red)}
 .strike{position:relative;display:inline-block}
 .strike::after{content:"";position:absolute;left:-8px;right:-8px;top:56%;height:3px;background:var(--red);box-shadow:0 0 14px var(--red);transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease) 1.2s}
@@ -188,7 +189,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* ---------- S5 metaphor ---------- */
 #s5{display:grid;grid-template-columns:760px 1fr;gap:80px}
-#s5 .left{display:flex;flex-direction:column;gap:24px}
+#s5 .left{display:flex;flex-direction:column;gap:20px}
 #s5 .steps{border-top:0;padding-top:0;margin-top:16px;gap:0}
 #s5 .panel{height:840px;background:radial-gradient(circle at 50% 50%,rgba(254,93,87,.14) 0%,rgba(254,93,87,.05) 28%,transparent 55%),#121111;box-shadow:inset 0 0 0 1px var(--line)}
 #s5 .panel .phone{top:50%;width:352px;transform:translate(-50%,-50%)}
@@ -230,7 +231,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 #s7{display:flex;flex-direction:column;gap:48px}
 .duo{display:grid;grid-template-columns:1.55fr 1fr;gap:24px;height:600px}
 .tile{border-radius:36px;background:var(--bg2);border:1px solid var(--line);position:relative;overflow:hidden;display:grid;place-items:center}
-.tile .lg{width:92%;mix-blend-mode:screen;transition:transform 1.2s var(--ease)}
+.tile .lg{width:92%;mix-blend-mode:screen;filter:saturate(1.8) brightness(1.25) contrast(1.1);transition:transform 1.2s var(--ease)}
 .tile:hover .lg{transform:scale(1.04)}
 .tile .sheen{position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(254,93,87,.10) 50%,transparent 60%);transform:translateX(-100%);pointer-events:none}
 .tile:hover .sheen{transform:translateX(100%);transition:transform 1.6s var(--ease)}
@@ -239,7 +240,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .tile .cap{position:absolute;left:36px;bottom:30px;font-size:var(--t-label);color:var(--faint);letter-spacing:.12em;text-transform:uppercase}
 
 /* ---------- S8 UI kit colours ---------- */
-#s8{display:grid;grid-template-columns:1fr 640px;gap:88px}
+#s8{display:grid;grid-template-columns:1fr 544px;gap:64px}
 .pal{display:grid;grid-template-columns:1fr 1fr;gap:44px 40px;align-content:start}
 .pal>:first-child{grid-column:1/-1}
 .grp{display:flex;flex-direction:column;gap:14px}
@@ -266,21 +267,21 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* ---------- S9 type ---------- */
 #s9{display:flex;flex-direction:column;gap:48px}
 .faces{display:grid;grid-template-columns:1fr 1fr;gap:24px;flex:1}
-.face{border-radius:36px;background:var(--bg2);border:1px solid var(--line);padding:48px 56px;display:flex;flex-direction:column;gap:14px;overflow:hidden;position:relative}
-.face .aa{font-size:var(--t-display);line-height:.9;transition:color .6s, transform 1s var(--ease);transform-origin:left bottom}
+.face{border-radius:36px;background:var(--bg2);border:1px solid var(--line);padding:44px 56px;display:flex;flex-direction:column;gap:0;justify-content:center;overflow:hidden;position:relative}
+.face .aa{font-size:var(--t-display);line-height:1;height:180px;transition:color .6s, transform 1s var(--ease);transform-origin:left bottom}
 .face:hover .aa{color:var(--red);transform:scale(1.04)}
-.face .nm{font-size:var(--t-small);color:var(--faint);margin-bottom:10px}
-.tr{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-top:1px solid var(--line);transition:padding .4s var(--ease)}
+.face .nm{font-size:var(--t-small);color:var(--faint);margin-bottom:8px}
+.tr{display:flex;justify-content:space-between;align-items:center;height:84px;padding:0;border-top:1px solid var(--line);transition:padding .4s var(--ease)}
 .tr small{font-size:var(--t-label);color:var(--faint);font-family:var(--sans);font-variant-numeric:tabular-nums;transition:color .3s;white-space:nowrap}
 .tr:hover{padding-left:12px}
 .tr:hover small{color:var(--red)}
 
 /* ---------- S10 hero ---------- */
-#s10{padding:0;background:#050505}
-#s10 .mock{position:absolute;left:520px;top:-30px;width:calc(100% - 490px);height:calc(100% + 60px);object-fit:cover;object-position:60% 50%;transition:transform 1.2s var(--ease)}
-#s10 .ov{position:absolute;left:120px;top:96px;z-index:2;display:flex;flex-direction:column;gap:20px}
-#s10 .ov .hd{font-size:var(--t-display)}
-#s10 .shade{position:absolute;inset:0;background:linear-gradient(90deg,#050505 0%,#050505 30%,rgba(5,5,5,.55) 42%,rgba(5,5,5,0) 58%),linear-gradient(0deg,rgba(5,5,5,.85) 0%,rgba(5,5,5,0) 22%);z-index:1}
+.chap{padding:0;background:#050505}
+.chap .mock{position:absolute;left:520px;top:-30px;width:calc(100% - 490px);height:calc(100% + 60px);object-fit:cover;object-position:60% 50%;transition:transform 1.2s var(--ease)}
+.chap .ov{position:absolute;left:120px;top:96px;z-index:2;display:flex;flex-direction:column;gap:20px}
+.chap .ov .hd{font-size:var(--t-display)}
+.chap .shade{position:absolute;inset:0;background:linear-gradient(90deg,#050505 0%,#050505 30%,rgba(5,5,5,.55) 42%,rgba(5,5,5,0) 58%),linear-gradient(0deg,rgba(5,5,5,.85) 0%,rgba(5,5,5,0) 22%);z-index:1}
 
 /* ---------- phones ---------- */
 .phones{display:flex;gap:28px;align-items:flex-end;justify-content:center}
@@ -294,10 +295,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 #s11{display:flex;flex-direction:column;gap:56px}
 #s11 .ph img{width:252px}
-#s12{display:grid;grid-template-columns:600px 1fr 460px;gap:40px;align-items:center}
-#s12 .left{display:flex;flex-direction:column;gap:28px;align-self:start;position:relative;z-index:2}
+#s12{display:grid;grid-template-columns:560px 1fr 460px;gap:40px;align-items:center}
+#s12 .left{display:flex;flex-direction:column;gap:20px;align-self:start;position:relative;z-index:2}
 #s12 .blocks{position:relative;z-index:2}
-.rings{position:relative;height:880px;display:grid;place-items:center}
+.rings{position:relative;height:824px;display:grid;place-items:center}
 .ring{position:absolute;border-radius:50%;left:50%;top:50%;pointer-events:none}
 .ring.r1{width:1000px;height:1000px;margin:-500px;background:#1a1a1a}
 .ring.r2{width:780px;height:780px;margin:-390px;background:#151515}
@@ -305,33 +306,41 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .ring.pulse{width:540px;height:540px;margin:-270px;border:1.5px solid rgba(254,93,87,.5);animation:pulse 3.6s var(--ease) infinite}
 @keyframes pulse{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.85);opacity:0}}
 .rings .ph{position:relative;z-index:2}
-.rings .ph img{width:330px}
+.rings .ph img{width:300px}
+.pins{position:absolute;inset:0;pointer-events:none}
+.pins i{position:absolute;right:-18px;width:36px;height:36px;margin-top:-18px;border-radius:50%;background:var(--red);color:var(--bg);display:grid;place-items:center;font:500 18px/1 var(--sans);font-style:normal;box-shadow:0 0 0 4px rgba(15,15,15,.9),0 0 24px rgba(254,93,87,.6);transition:transform .4s var(--ease),box-shadow .4s}
+#s12:has(.blocks div:nth-child(1):hover) .pins i:nth-child(1),#s12:has(.blocks div:nth-child(2):hover) .pins i:nth-child(2),#s12:has(.blocks div:nth-child(3):hover) .pins i:nth-child(3),#s12:has(.blocks div:nth-child(4):hover) .pins i:nth-child(4),#s12:has(.blocks div:nth-child(5):hover) .pins i:nth-child(5){transform:scale(1.3);box-shadow:0 0 0 4px rgba(15,15,15,.9),0 0 40px rgba(254,93,87,.9)}
+.blocks div span{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(254,93,87,.6);font:400 18px/1 var(--sans)!important;margin-top:-4px}
 .blocks{display:flex;flex-direction:column;gap:0}
-.blocks div{padding:24px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:48px 1fr;gap:16px;font-size:var(--t-body);transition:color .3s, padding .4s var(--ease)}
+.blocks div{padding:24px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:36px 1fr;gap:20px;align-items:start;font-size:var(--t-body);transition:color .3s, padding .4s var(--ease)}
 .blocks div span{color:var(--red);font-family:var(--serif);font-size:var(--t-lead)}
 .blocks div:hover{padding-left:12px;color:#fff}
 
 #s13{display:grid;grid-template-columns:560px 1fr;gap:56px}
-#s13 .left{display:flex;flex-direction:column;gap:28px}
+#s13 .left{display:flex;flex-direction:column;gap:20px}
 #s13 .ph img{width:320px}
-#s13 .ph:nth-child(2){transform:translateY(-40px)}
-#s13 .ph:nth-child(2):hover{transform:translateY(-62px)}
-#s13 .ph:nth-child(3){transform:translateY(-80px)}
-#s13 .ph:nth-child(3):hover{transform:translateY(-102px)}
+#s13 .phones{align-self:end;justify-content:flex-end;gap:32px}
+#s13 .ph img{width:316px}
 
 #s14{display:flex;flex-direction:column;gap:40px}
-#s14 .flow{display:grid;grid-template-columns:300px 1fr 300px 1fr 300px;align-items:start;justify-items:center;padding:0 60px}
-#s14 .ph img{width:282px;aspect-ratio:630/1365;object-fit:cover;object-position:top}
+#s14 .flow{display:grid;grid-template-columns:256px 1fr 256px 1fr 256px;align-items:start;justify-items:center;padding:0 60px}
+#s14 .ph img{width:248px;aspect-ratio:630/1365;object-fit:cover;object-position:top}
 #s14 .ph{gap:14px}
-#s14 .conn{margin-top:290px}
+#s14 .conn{margin-top:230px}
 #s14{gap:28px}
 .conn{width:100%;height:80px;overflow:visible}
 .conn path{fill:none;stroke:var(--red);stroke-width:2;filter:drop-shadow(0 0 6px var(--red));stroke-dasharray:6 10;animation:flow 1.2s linear infinite}
 .conn circle{fill:#fff;filter:drop-shadow(0 0 8px var(--red))}
 
 /* ---------- S15 research ---------- */
-#s15{display:grid;grid-template-columns:560px 1fr;gap:56px}
-#s15 .left{display:flex;flex-direction:column;gap:28px}
+#s15{display:grid;grid-template-columns:536px 1fr 1fr;gap:24px}
+#s15 .left{display:flex;flex-direction:column;gap:20px;margin-right:32px}
+#s15{grid-template-columns:536px 1fr}
+#s15 .pair{grid-column:2;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-self:start;margin-top:44px}
+#s15 .col{display:flex;flex-direction:column;gap:24px}
+#s15 .col>.card{flex:none}
+#s15 .pair>.note{grid-column:1/-1}
+#s15 .res{margin-top:auto;display:flex;flex-direction:column;gap:16px;padding:0 0 4px 40px}
 .ten{font-family:var(--serif);font-size:var(--t-num);line-height:.8;color:var(--red);font-weight:400;text-shadow:0 0 60px rgba(254,93,87,.35);margin-top:auto}
 .tbl{display:flex;flex-direction:column}
 .tbl .row{display:grid;grid-template-columns:72px 1fr 1fr;gap:28px;padding:26px 0;border-top:1px solid var(--line);align-items:start;transition:background .4s, padding .4s var(--ease)}
@@ -349,30 +358,30 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* ---------- S16 end ---------- */
 #s16{padding:0;background:#141313}
-#s16 .th{position:absolute;left:-200px;top:40px;width:2300px;mix-blend-mode:screen;opacity:.95;transition:transform 1.4s var(--ease)}
+#s16 .th{position:absolute;left:-200px;top:40px;width:2300px;mix-blend-mode:screen;opacity:.95;-webkit-mask-image:linear-gradient(90deg,#000 0,#000 48%,rgba(0,0,0,.22) 56%,rgba(0,0,0,.22) 100%);mask-image:linear-gradient(90deg,#000 0,#000 48%,rgba(0,0,0,.22) 56%,rgba(0,0,0,.22) 100%);transition:transform 1.4s var(--ease)}
 #s16 .big{position:absolute;left:112px;top:120px;font-family:var(--serif);font-size:var(--t-display);white-space:nowrap;line-height:1;letter-spacing:-.01em;font-weight:500;z-index:2}
 #s16 .big span{color:var(--red);font-style:italic}
-#s16 .meta{position:absolute;left:960px;right:120px;top:440px;display:grid;grid-template-columns:1fr 1fr;gap:32px 40px;z-index:2}
+#s16 .meta{position:absolute;left:972px;right:120px;top:420px;display:grid;grid-template-columns:1fr 1fr;gap:40px 24px;z-index:2}
 #s16 .meta div{display:flex;flex-direction:column;gap:10px}
-#s16 .meta p{font-size:var(--t-lead)}
+#s16 .meta p{font-size:var(--t-body);line-height:1.4}
 
 
 /* ---------- live prototype ---------- */
 #proto{display:grid;grid-template-columns:560px 1fr 400px;gap:40px;align-items:center}
-#proto .left{display:flex;flex-direction:column;gap:28px;align-self:start}
+#proto .left{display:flex;flex-direction:column;gap:20px;align-self:start}
 .try{display:flex;flex-direction:column;margin-top:8px}
 .try div{display:grid;grid-template-columns:48px 1fr;gap:14px;padding:20px 0;border-top:1px solid var(--line);font-size:var(--t-body);transition:padding .4s var(--ease), color .3s}
 .try div span{color:var(--red);font-family:var(--serif);font-size:var(--t-lead)}
 .try div:hover{padding-left:12px;color:#fff}
-.stagewrap{position:relative;display:grid;place-items:center;height:844px}
+.stagewrap{position:relative;display:grid;place-items:center;height:824px}
 .stagewrap::before{content:"";position:absolute;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(254,93,87,.16),transparent 62%);animation:breathe 5s ease-in-out infinite}
 @keyframes breathe{50%{transform:scale(1.08);opacity:.7}}
-.device{position:relative;width:380px;height:822px;border-radius:54px;background:#0f0f0f;
+.device{position:relative;width:370px;height:800px;border-radius:54px;background:#0f0f0f;
   box-shadow:0 0 0 9px #1c1b1b,0 0 0 10px rgba(255,255,255,.14),0 50px 120px rgba(0,0,0,.85),0 0 90px rgba(254,93,87,.18);transition:box-shadow .6s, transform .8s var(--ease)}
 .device:hover{box-shadow:0 0 0 9px #1c1b1b,0 0 0 10.5px rgba(254,93,87,.6),0 50px 120px rgba(0,0,0,.85),0 0 140px rgba(254,93,87,.35);transform:translateY(-6px)}
 .device iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:54px;background:#0f0f0f}
 .device .ph-load{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-size:var(--t-h3);font-style:italic;color:var(--faint)}
-.side{display:flex;flex-direction:column;gap:22px;align-self:end;margin-bottom:40px}
+.side{display:flex;flex-direction:column;gap:16px;align-self:center}
 .qr{width:220px;height:220px;padding:16px;border-radius:24px;background:#F4F0EC;display:grid;place-items:center;transition:transform .6s var(--ease), box-shadow .6s}
 .qr:hover{transform:rotate(-2deg) scale(1.04);box-shadow:0 0 60px rgba(254,93,87,.35)}
 .qr img,.qr canvas{width:188px!important;height:188px!important;image-rendering:pixelated}
@@ -403,7 +412,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .card .m{margin-top:auto;padding-top:18px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
 .card .m p{color:var(--text);font-size:var(--t-small)}
 .lbl.red{color:var(--red)}
-.ns{display:flex;align-items:center;gap:48px;border-radius:28px;background:linear-gradient(90deg,rgba(107,15,12,.45),rgba(20,10,10,.4));border:1px solid rgba(254,93,87,.45);padding:22px 40px}
+.ns{display:flex;align-items:center;gap:24px;border-radius:28px;background:linear-gradient(90deg,rgba(107,15,12,.45),rgba(20,10,10,.4));border:1px solid rgba(254,93,87,.45);padding:22px 40px}
 .ns h3{font-family:var(--serif);font-weight:500;font-size:var(--t-h3);line-height:1.05;flex:0 0 620px}
 .ns p{font-size:var(--t-small);line-height:1.5;color:var(--muted);font-weight:300}
 .list{display:flex;flex-direction:column}
@@ -418,10 +427,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .chain .cs small{font-size:var(--t-label);color:var(--faint)}
 .chain .cs.end b{color:var(--red)}
 .chain svg{width:34px;height:14px;stroke:var(--red);fill:none;stroke-width:1.6}
-.tldr .cols .c p{font-size:var(--t-body)}
-.tldr .cols .c:first-child{border-top:2px solid var(--red);margin-top:-37px;padding-top:35px}
+.tldr .hd{font-size:112px;max-width:1560px}
+.tldr .cols{margin-top:auto}
+.tldr .cols .c p{font-size:var(--t-body);line-height:1.5;color:var(--text)}
+.tldr .lbl b{font-weight:400;color:var(--red)}
 .dec{display:flex;flex-direction:column}
-.dec .row{display:grid;grid-template-columns:96px 520px 1fr;gap:32px;align-items:start;padding:26px 0;border-top:1px solid var(--line)}
+.dec .row{display:grid;grid-template-columns:96px 1fr 828px;gap:32px;align-items:start;padding:26px 0;border-top:1px solid var(--line)}
 .dec .o{width:64px;height:64px;border-radius:50%;border:1.5px solid rgba(254,93,87,.6);display:grid;place-items:center;font-family:var(--serif);font-size:var(--t-lead);color:var(--red)}
 .dec h3{font-family:var(--serif);font-weight:500;font-size:var(--t-h3);line-height:1.1}
 .dec p{font-size:var(--t-small);line-height:1.45;color:var(--muted);font-weight:300}
@@ -431,6 +442,20 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .tbl.rs .row{grid-template-columns:72px 360px 1fr}
 .meta p a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(254,93,87,.5)}
 .meta p a:hover{color:var(--red)}
+#ctx .cards{grid-template-rows:repeat(4,auto)}
+#ctx .card{display:grid;grid-row:span 4;grid-template-rows:subgrid;gap:16px;padding:44px 48px}
+#ctx .card h3{font-size:var(--t-h2)}
+#ctx .card p{font-size:var(--t-body)}
+#ctx .card .m{margin-top:8px}
+#hyp .cards{grid-template-rows:repeat(5,auto)}
+#hyp .card{display:grid;grid-row:span 5;grid-template-rows:subgrid;align-items:start}
+#hyp .card .m{margin-top:0}
+.qcol .card{flex:1;justify-content:center}
+#res2 .ptbl .row{padding:32px 0}
+#res2 .ptbl .row.h{padding:0 0 16px}
+#res2 .ptbl .row b{font-size:var(--t-lead)}
+#res2 .ptbl .row span{font-size:var(--t-body)}
+#hyp .card p,#hyp .card .m p{font-size:var(--t-body)!important}
 #hyp{gap:32px}#hyp .card{padding:26px 34px;gap:10px}#hyp .card h3{font-size:var(--t-h3)}#hyp .card p{font-size:var(--t-small)}#hyp .card .m p{font-size:var(--t-small)}
 /* исследование, конкуренты, тест */
 .bars{display:flex;flex-direction:column;gap:22px;margin-top:8px}
@@ -460,18 +485,28 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .steps li::before{content:counter(s);color:var(--faint)}
 .card.hot .steps li::before{color:var(--red)}
 #s15 .ten{font-size:var(--t-num)}
-#s15 .h2{font-size:var(--t-h2)}
 #comp .ptbl .row{padding:16px 0}
 #comp .ptbl .row.h{padding:0 0 10px}
 
+/* iteration · до и после */
+#iter{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+#iter .left{display:flex;flex-direction:column;gap:20px}
+#iter .ba{margin-top:auto;display:flex;flex-direction:column;gap:16px}
+#iter .ba div{border-radius:28px;background:var(--bg2);border:1px solid var(--line);padding:28px 36px;display:flex;flex-direction:column;gap:12px}
+#iter .ba div.on{border-color:rgba(254,93,87,.55)}
+#iter .ba p{font-family:var(--serif);font-size:var(--t-h3);line-height:1.15}
+#iter .phones{gap:56px;align-items:flex-start;justify-content:center;margin-top:44px}
+#iter .ph img{width:auto;height:736px;border-radius:32px}
+#iter .ph:nth-child(2) .n{color:var(--red)}
+
 /* s5 · метафора: один экран меняется вместе с активным шагом */
-#s5 .mx{position:relative;display:grid;place-items:center;height:860px}
+#s5 .mx{position:relative;display:grid;place-items:center;height:824px}
 #s5 .mx-glow{position:absolute;width:760px;height:760px;border-radius:50%;background:radial-gradient(closest-side,rgba(254,93,87,.22),rgba(254,93,87,.06) 55%,transparent);filter:blur(6px);animation:mx-breathe 5s ease-in-out infinite}
 @keyframes mx-breathe{0%,100%{transform:scale(.94);opacity:.8}50%{transform:scale(1.04);opacity:1}}
-#s5 .mx-ph{position:relative;width:372px;aspect-ratio:630/1365;border-radius:52px;overflow:hidden;background:#0f0f0f;box-shadow:0 0 0 1px rgba(255,255,255,.1),0 0 0 9px #0b0b0b,0 0 0 10px rgba(254,93,87,.35),0 60px 140px -30px rgba(0,0,0,.95),0 0 90px rgba(254,93,87,.2)}
+#s5 .mx-ph{position:relative;width:352px;aspect-ratio:630/1365;border-radius:52px;overflow:hidden;background:#0f0f0f;box-shadow:0 0 0 1px rgba(255,255,255,.1),0 0 0 9px #0b0b0b,0 0 0 10px rgba(254,93,87,.35),0 60px 140px -30px rgba(0,0,0,.95),0 0 90px rgba(254,93,87,.2)}
 #s5 .mx-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transform:translateY(16px) scale(1.03);transition:opacity .7s var(--ease),transform .9s var(--ease)}
 #s5 .mx[data-k="1"] img[data-k="1"],#s5 .mx[data-k="2"] img[data-k="2"],#s5 .mx[data-k="3"] img[data-k="3"]{opacity:1;transform:none}
-#s5 .mx-dots{position:absolute;bottom:4px;display:flex;gap:10px}
+#s5 .mx-dots{position:absolute;bottom:0;display:flex;gap:10px}
 #s5 .mx-dots i{width:28px;height:3px;border-radius:2px;background:rgba(255,255,255,.15);overflow:hidden;position:relative}
 #s5 .mx-dots i::after{content:"";position:absolute;inset:0;background:var(--red);transform:scaleX(0);transform-origin:left}
 #s5 .mx[data-k="1"] .mx-dots i:nth-child(1)::after,#s5 .mx[data-k="2"] .mx-dots i:nth-child(2)::after,#s5 .mx[data-k="3"] .mx-dots i:nth-child(3)::after{animation:mx-fill var(--mx-t,3200ms) linear forwards}
@@ -486,8 +521,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 #s5 .steps .step:hover{opacity:1}
 
 /* s8 · компоненты по токенам Figma */
-#s8 .pal .s{width:118px}
-#s8 .s span{font-size:17px;line-height:1.25;white-space:normal}
+#s8 .pal .s{width:120px}
+#s8 .sw{gap:12px}
+#s8 .s span{font-size:15px;line-height:1.25;white-space:nowrap}
 #s8 .s small{font-size:15px}
 #s8 .b-pri{background:#8A2426;border-color:#9E0500}
 #s8 .b-sec{border-color:rgba(255,255,255,.24);color:#F4F0EC}
@@ -517,7 +553,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .k-who img{width:26px;height:26px}
 
 #s8 .kcards{gap:16px}
-#s8 .k-card{box-sizing:border-box;width:304px;padding:18px}
+#s8 .k-card{box-sizing:border-box;width:264px;padding:18px}
 #s8 .k-top b,#s8 .k-class>b{font-size:18px}
 #s8 .k-top span,#s8 .k-class>span,#s8 .k-top em,#s8 .k-row,#s8 .k-acts span,#s8 .k-who{font-size:14px;white-space:nowrap}
 #s8 .k-class>b{font-size:26px}
@@ -537,7 +573,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     <div class="shade" aria-hidden="true"></div>
     <div class="bar r" style="--d:0"><span>Екатерина Богданова · Концепт-проект</span><span>2026</span></div>
     <h1 style="margin:0"><img class="logo r" style="--d:2" src="assets/case/fig/00-logo.webp" width="1560" height="522" alt="Looma"></h1>
-    <p class="tag r" style="--d:4">Занятия, события и люди — в одном месте</p>
+    <p class="tag r" style="--d:4">Занятия, события и люди&nbsp;— в одном месте</p>
     <dl class="facts r" style="--d:5">
       <div><dt>Роль</dt><dd>Продуктовый дизайнер, соло</dd></div>
       <div><dt>Срок</dt><dd>2 месяца</dd></div>
@@ -549,39 +585,36 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   <!-- tl;dr -->
   <section class="slide prod tldr" id="tldr" data-sec="Кейс">
     <div class="r" style="--d:0"><div class="eyebrow"><b>Кейс за 30 секунд</b></div><h2 class="hd" style="margin-top:20px">Одно приложение вместо чатов, афиш и&nbsp;соцсетей студий</h2></div>
-    <div class="cols" style="grid-template-columns:repeat(4,1fr);gap:40px">
-      <div class="c r" style="--d:1"><span class="lbl red">01 · Проблема</span><p>Занятия, события и люди разбросаны по чатам и соцсетям — сложно найти своё, а знакомства теряются</p></div>
-      <div class="c r" style="--d:2"><span class="lbl">02 · Моя роль</span><p>Концепт-проект, делала одна за 2&nbsp;месяца: проблема и гипотезы, метафора и айдентика, UX/UI, тестирование</p></div>
-      <div class="c r" style="--d:3"><span class="lbl">03 · Решение</span><p>Персональная лента занятий, событий и людей, кабинет педагога и «Ваша нить» — история общих встреч</p></div>
-      <div class="c r" style="--d:4"><span class="lbl">04 · Результат</span><p>Все 5 педагогов опубликовали занятие в прототипе сами — за 4 шага вместо 9. Поле с лимитом мест после теста сделала заметнее</p></div>
+    <div class="cols" style="grid-template-columns:repeat(4,1fr);gap:24px">
+      <div class="c r" style="--d:1"><span class="lbl"><b>01</b> · Проблема</span><p>Занятия, события и люди разбросаны по чатам и соцсетям&nbsp;— сложно найти своё, а знакомства теряются</p></div>
+      <div class="c r" style="--d:2"><span class="lbl"><b>02</b> · Моя роль</span><p>Концепт-проект, делала одна за 2&nbsp;месяца: проблема и гипотезы, метафора и айдентика, UX/UI, тестирование</p></div>
+      <div class="c r" style="--d:3"><span class="lbl"><b>03</b> · Решение</span><p>Персональная лента занятий, событий и людей, кабинет педагога и «Ваша нить»&nbsp;— история общих встреч</p></div>
+      <div class="c r" style="--d:4"><span class="lbl"><b>04</b> · Результат</span><p>Все 5 педагогов опубликовали занятие в прототипе сами&nbsp;— за 4 шага вместо 9. Поле с лимитом мест после теста сделала заметнее</p></div>
     </div>
   </section>
 
   <!-- 2 contents -->
   <section class="slide" id="s2" data-sec="Кейс">
-    <div class="num r" style="--d:0">(01)</div>
-    <div>
-      <h2 class="big r" style="--d:1">Процесс работы</h2>
-      <div class="toc">
-        <button class="r" style="--d:2" data-goid="s3"><span class="k">01</span><span class="t">О проекте и исследование</span><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button>
-        <button class="r" style="--d:3" data-goid="s5"><span class="k">02</span><span class="t">Метафора и бренд</span><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button>
-        <button class="r" style="--d:4" data-goid="s10"><span class="k">03</span><span class="t">Проектирование</span><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button>
-        <button class="r" style="--d:5" data-goid="s15"><span class="k">04</span><span class="t">Тестирование и итоги</span><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button>
-      </div>
+    <div class="r" style="--d:0"><div class="eyebrow"><b>Содержание</b><span>4 этапа · 2 месяца</span></div><h2 class="h2" style="margin-top:20px">Процесс работы</h2></div>
+    <div class="toc">
+      <button class="r on" style="--d:1" data-goid="s3"><span class="k">01</span><span class="t">О проекте и исследование</span><span class="d">Контекст, интервью, конкуренты, гипотезы и&nbsp;скоуп MVP</span><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button>
+      <button class="r" style="--d:2" data-goid="chap2"><span class="k">02</span><span class="t">Метафора и бренд</span><span class="d">Красная нить, логотип, цвет и&nbsp;типографика</span><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button>
+      <button class="r" style="--d:3" data-goid="s10"><span class="k">03</span><span class="t">Проектирование</span><span class="d">Онбординг, лента, истории, связи и&nbsp;живой прототип</span><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button>
+      <button class="r" style="--d:4" data-goid="chap4"><span class="k">04</span><span class="t">Тестирование и итоги</span><span class="d">Тест с&nbsp;педагогами, итерация и&nbsp;выводы</span><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></button>
     </div>
   </section>
 
   <!-- 3 about -->
   <section class="slide" id="s3" data-sec="A">
     <div class="top">
-      <div class="col r" style="--d:0"><div class="eyebrow"><b>О проекте и исследование</b></div><h2 class="h2">О проекте</h2></div>
+      <div class="col r" style="--d:0"><div class="eyebrow"><b>О проекте и исследование</b><span>Коротко</span></div><h2 class="h2">О проекте</h2></div>
     </div>
     <div class="cols">
-      <div class="c r" style="--d:1"><span class="lbl">Приложение</span><p>Looma — пространство для танцоров</p></div>
+      <div class="c r" style="--d:1"><span class="lbl">Приложение</span><p>Looma&nbsp;— пространство для танцоров</p></div>
       <div class="c r" style="--d:2"><span class="lbl">Задача</span><p>Находить занятия и события, знакомиться с людьми и расти внутри сообщества</p></div>
       <div class="c r" style="--d:3"><span class="lbl">Проблема</span><p>Занятия, события и люди находятся в разных пространствах. Looma собирает их в одном месте</p></div>
     </div>
-    <div class="quote r" style="--d:5"><span>Информация есть,</span><span><em>связей</em> между ней — <span class="strike">нет</span></span></div>
+    <div class="quote r" style="--d:5"><span>Информация есть,</span><span><em>связей</em> между ней&nbsp;— <span class="strike">нет</span></span></div>
   </section>
 
   <!-- 4 circles -->
@@ -590,14 +623,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     <div class="head r" style="--d:0"><div class="eyebrow"><b>О проекте и исследование</b><span>Что объединяет Looma</span></div><h2 class="h2">Четыре точки одной нити</h2></div>
     <div class="circles">
       <svg class="links" viewBox="0 0 1920 1080" aria-hidden="true">
-        <line data-a="0" data-b="1" x1="560" y1="640" x2="1030" y2="360"/><line data-a="0" data-b="2" x1="560" y1="640" x2="1030" y2="770"/>
-        <line data-a="0" data-b="3" x1="560" y1="640" x2="1540" y2="600"/><line data-a="1" data-b="2" x1="1030" y1="360" x2="1030" y2="770"/>
-        <line data-a="1" data-b="3" x1="1030" y1="360" x2="1540" y2="600"/><line data-a="2" data-b="3" x1="1030" y1="770" x2="1540" y2="600"/>
+        <line data-a="0" data-b="1" x1="560" y1="610" x2="1030" y2="304"/><line data-a="0" data-b="2" x1="560" y1="610" x2="1030" y2="738"/>
+        <line data-a="0" data-b="3" x1="560" y1="610" x2="1540" y2="570"/><line data-a="1" data-b="2" x1="1030" y1="304" x2="1030" y2="738"/>
+        <line data-a="1" data-b="3" x1="1030" y1="304" x2="1540" y2="570"/><line data-a="2" data-b="3" x1="1030" y1="738" x2="1540" y2="570"/>
       </svg>
-      <div class="circ r" data-i="0" style="--d:1;left:300px;top:380px;width:520px;height:520px"><h3>Занятия</h3><p>мастер-классы,<br>тренировки</p></div>
-      <div class="circ r" data-i="1" style="--d:2;left:810px;top:140px;width:440px;height:440px"><h3>Люди</h3><p>знакомства, комьюнити,<br>коллаборации</p></div>
-      <div class="circ r" data-i="2" style="--d:3;left:830px;top:570px;width:400px;height:400px"><h3>События</h3><p>батлы, фестивали,<br>вечеринки</p></div>
-      <div class="circ r" data-i="3" style="--d:4;left:1350px;top:410px;width:380px;height:380px"><h3>Связи</h3><p>вдохновение,<br>развитие, карьера</p></div>
+      <div class="circ r" data-i="0" style="--d:1;left:300px;top:350px;width:520px;height:520px"><h3>Занятия</h3><p>мастер-классы,<br>тренировки</p></div>
+      <div class="circ r" data-i="1" style="--d:2;left:810px;top:84px;width:440px;height:440px"><h3>Люди</h3><p>знакомства, комьюнити,<br>коллаборации</p></div>
+      <div class="circ r" data-i="2" style="--d:3;left:840px;top:548px;width:380px;height:380px"><h3>События</h3><p>батлы, фестивали,<br>вечеринки</p></div>
+      <div class="circ r" data-i="3" style="--d:4;left:1350px;top:380px;width:380px;height:380px"><h3>Связи</h3><p>вдохновение,<br>развитие, карьера</p></div>
     </div>
   </section>
 
@@ -605,7 +638,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   <section class="slide prod" id="ctx" data-sec="A">
     <div class="top r" style="--d:0">
       <div class="col"><div class="eyebrow"><b>О проекте и исследование</b><span>Контекст</span></div><h2 class="h2">Откуда проект</h2></div>
-      <div class="col"><span class="lbl">Концепт-проект · 2 месяца · соло</span><p class="lead" style="max-width:980px">Проект вырос из моего опыта в танцах: занятия ищешь в чатах, о событиях узнаёшь из соцсетей студий, а знакомства с мастер-классов теряются. Я много раз обсуждала это с танцорами в раздевалках и на занятиях — и раз за разом слышала одно и то же</p></div>
+      <div class="col"><span class="lbl">Концепт-проект · 2 месяца · соло</span><p class="lead" style="max-width:980px">Проект вырос из моего опыта в танцах: занятия ищешь в чатах, о событиях узнаёшь из соцсетей студий, а знакомства с мастер-классов теряются. Я много раз обсуждала это с танцорами в раздевалках и на занятиях&nbsp;— и раз за разом слышала одно и то же</p></div>
     </div>
     <div class="cards c2">
       <div class="card r" style="--d:2"><span class="lbl red">Роль 1 · Учиться танцевать</span><h3>Танцоры</h3><p>Хотят находить занятия и события под свой стиль и уровень, знакомиться и расти в сообществе</p><div class="m"><span class="lbl red">Боль</span><p>Информация разбросана, а о педагоге почти ничего не понятно до первого занятия</p></div></div>
@@ -617,7 +650,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   <section class="slide prod" id="res" data-sec="A">
     <div class="top r" style="--d:0">
       <div class="col"><div class="eyebrow"><b>О проекте и исследование</b><span>Исследование</span></div><h2 class="h2">Как танцоры находят занятия</h2></div>
-      <div class="col"><span class="lbl">Метод</span><p class="lead">Провела интервью с 6 знакомыми танцорами: как они находят занятия и где узнали о последних — набралось 10 случаев. Ещё поговорила с 3 педагогами о том, как они публикуют расписание и собирают записи</p></div>
+      <div class="col"><span class="lbl">Метод</span><p class="lead">Провела интервью с 6 знакомыми танцорами: как они находят занятия и где узнали о последних&nbsp;— набралось 10 случаев. Ещё поговорила с 3 педагогами о том, как они публикуют расписание и собирают записи</p></div>
     </div>
     <div class="cards c2">
       <div class="card r" style="--d:2"><span class="lbl red">Где нашли последнее занятие · 10 случаев</span>
@@ -627,10 +660,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
           <div class="bar"><b>Рекомендации знакомых</b><span>2</span><i style="--w:50%"></i></div>
           <div class="bar"><b>Сайт студии</b><span>1</span><i style="--w:25%"></i></div>
         </div>
-        <p class="note" style="margin-top:auto">Это 10 случаев от 6 танцоров из моего окружения, а не доля каналов в целом. Выборка маленькая — это ограничение исследования</p>
+        <p class="note" style="margin-top:auto">Это 10 случаев от 6 танцоров из моего окружения, а не доля каналов в целом. Выборка маленькая&nbsp;— это ограничение исследования</p>
       </div>
       <div class="qcol">
-        <div class="card qt r" style="--d:3"><p>«Расписание у меня в трёх местах: чат группы, сторис и пост. Если что-то переношу — правлю везде и всё равно кто-то приходит не в то время»</p><small>— педагог, Frame Up</small></div>
+        <div class="card qt r" style="--d:3"><p>«Расписание у меня в трёх местах: чат группы, сторис и пост. Если что-то переношу&nbsp;— правлю везде и всё равно кто-то приходит не в то время»</p><small>— педагог, Frame Up</small></div>
         <div class="card qt r" style="--d:4"><p>«Про мастер-класс узнала из сторис подруги. Пока собралась записаться, сторис уже пропала»</p><small>— танцовщица, 2 года в High Heels</small></div>
       </div>
     </div>
@@ -640,7 +673,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   <section class="slide prod" id="crew" data-sec="A">
     <div class="top r" style="--d:0">
       <div class="col"><div class="eyebrow"><b>О проекте и исследование</b><span>С кем говорила</span></div><h2 class="h2">Мои танцевальные группы</h2></div>
-      <div class="col"><span class="lbl">Кто эти люди</span><p class="lead">Девочки из моих танцевальных групп. С ними я много раз обсуждала, где искать занятия, — среди них и участницы интервью</p></div>
+      <div class="col"><span class="lbl">Кто эти люди</span><p class="lead">Девочки из моих танцевальных групп. С ними я много раз обсуждала, где искать занятия,&nbsp;— среди них и участницы интервью</p></div>
     </div>
     <div class="crew">
       <img class="ri" style="--d:2" src="assets/case/dancers-1.webp" alt="Восемь танцовщиц в студии на фоне чёрного занавеса позируют вокруг стола" data-par="10">
@@ -653,12 +686,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   <section class="slide prod" id="res2" data-sec="A">
     <div class="top r" style="--d:0">
       <div class="col"><div class="eyebrow"><b>О проекте и исследование</b><span>Что заметила</span></div><h2 class="h2">Две проблемы и&nbsp;решения</h2></div>
-      <div class="col"><span class="lbl">Что заметила в разговорах</span><p class="lead" style="font-family:var(--serif);font-style:italic;color:var(--text);font-size:var(--t-h3);line-height:1.3">Сначала думала, что главная проблема — нет единого места для поиска занятий. Но в разговорах заметила ещё одну: даже когда человек находит подходящее занятие, ему не всегда понятно, актуальны ли расписание и условия записи</p></div>
+      <div class="col"><span class="lbl">Что заметила в разговорах</span><p class="lead">Сначала думала, что главная проблема&nbsp;— нет единого места для поиска занятий. Но в разговорах заметила ещё одну: даже когда человек находит подходящее занятие, ему не всегда понятно, актуальны ли расписание и условия записи</p></div>
     </div>
-    <div class="ptbl r" style="--d:2">
+    <div class="ptbl r" style="--d:2;--cols:1fr 1fr 1fr;margin-top:auto;margin-bottom:auto">
       <div class="row h"><span class="lbl">Проблема</span><span class="lbl">Что заметила</span><span class="lbl">Что сделала в Looma</span></div>
       <div class="row"><b>1. Информация разбросана</b><span>Расписание, стоимость и запись могут находиться в разных местах. Иногда приходится писать педагогу, чтобы уточнить детали</span><span class="yes">Карточка занятия: время, место, цена и запись на одном экране</span></div>
-      <div class="row"><b>2. Сложно понять, актуальна ли информация</b><span>Анонсы в сторис исчезают, а изменения расписания не всегда дублируются во всех каналах</span><span class="yes">Педагог меняет или отменяет занятие в одном месте — ученики видят актуальную версию и получают уведомление</span></div>
+      <div class="row"><b>2. Сложно понять, актуальна ли информация</b><span>Анонсы в сторис исчезают, а изменения расписания не всегда дублируются во всех каналах</span><span class="yes">Педагог меняет или отменяет занятие в одном месте&nbsp;— ученики видят актуальную версию и получают уведомление</span></div>
     </div>
   </section>
 
@@ -666,15 +699,15 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   <section class="slide prod" id="comp" data-sec="A">
     <div class="top r" style="--d:0">
       <div class="col"><div class="eyebrow"><b>О проекте и исследование</b><span>Конкуренты</span></div><h2 class="h2">Где ещё ищут занятия</h2></div>
-      <div class="col"><span class="lbl">Вывод</span><p class="lead">Расписание и онлайн-запись уже есть, но только внутри одной студии. Ни один канал не связывает людей после занятия — на этом строится «Ваша нить»</p></div>
+      <div class="col"><span class="lbl">Вывод</span><p class="lead">Расписание и онлайн-запись уже есть, но только внутри одной студии. Ни один канал не связывает людей после занятия&nbsp;— на этом строится «Ваша нить»</p></div>
     </div>
     <div class="ptbl r" style="--d:2;--cols:1.1fr 1fr 1fr 1fr 1fr">
-      <div class="row h"><span class="lbl">Канал</span><span class="lbl">Найти занятие под себя</span><span class="lbl">Актуальное расписание</span><span class="lbl">Запись</span><span class="lbl">Что остаётся после встречи</span></div>
+      <div class="row h"><span class="lbl">Канал</span><span class="lbl">Поиск под себя</span><span class="lbl">Расписание</span><span class="lbl">Запись</span><span class="lbl">После встречи</span></div>
       <div class="row"><b>Чаты групп в Telegram</b><span>Только если уже состоишь в чате</span><span>Закреп теряется в переписке</span><span>«Плюсик» в чате, места считают вручную</span><span>Общий чат, но без истории встреч</span></div>
       <div class="row"><b>Сторис и посты педагогов</b><span>Только если подписан на педагога</span><span>Сторис исчезают через 24 часа</span><span>Через директ</span><span>Подписка, не связанная с занятиями</span></div>
-      <div class="row"><b>Сайт студии с онлайн-записью</b><span>Только занятия одной студии</span><span>Да</span><span>Онлайн</span><span>Ничего</span></div>
+      <div class="row"><b>Сайт студии с&nbsp;онлайн&#8209;записью</b><span>Только занятия одной студии</span><span>Да</span><span>Онлайн</span><span>Ничего</span></div>
       <div class="row"><b>Афиши событий (Timepad)</b><span>События, но не регулярные занятия</span><span>Да</span><span>Билет</span><span>Ничего</span></div>
-      <div class="row me"><b>Looma</b><span>Подборка по стилю и уровню</span><span>Педагог меняет занятие в одном месте</span><span>В карточке занятия</span><span>«Ваша нить» — история общих встреч</span></div>
+      <div class="row me"><b>Looma</b><span>Подборка по стилю и уровню</span><span>Педагог меняет занятие в одном месте</span><span>В карточке занятия</span><span>«Ваша нить»&nbsp;— история общих встреч</span></div>
     </div>
   </section>
 
@@ -682,7 +715,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   <section class="slide prod" id="hyp" data-sec="A">
     <div class="top r" style="--d:0">
       <div class="col"><div class="eyebrow"><b>О проекте и исследование</b><span>Гипотезы</span></div><h2 class="h2">Гипотезы и&nbsp;как их проверить</h2></div>
-      <div class="col"><span class="lbl">Что должно сработать</span><p class="lead">Одна гипотеза выросла из исследования, две — мои предположения, которые ещё нужно проверить. Для каждой — простой способ проверки на 5 людях</p></div>
+      <div class="col"><span class="lbl">Что должно сработать</span><p class="lead">Одна гипотеза выросла из исследования, две&nbsp;— мои предположения, которые ещё нужно проверить. Для каждой&nbsp;— простой способ проверки на 5 людях</p></div>
     </div>
     <div class="cards">
       <div class="card r" style="--d:2"><span class="o">1</span><h3>Ценность до регистрации</h3><p>Если сначала показать подборку, а регистрацию дать последней, больше новичков дойдут до первой записи</p><span class="lbl">Предположение · не проверено</span><div class="m"><span class="lbl red">Как проверю</span><p>Спрошу 5 танцоров, нашли ли они занятие в Looma быстрее, чем в чатах, и дошли ли до записи</p></div></div>
@@ -695,7 +728,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   <section class="slide prod" id="scope" data-sec="A">
     <div class="top r" style="--d:0">
       <div class="col"><div class="eyebrow"><b>О проекте и исследование</b><span>Приоритизация</span></div><h2 class="h2">Скоуп MVP</h2></div>
-      <div class="col"><span class="lbl">Фокус</span><p class="lead" style="max-width:980px">Главный путь: найти занятие, прийти и познакомиться. Остальное — в следующие версии</p></div>
+      <div class="col"><span class="lbl">Фокус</span><p class="lead" style="max-width:980px">Главный путь: найти занятие, прийти и познакомиться. Остальное&nbsp;— в следующие версии</p></div>
     </div>
     <div class="cards c2">
       <div class="card r" style="--d:1"><span class="lbl red">Вошло в MVP</span><div class="list">
@@ -706,7 +739,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
         <div><b>Кабинет педагога</b><span>Без педагогов нет занятий в ленте</span></div></div></div>
       <div class="card r" style="--d:2"><span class="lbl">Отложила</span><div class="list">
         <div><b>Чат между пользователями</b><span>Сначала проверить, нужны ли связи вообще</span></div>
-        <div><b>Оплата внутри приложения</b><span>Сложно и дорого; на старте — оплата в студии</span></div>
+        <div><b>Оплата внутри приложения</b><span>Сложно и дорого; на старте&nbsp;— оплата в студии</span></div>
         <div><b>Отзывы и рейтинги педагогов</b><span>Нужна база занятий, чтобы было что оценивать</span></div>
         <div><b>Уведомления о пересечениях</b><span>Добавлю, когда связи начнут расти</span></div></div></div>
     </div>
@@ -714,15 +747,22 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 
 
+  <!-- chapter 02 -->
+  <section class="slide chap" id="chap2" data-sec="B">
+    <img class="mock ri" src="assets/looma-deck/cover.webp" alt="Две руки тянутся друг к другу, их связывает красная нить" data-par="18" style="left:640px;width:calc(100% - 610px);object-position:50% 40%">
+    <div class="shade"></div>
+    <div class="ov"><div class="eyebrow r" style="--d:1"><b>02</b></div><h2 class="hd r" style="--d:2">Метафора<br>и&nbsp;бренд</h2></div>
+  </section>
+
   <!-- 5 metaphor -->
   <section class="slide" id="s5" data-sec="B">
     <div class="left">
       <div class="r" style="--d:0"><div class="eyebrow"><b>Метафора и бренд</b><span>Метафора</span></div></div>
-      <h2 class="h2 r" style="--d:1">Красная нить — метафора связи между людьми</h2>
+      <h2 class="h2 r" style="--d:1">Красная нить&nbsp;— метафора связи между людьми</h2>
       <div class="steps">
         <div class="step r on" data-k="1" style="--d:2"><div class="o">1</div><div><h3>Пересечения</h3><p>Вы встречаетесь в танцевальной среде: на занятиях, событиях или через общие интересы</p></div></div>
         <div class="step r" data-k="2" style="--d:3"><div class="o">2</div><div><h3>Связь</h3><p>Вы добавляете друг друга и устанавливаете связь</p></div></div>
-        <div class="step r" data-k="3" style="--d:4"><div class="o">3</div><div><h3>Ваша нить</h3><p>История всех ваших пересечений собирается в одну нить — историю ваших общих точек</p></div></div>
+        <div class="step r" data-k="3" style="--d:4"><div class="o">3</div><div><h3>Ваша нить</h3><p>История всех ваших пересечений собирается в одну нить&nbsp;— историю ваших общих точек</p></div></div>
       </div>
     </div>
     <div class="mx ri" style="--d:1" data-k="1">
@@ -740,7 +780,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   <!-- 7 logo -->
   <section class="slide" id="s7" data-sec="B">
     <div class="top r" style="--d:0">
-      <div class="col"><div class="eyebrow"><b>Метафора и бренд</b></div><h2 class="h2">Логотип</h2></div>
+      <div class="col"><div class="eyebrow"><b>Метафора и бренд</b><span>Айдентика</span></div><h2 class="h2">Логотип</h2></div>
       <div class="col"><span class="lbl">Идея</span><p class="lead">Нить проходит сквозь буквы и связывает их в одно слово. Иконка собрана из той же нити</p></div>
     </div>
     <div class="duo">
@@ -752,29 +792,29 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   <!-- 8 UI kit colours + components -->
   <section class="slide" id="s8" data-sec="B">
     <div class="pal">
-      <div class="r" style="--d:0"><div class="eyebrow"><b>Метафора и бренд</b><span>Дизайн-система</span></div><h2 class="h2" style="margin-top:14px">Цвет</h2></div>
+      <div class="r" style="--d:0"><div class="eyebrow"><b>Метафора и бренд</b><span>Дизайн-система</span></div><h2 class="h2" style="margin-top:20px">Цвет</h2></div>
       <div class="grp r" style="--d:1"><span class="lbl">Фон</span><div class="sw">
-        <button class="s" data-hex="#0F0F0F"><i style="background:#0F0F0F"></i><span>bg/<wbr>base</span><small>#0F0F0F</small></button>
-        <button class="s" data-hex="#111111"><i style="background:#111111"></i><span>bg/<wbr>section</span><small>#111111</small></button>
-        <button class="s" data-hex="#161515"><i style="background:#161515"></i><span>bg/<wbr>card</span><small>#161515</small></button>
-        <button class="s" data-hex="#282727"><i style="background:#282727"></i><span>bg/<wbr>control</span><small>#282727</small></button></div></div>
+        <button class="s" data-hex="#0F0F0F"><i style="background:#0F0F0F"></i><span>bg/base</span><small>#0F0F0F</small></button>
+        <button class="s" data-hex="#111111"><i style="background:#111111"></i><span>bg/section</span><small>#111111</small></button>
+        <button class="s" data-hex="#161515"><i style="background:#161515"></i><span>bg/card</span><small>#161515</small></button>
+        <button class="s" data-hex="#282727"><i style="background:#282727"></i><span>bg/control</span><small>#282727</small></button></div></div>
       <div class="grp r" style="--d:2"><span class="lbl">Текст</span><div class="sw">
-        <button class="s" data-hex="#F4F0EC"><i style="background:#F4F0EC"></i><span>text/<wbr>primary</span><small>#F4F0EC</small></button>
-        <button class="s" data-hex="#F4F0EC 75%"><i style="background:rgba(244,240,236,.75)"></i><span>text/<wbr>secondary</span><small>#F4F0EC 75%</small></button>
-        <button class="s" data-hex="#F4F0EC 55%"><i style="background:rgba(244,240,236,.55)"></i><span>text/<wbr>tertiary</span><small>#F4F0EC 55%</small></button>
-        <button class="s" data-hex="#FE5D57"><i style="background:#FE5D57"></i><span>text/<wbr>accent</span><small>#FE5D57</small></button></div></div>
+        <button class="s" data-hex="#F4F0EC"><i style="background:#F4F0EC"></i><span>text/primary</span><small>#F4F0EC</small></button>
+        <button class="s" data-hex="#F4F0EC 75%"><i style="background:rgba(244,240,236,.75)"></i><span>text/secondary</span><small>#F4F0EC 75%</small></button>
+        <button class="s" data-hex="#F4F0EC 55%"><i style="background:rgba(244,240,236,.55)"></i><span>text/tertiary</span><small>#F4F0EC 55%</small></button>
+        <button class="s" data-hex="#FE5D57"><i style="background:#FE5D57"></i><span>text/accent</span><small>#FE5D57</small></button></div></div>
       <div class="grp r" style="--d:3"><span class="lbl">Обводка</span><div class="sw">
-        <button class="s" data-hex="#FFFFFF 8%"><i style="background:transparent;border:2px solid rgba(255,255,255,.08)"></i><span>border/<wbr>subtle</span><small>#FFFFFF 8%</small></button>
-        <button class="s" data-hex="#FFFFFF 16%"><i style="background:transparent;border:2px solid rgba(255,255,255,.16)"></i><span>border/<wbr>strong</span><small>#FFFFFF 16%</small></button>
-        <button class="s" data-hex="#FE5D57 80%"><i style="background:transparent;border:2px solid rgba(254,93,87,.8)"></i><span>border/<wbr>accent</span><small>#FE5D57 80%</small></button></div></div>
+        <button class="s" data-hex="#FFFFFF 8%"><i style="background:transparent;border:2px solid rgba(255,255,255,.08)"></i><span>border/subtle</span><small>#FFFFFF 8%</small></button>
+        <button class="s" data-hex="#FFFFFF 16%"><i style="background:transparent;border:2px solid rgba(255,255,255,.16)"></i><span>border/strong</span><small>#FFFFFF 16%</small></button>
+        <button class="s" data-hex="#FE5D57 80%"><i style="background:transparent;border:2px solid rgba(254,93,87,.8)"></i><span>border/accent</span><small>#FE5D57 80%</small></button></div></div>
       <div class="grp r" style="--d:4"><span class="lbl">Акцент и кнопка</span><div class="sw">
-        <button class="s" data-hex="#FE5D57"><i style="background:#FE5D57"></i><span>bg/<wbr>accent</span><small>#FE5D57</small></button>
+        <button class="s" data-hex="#FE5D57"><i style="background:#FE5D57"></i><span>bg/accent</span><small>#FE5D57</small></button>
         <button class="s" data-hex="#6B0F0C"><i style="background:#6B0F0C"></i><span>accent-deep</span><small>#6B0F0C</small></button>
-        <button class="s" data-hex="#8A2426"><i style="background:#8A2426"></i><span>button/<wbr>primary</span><small>#8A2426</small></button>
+        <button class="s" data-hex="#8A2426"><i style="background:#8A2426"></i><span>button/primary</span><small>#8A2426</small></button>
         <button class="s" data-hex="#9E0500"><i style="background:#9E0500"></i><span>primary-border</span><small>#9E0500</small></button></div></div>
     </div>
     <div class="comps">
-      <h2 class="h2 r" style="--d:0;margin-top:41px">Компоненты</h2>
+      <h2 class="h2 r" style="--d:0;margin-top:44px">Компоненты</h2>
       <div class="grp r" style="--d:1"><span class="lbl">App Button · Choice Chip</span><div class="btnrow"><button class="b-pri">Начать</button><button class="b-sec">Продолжить</button></div><div class="btnrow" style="margin-top:14px"><span class="k-chip on"><i></i>Frame Up</span><span class="k-chip"><i></i>Vogue</span><span class="k-chip"><i></i>High Heels</span></div></div>
       <div class="grp r" style="--d:2"><span class="lbl">Text Field</span><div class="btnrow"><input class="inp" id="kit-input" placeholder="example@mail.ru" aria-label="Пример поля ввода"></div></div>
       <div class="grp r" style="--d:3"><span class="lbl">Person Card · Class Card</span><div class="btnrow kcards">
@@ -787,7 +827,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
   <!-- 9 type -->
   <section class="slide" id="s9" data-sec="B">
-    <div class="r" style="--d:0"><div class="eyebrow"><b>Метафора и бренд</b><span>UI Kit</span></div><h2 class="h2" style="margin-top:14px">Типографика</h2></div>
+    <div class="r" style="--d:0"><div class="eyebrow"><b>Метафора и бренд</b><span>Дизайн-система</span></div><h2 class="h2" style="margin-top:20px">Типографика</h2></div>
     <div class="faces">
       <div class="face r" style="--d:1;font-family:var(--serif)">
         <div class="nm" style="font-family:var(--sans)">Cormorant Garamond · заголовки</div>
@@ -809,7 +849,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   </section>
 
   <!-- 10 hero -->
-  <section class="slide" id="s10" data-sec="C">
+  <section class="slide chap" id="s10" data-sec="C">
     <img class="mock ri" src="assets/looma-deck/chapter-design.webp" alt="Телефон с лентой «Для вас» на деревянном полу зала, рядом кроссовки, наушники и красная нить" data-par="18">
     <div class="shade"></div>
     <div class="ov"><div class="eyebrow r" style="--d:1"><b>03</b></div><h2 class="hd r" style="--d:2">Проекти&shy;рование</h2></div>
@@ -818,7 +858,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   <!-- 11 onboarding -->
   <section class="slide" id="s11" data-sec="C">
     <div class="top r" style="--d:0">
-      <div class="col"><div class="eyebrow"><b>Проектирование</b></div><h2 class="h2">Онбординг</h2></div>
+      <div class="col"><div class="eyebrow"><b>Проектирование</b><span>Первый запуск</span></div><h2 class="h2">Онбординг</h2></div>
       <div class="col"><span class="lbl">Задача</span><p class="lead" style="max-width:900px">Познакомить пользователя с возможностями Looma и показать ценность приложения до того, как он начнёт искать занятия</p></div>
     </div>
     <div class="phones">
@@ -840,7 +880,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     </div>
     <div class="rings ri" style="--d:1">
       <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div><div class="ring pulse"></div>
-      <div class="ph"><img src="assets/looma-deck/home.webp" alt="Главный экран «Для вас»" data-tilt></div>
+      <div class="ph" style="position:relative"><img src="assets/looma-deck/home.webp" alt="Главный экран «Для вас»" data-tilt><span class="pins" aria-hidden="true"><i style="top:15%">1</i><i style="top:25%">2</i><i style="top:48%">3</i><i style="top:71%">4</i><i style="top:88.5%">5</i></span></div>
     </div>
     <div class="blocks">
       <div class="r" style="--d:3"><span>1</span>Фильтры: люди, занятия, события, стили</div>
@@ -868,8 +908,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   <!-- 14 connections -->
   <section class="slide" id="s14" data-sec="C">
     <div class="top r" style="--d:0">
-      <div class="col"><div class="eyebrow"><b>Проектирование</b></div><h2 class="h2">Связи</h2></div>
-      <div class="col"><span class="lbl">Сценарий</span><p class="lead" style="max-width:900px">Найти человека, отправить запрос и получить общую нить — историю ваших пересечений. С кем были на одном занятии — предложить связь, с остальными — подписаться</p></div>
+      <div class="col"><div class="eyebrow"><b>Проектирование</b><span>Знакомства</span></div><h2 class="h2">Связи</h2></div>
+      <div class="col"><span class="lbl">Сценарий</span><p class="lead" style="max-width:900px">Найти человека, отправить запрос и получить общую нить&nbsp;— историю ваших пересечений. С кем были на одном занятии&nbsp;— предложить связь, с остальными&nbsp;— подписаться</p></div>
     </div>
     <div class="flow phones">
       <div class="ph r" style="--d:1"><img src="assets/looma-deck/people.webp" alt="Экран «Люди»"><span class="n">Люди</span></div>
@@ -910,49 +950,59 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
       <div class="col"><span class="lbl">Решение и его цена</span><p class="lead">Четыре решения, на которых держится продукт</p></div>
     </div>
     <div class="dec">
-      <div class="row r" style="--d:1"><span class="o">1</span><h3>Ценность до регистрации</h3><p>Онбординг сначала показывает, что даёт Looma, и собирает направления и вайб. Регистрация — последней<br><em>Цена:</em> контакт узнаём позже, часть людей уйдёт без регистрации</p></div>
-      <div class="row r" style="--d:2"><span class="o">2</span><h3>Две роли в одном аккаунте</h3><p>Танцор и педагог — часто один человек. Роль выбирается на старте, её можно сменить или совмещать обе в одном аккаунте<br><em>Цена:</em> интерфейс сложнее — нужен переключатель ролей. Чтобы не путать, в меню меняется только один пункт</p></div>
-      <div class="row r" style="--d:3"><span class="o">3</span><h3>Истории вместо анкеты</h3><p>Педагог рассказывает о себе в коротких видео — характер и энергию педагога видно до первого занятия<br><em>Цена:</em> педагогу нужно снять видео, порог входа выше</p></div>
-      <div class="row r" style="--d:4"><span class="o">4</span><h3>Связь — только по согласию</h3><p>Связь появляется, когда её подтверждают оба. Затем открывается «Ваша нить»<br><em>Цена:</em> сеть растёт медленнее, зато без спама и навязчивых контактов</p></div>
+      <div class="row r" style="--d:1"><span class="o">1</span><h3>Ценность до регистрации</h3><p>Онбординг сначала показывает, что даёт Looma, и собирает направления и вайб. Регистрация&nbsp;— последней<br><em>Цена:</em> контакт узнаём позже, часть людей уйдёт без регистрации</p></div>
+      <div class="row r" style="--d:2"><span class="o">2</span><h3>Две роли в одном аккаунте</h3><p>Танцор и педагог&nbsp;— часто один человек. Роль выбирается на старте, её можно сменить или совмещать обе в одном аккаунте<br><em>Цена:</em> интерфейс сложнее&nbsp;— нужен переключатель ролей. Чтобы не путать, в меню меняется только один пункт</p></div>
+      <div class="row r" style="--d:3"><span class="o">3</span><h3>Истории вместо анкеты</h3><p>Педагог рассказывает о себе в коротких видео&nbsp;— характер и энергию педагога видно до первого занятия<br><em>Цена:</em> педагогу нужно снять видео, порог входа выше</p></div>
+      <div class="row r" style="--d:4"><span class="o">4</span><h3>Связь&nbsp;— только по согласию</h3><p>Связь появляется, когда её подтверждают оба. Затем открывается «Ваша нить»<br><em>Цена:</em> сеть растёт медленнее, зато без спама и навязчивых контактов</p></div>
     </div>
+  </section>
+
+  <!-- chapter 04 -->
+  <section class="slide chap" id="chap4" data-sec="D">
+    <img class="mock ri" src="assets/looma-deck/mock-hand.webp" alt="Рука держит телефон со стартовым экраном Looma, вокруг красные нити" data-par="18" style="left:760px;width:calc(100% - 730px);object-position:60% 50%">
+    <div class="shade"></div>
+    <div class="ov"><div class="eyebrow r" style="--d:1"><b>04</b></div><h2 class="hd r" style="--d:2">Тестирование<br>и&nbsp;итоги</h2></div>
   </section>
 
   <!-- 15 test -->
   <section class="slide" id="s15" data-sec="D">
     <div class="left">
       <div class="r" style="--d:0"><div class="eyebrow"><b>Тестирование и итоги</b><span>Тестирование</span></div></div>
-      <h2 class="h2 r" style="--d:1">Публикация занятия: привычный способ и&nbsp;Looma</h2>
-      <p class="lead r" style="--d:2">Начала с педагогов: без их занятий лента пустая и танцору нечего искать. Попросила 5 знакомых педагогов, среди них трое из интервью, показать, как они обычно размещают анонсы, а затем выполнить ту же задачу в прототипе</p>
-      <div class="r" style="--d:3;margin-top:auto"><div class="ten">5/5</div><p class="lbl" style="margin-top:18px">опубликовали занятие сами · юзабилити-тест с модератором</p></div>
+      <h2 class="h2 r" style="--d:1">Публикация занятия</h2>
+      <p class="lead r" style="--d:2;margin-top:8px">Начала с педагогов: без их занятий лента пустая и танцору нечего искать. Попросила 5 знакомых педагогов, среди них трое из интервью, показать, как они обычно размещают анонсы, а затем выполнить ту же задачу в прототипе</p>
     </div>
-    <div style="display:flex;flex-direction:column;gap:20px">
-      <div class="cards c2">
-        <div class="card r" style="--d:2"><span class="lbl">Как сейчас · 5 педагогов</span>
-          <div class="nums"><div>3<small>места</small></div><div>9<small>шагов</small></div><div>~6<small>минут</small></div></div>
-          <ol class="steps"><li>Написать текст анонса</li><li>Отправить его в чат группы</li><li>Закрепить сообщение в чате</li><li>Снять сторис в Instagram</li><li>Добавить детали и опубликовать сторис</li><li>Закрепить сторис в актуальном</li><li>Ответить в директ тем, кто хочет записаться</li><li>Внести учеников в свой список</li><li>Пересчитать места и написать, когда их не осталось</li></ol>
-        </div>
-        <div class="card hot r" style="--d:3"><span class="lbl red">В Looma · прототип</span>
-          <div class="nums"><div>1<small>место</small></div><div>4<small>шага</small></div><div>~2<small>минуты</small></div></div>
-          <ol class="steps"><li>Открыть вкладку «Кабинет»</li><li>Нажать «Новое занятие»</li><li>Заполнить форму: стиль, уровень, дата, время, место, цена и число мест</li><li>Нажать «Опубликовать» — записи и свободные места Looma считает сама</li></ol>
-        </div>
+    <div class="pair">
+    <div class="col">
+      <div class="card r" style="--d:2"><span class="lbl">Как сейчас · 5 педагогов</span>
+        <div class="nums"><div>3<small>места</small></div><div>9<small>шагов</small></div><div>~6<small>минут</small></div></div>
+        <ol class="steps"><li>Написать текст анонса</li><li>Отправить его в чат группы</li><li>Закрепить сообщение в чате</li><li>Снять сторис в Instagram</li><li>Добавить детали и опубликовать сторис</li><li>Закрепить сторис в актуальном</li><li>Ответить в директ тем, кто хочет записаться</li><li>Внести учеников в свой список</li><li>Пересчитать места и написать, когда их не осталось</li></ol>
       </div>
-      <p class="note r" style="--d:4">Шаги — типичный путь участников теста, без разовой регистрации педагога. Время засекала от начала до конца задачи и округлила. Тест проверял удобство интерфейса, а не готовность педагогов полностью перейти на новую платформу</p>
+    </div>
+    <div class="col">
+      <div class="card hot r" style="--d:3"><span class="lbl red">В Looma · прототип</span>
+        <div class="nums"><div>1<small>место</small></div><div>4<small>шага</small></div><div>~2<small>минуты</small></div></div>
+        <ol class="steps"><li>Открыть вкладку «Кабинет»</li><li>Нажать «Новое занятие»</li><li>Заполнить форму: стиль, уровень, дата, время, место, цена и число мест</li><li>Нажать «Опубликовать»&nbsp;— записи и свободные места Looma считает сама</li></ol>
+      </div>
+      <div class="res r" style="--d:4"><div class="ten">5/5</div><p class="lbl">опубликовали занятие сами<br>юзабилити&#8209;тест с&nbsp;модератором</p></div>
+    </div>
+      <p class="note r" style="--d:5;margin-top:0">Шаги&nbsp;— типичный путь участников теста, без разовой регистрации педагога. Время засекала от начала до конца задачи и округлила. Тест проверял удобство интерфейса, а не готовность педагогов полностью перейти на новую платформу</p>
     </div>
   </section>
 
   <!-- iteration -->
-  <section class="slide prod" id="iter" data-sec="D">
-    <div class="top r" style="--d:0">
-      <div class="col"><div class="eyebrow"><b>Тестирование и итоги</b><span>Итерация</span></div><h2 class="h2">Итерация после теста</h2></div>
-      <div class="col"><span class="lbl">Что заметила</span><p class="lead">Все 5 педагогов опубликовали занятие сами. Один не сразу нашёл, где указать количество мест, — поле с лимитом сделала заметнее</p></div>
+  <section class="slide" id="iter" data-sec="D">
+    <div class="left">
+      <div class="r" style="--d:0"><div class="eyebrow"><b>Тестирование и итоги</b><span>Итерация</span></div></div>
+      <h2 class="h2 r" style="--d:1">Итерация после теста</h2>
+      <p class="lead r" style="--d:2;margin-top:8px">Все 5 педагогов опубликовали занятие сами. Один не&nbsp;сразу нашёл, где указать количество мест,&nbsp;— поле с&nbsp;лимитом сделала заметнее</p>
+      <div class="ba">
+        <div class="r" style="--d:3"><span class="lbl">До</span><p>Лимит мест был спрятан в&nbsp;«Настройках записи» в&nbsp;конце формы&nbsp;— его легко пропустить</p></div>
+        <div class="r on" style="--d:4"><span class="lbl red">После</span><p>Поле «Мест» рядом с&nbsp;ценой и&nbsp;пояснение, что будет, когда места закончатся</p></div>
+      </div>
     </div>
-    <div class="out" style="margin-top:0">
-      <div class="r" style="--d:2"><span class="lbl">До</span><p>Лимит мест был спрятан в «Настройках записи» в конце формы — его легко пропустить</p></div>
-      <div class="r" style="--d:3;border-color:rgba(254,93,87,.55)"><span class="lbl red">После</span><p>Поле «Мест» рядом с ценой и пояснение, что будет, когда места закончатся</p></div>
-    </div>
-    <div class="ptbl r" style="--d:4;--cols:1fr 1.2fr 1fr">
-      <div class="row h"><span class="lbl">Сценарий</span><span class="lbl">Результат</span><span class="lbl">Метод</span></div>
-      <div class="row"><b>Создать и опубликовать занятие</b><span class="yes">5 из 5 справились сами. Один не сразу нашёл, где указать количество мест</span><span>Юзабилити-тест с модератором, 5 педагогов, кабинет педагога</span></div>
+    <div class="phones">
+      <div class="ph r" style="--d:3"><img src="assets/case/fig/26-form-before.webp" width="604" height="1694" alt="Форма «Новое занятие» до правки: лимит мест спрятан в «Настройках записи» внизу формы, под описанием"><span class="n">До</span></div>
+      <div class="ph r" style="--d:4"><img src="assets/case/fig/26-form-after.webp" width="604" height="1733" alt="Форма «Новое занятие» после правки: поле «Мест» стоит рядом с ценой, под ними пояснение&nbsp;— когда места закончатся, запись закроется, а новые ученики смогут встать в лист ожидания"><span class="n">После</span></div>
     </div>
   </section>
 
@@ -962,18 +1012,17 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
       <div class="col"><div class="eyebrow"><b>Тестирование и итоги</b><span>Итоги</span></div><h2 class="h2">Выводы</h2></div>
       <div class="col"><span class="lbl">Дальше</span><p class="lead">Что дал проект и что я проверила бы следующим шагом</p></div>
     </div>
-    <div class="cards">
+    <div class="cards c2">
       <div class="card r" style="--d:1"><span class="lbl red">Что получилось</span><div class="list">
         <div><b>Нашла две проблемы: информация разбросана, и непонятно, актуальна ли она</b><span>На них построены карточка занятия и кабинет педагога</span></div>
-        <div><b>Все 5 педагогов опубликовали занятие без помощи — за 4&nbsp;шага вместо 9</b><span>Поле с лимитом мест после теста сделала заметнее</span></div>
+        <div><b>Все 5 педагогов опубликовали занятие без помощи&nbsp;— за 4&nbsp;шага вместо 9</b><span>Поле с лимитом мест после теста сделала заметнее</span></div>
         <div><b>Красную нить провела через всё</b><span>Логотип, иллюстрации пустых экранов и функция «Ваша нить»</span></div></div></div>
       <div class="card r" style="--d:2"><span class="lbl">Что дальше</span><div class="list">
         <div><b>Проверить путь танцора на 5 людях</b><span>Найти занятие, записаться и отправить запрос на связь</span></div>
         <div><b>Проверить «Расписание в Looma» после запуска</b><span>Тест показал, что публиковать проще. Начнут ли педагоги вести расписание, проверю, попросив 5 педагогов неделю вести его только здесь</span></div>
         <div><b>Проверить «Связь удерживает»</b><span>Через пару недель спросить тех же танцоров, вернулись бы они в Looma к людям с общего занятия</span></div></div></div>
-      <div class="card r" style="--d:3"><span class="lbl">Что сделала бы иначе</span><div class="list">
-        <div><b>Собрала бы компоненты до экранов</b><span>Первые экраны рисовала без библиотеки, и потом приводила их к одной системе</span></div></div></div>
     </div>
+    <div class="ns r" style="--d:3;margin-top:-20px"><span class="lbl" style="flex:0 0 292px">Что сделала бы иначе</span><h3 style="flex:0 0 556px">Собрала бы компоненты до экранов</h3><p>Первые экраны рисовала без библиотеки, и потом приводила их к одной системе</p></div>
   </section>
 
   <!-- 16 end -->
