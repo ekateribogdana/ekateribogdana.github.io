@@ -1020,6 +1020,45 @@ main .final.s28{margin-top:0}
 /* финал: кнопка и ссылки в блоке «Спасибо» */
 .s28 .go{margin-top:40px}
 .s28 .thx{margin-top:0}
+
+/* цвет и компоненты — по переменным Figma */
+.s13 .kit-pal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 48px;margin-top:56px}
+.kit-l{font:500 13px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.kit-sw{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,104px));gap:12px}
+.kit-sw li{display:grid;gap:6px;align-content:start}
+.kit-sw i{display:block;aspect-ratio:1;border-radius:14px;border:1px solid rgba(255,255,255,.08)}
+.kit-sw b{font:400 14px/1.3 var(--sans);color:#F4F0EC}
+@media (max-width:480px){.kit-sw b{font-size:12px}.kit-sw small{font-size:11px}.kit-sw{gap:8px}}
+.kit-sw small{font:400 12px/1.3 var(--sans);color:rgba(244,240,236,.55)}
+.s13 .kit-comp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 48px;margin-top:64px}
+.kit-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;align-items:center}
+.kit-b{display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 28px;border-radius:16px;font:500 16px/1 var(--sans)}
+.kit-b.pri{background:#8A2426;border:1px solid #9E0500;color:#fff}
+.kit-b.gh{border:1px solid rgba(255,255,255,.24);color:#F4F0EC}
+.kit-b.off{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.35)}
+.kit-chip{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 18px;border-radius:14px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04);font:400 15px/1 var(--sans);color:#F4F0EC}
+.kit-chip i{width:14px;height:14px;border-radius:50%;border:1.5px solid rgba(255,255,255,.32)}
+.kit-chip.on{border-color:rgba(254,93,87,.8);background:rgba(107,15,12,.35)}
+.kit-chip.on i{background:#FE5D57;border-color:#FE5D57}
+.kit-in{display:grid;gap:6px;width:min(320px,100%);padding:12px 16px;border-radius:14px;background:#282727;border:1px solid rgba(255,255,255,.08);font:400 16px/1.3 var(--sans);color:#F4F0EC}
+.kit-in small{font-size:12px;color:rgba(244,240,236,.55)}
+.kit-cards{align-items:stretch}
+.kit-card{box-sizing:border-box;flex:1 1 260px;max-width:320px;border-radius:20px;border:1px solid rgba(255,255,255,.08);background:#161515;padding:16px;display:flex;flex-direction:column;gap:4px;color:#F4F0EC;font:400 14px/1.35 var(--sans)}
+.kit-card img{border-radius:50%;object-fit:cover}
+.kit-top{display:flex;gap:12px;align-items:center}
+.kit-top img{width:56px;height:56px;flex:none}
+.kit-top b{font-weight:500;font-size:16px}
+.kit-top span,.kit-class>span{display:block;font-size:13px;color:rgba(244,240,236,.55)}
+.kit-top em{display:block;font-style:normal;font-size:13px;color:#FE5D57}
+.kit-acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.kit-acts span{display:grid;place-items:center;height:38px;border-radius:12px;border:1px solid rgba(255,255,255,.24);font-size:13px;white-space:nowrap}
+.kit-acts .a{border-color:rgba(254,93,87,.8);color:#FE5D57}
+.kit-class{border-left:3px solid #FE5D57;border-radius:6px 20px 20px 6px}
+.kit-r{display:flex;justify-content:space-between;font-size:13px}.kit-r em{font-style:normal;color:#FE5D57}.kit-r span{color:rgba(244,240,236,.55)}
+.kit-class>b{font:500 24px/1.1 var(--serif);margin-top:6px}
+.kit-who{display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:10px;font-size:13px;color:rgba(244,240,236,.75)}
+.kit-who img{width:24px;height:24px}
+@media (max-width:1000px){.s13 .kit-pal,.s13 .kit-comp{grid-template-columns:1fr;gap:32px}}
 </style>
 <script src="assets/metrics.js" defer></script>
 </head>
@@ -1313,6 +1352,24 @@ main .final.s28{margin-top:0}
 </defs>
 </svg><figcaption>Иконка</figcaption></figure>
     </div>
+  </div>
+</section>
+
+<section class="sec s13" id="ui-kit" aria-labelledby="kit-h">
+  <header class="shead rv">
+    <div class="meta"><span class="idx">Проектирование</span><span class="lbl">Дизайн-система</span></div>
+    <div class="rule" aria-hidden="true"></div>
+    <div class="trow"><h2 id="kit-h">Цвет и компоненты</h2><p class="desc">Одна тёмная тема: цвета заведены переменными в Figma, из них собраны компоненты интерфейса</p></div>
+  </header>
+  <div class="kit-pal"><div class="kit-g rv"><p class="kit-l">Фон</p><ul class="kit-sw"><li><i style="background:#0F0F0F"></i><b>bg/<wbr>base</b><small>#0F0F0F</small></li><li><i style="background:#111111"></i><b>bg/<wbr>section</b><small>#111111</small></li><li><i style="background:#161515"></i><b>bg/<wbr>card</b><small>#161515</small></li><li><i style="background:#282727"></i><b>bg/<wbr>control</b><small>#282727</small></li></ul></div><div class="kit-g rv"><p class="kit-l">Текст</p><ul class="kit-sw"><li><i style="background:#F4F0EC"></i><b>text/<wbr>primary</b><small>#F4F0EC</small></li><li><i style="background:rgba(244,240,236,.75)"></i><b>text/<wbr>secondary</b><small>#F4F0EC 75%</small></li><li><i style="background:rgba(244,240,236,.55)"></i><b>text/<wbr>tertiary</b><small>#F4F0EC 55%</small></li><li><i style="background:#FE5D57"></i><b>text/<wbr>accent</b><small>#FE5D57</small></li></ul></div><div class="kit-g rv"><p class="kit-l">Обводка</p><ul class="kit-sw"><li><i style="background:transparent;border:2px solid rgba(255,255,255,.08)"></i><b>border/<wbr>subtle</b><small>#FFFFFF 8%</small></li><li><i style="background:transparent;border:2px solid rgba(255,255,255,.16)"></i><b>border/<wbr>strong</b><small>#FFFFFF 16%</small></li><li><i style="background:transparent;border:2px solid rgba(254,93,87,.8)"></i><b>border/<wbr>accent</b><small>#FE5D57 80%</small></li></ul></div><div class="kit-g rv"><p class="kit-l">Акцент и кнопка</p><ul class="kit-sw"><li><i style="background:#FE5D57"></i><b>bg/<wbr>accent</b><small>#FE5D57</small></li><li><i style="background:#6B0F0C"></i><b>accent-deep</b><small>#6B0F0C</small></li><li><i style="background:#8A2426"></i><b>button/<wbr>primary</b><small>#8A2426</small></li><li><i style="background:#9E0500"></i><b>primary-border</b><small>#9E0500</small></li></ul></div></div>
+  <div class="kit-comp">
+    <div class="kit-c rv"><p class="kit-l">App Button</p><div class="kit-row"><span class="kit-b pri">Начать</span><span class="kit-b gh">Продолжить</span><span class="kit-b off">Продолжить</span></div></div>
+    <div class="kit-c rv"><p class="kit-l">Choice Chip</p><div class="kit-row"><span class="kit-chip on"><i></i>Frame Up</span><span class="kit-chip"><i></i>Vogue</span><span class="kit-chip"><i></i>High Heels</span></div></div>
+    <div class="kit-c rv"><p class="kit-l">Text Field</p><div class="kit-row"><span class="kit-in"><small>Почта</small>example@mail.ru</span></div></div>
+    <div class="kit-c rv"><p class="kit-l">Person Card · Class Card</p><div class="kit-row kit-cards">
+      <div class="kit-card"><div class="kit-top"><img src="assets/case/ui/av-alina.webp" width="240" alt="" loading="lazy"><div><b>Алина Соколова</b><span>Frame Up · High Heels</span><em>Педагог</em></div></div><div class="kit-acts"><span>Профиль</span><span class="a">Создать связь</span></div></div>
+      <div class="kit-card kit-class"><div class="kit-r"><em>Сегодня, 18:00</em><span>Dance First</span></div><b>Frame Up</b><span>Начинающие</span><div class="kit-who"><img src="assets/case/ui/av-alina.webp" width="240" alt="" loading="lazy">Алина Соколова</div></div>
+    </div></div>
   </div>
 </section>
 
