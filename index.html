@@ -464,6 +464,12 @@ body{font-variant-numeric:lining-nums}
   .board.drag .polaroid::before{transition:opacity .25s,transform .35s cubic-bezier(.2,.8,.2,1)}
   .board.drag .polaroid.lift::before{opacity:0;transform:translateX(-50%) rotate(14deg) translateY(-10px)}
 }
+
+/* телефон: витрина Looma листается вбок и не растягивает страницу */
+@media (max-width:720px){
+  .lstage .screens{overflow-x:auto!important;overflow-y:hidden!important;padding-bottom:24px!important}
+  .board .mini figcaption{font-size:11px}
+}
 </style>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/transitions.css"><script src="/assets/transitions.js"></script>
