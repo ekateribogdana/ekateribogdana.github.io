@@ -320,8 +320,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 #s13 .ph:nth-child(3):hover{transform:translateY(-102px)}
 
 #s14{display:flex;flex-direction:column;gap:40px}
-#s14 .flow{display:grid;grid-template-columns:280px 1fr 280px 1fr 280px;align-items:center;justify-items:center;padding:0 60px}
-#s14 .ph img{width:250px}
+#s14 .flow{display:grid;grid-template-columns:300px 1fr 300px 1fr 300px;align-items:start;justify-items:center;padding:0 60px}
+#s14 .ph img{width:282px;aspect-ratio:630/1365;object-fit:cover;object-position:top}
+#s14 .ph{gap:14px}
+#s14 .conn{margin-top:290px}
+#s14{gap:28px}
 .conn{width:100%;height:80px;overflow:visible}
 .conn path{fill:none;stroke:var(--red);stroke-width:2;filter:drop-shadow(0 0 6px var(--red));stroke-dasharray:6 10;animation:flow 1.2s linear infinite}
 .conn circle{fill:#fff;filter:drop-shadow(0 0 8px var(--red))}
@@ -518,6 +521,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 #s8 .k-top b,#s8 .k-class>b{font-size:18px}
 #s8 .k-top span,#s8 .k-class>span,#s8 .k-top em,#s8 .k-row,#s8 .k-acts span,#s8 .k-who{font-size:14px;white-space:nowrap}
 #s8 .k-class>b{font-size:26px}
+
+/* s10 · фото руки с телефоном: свежий экран вставлен в перспективе, большой палец поверх */
+#s10 .mockw{position:absolute;left:800px;top:-40px;width:1160px;height:1160px;overflow:hidden;transition:transform 1.2s var(--ease)}
+#s10 .mk{position:absolute;left:-172.5px;top:0;width:2400px;height:1850px;transform-origin:0 0;transform:scale(.62703)}
+#s10 .mk-b,#s10 .mk-t{position:absolute;left:0;top:0;width:2400px;height:1850px;max-width:none}
+#s10 .mk-s,#s10 .mk-gl{position:absolute;left:0;top:0;width:375px;height:812px;max-width:none;transform-origin:0 0;transform:matrix3d(1.554573247,0.318716326,0,0.000017160,-0.399935261,1.463510991,0,-0.000019145,0,0,1,0,1132,118,0,1);border-radius:46px}
+#s10 .mk-gl{background:linear-gradient(120deg,rgba(255,255,255,.10),rgba(255,255,255,0) 35%,rgba(255,255,255,0) 70%,rgba(255,255,255,.05));pointer-events:none}
+#s10 .mk-t{-webkit-mask-image:radial-gradient(ellipse 80px 88px at 1222px 1356px,#000 95%,transparent 100%),linear-gradient(#000,#000);mask-image:radial-gradient(ellipse 80px 88px at 1222px 1356px,#000 95%,transparent 100%),linear-gradient(#000,#000);-webkit-mask-size:auto,160px 200px;mask-size:auto,160px 200px;-webkit-mask-position:0 0,1142px 1356px;mask-position:0 0,1142px 1356px;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
 </style>
 <script src="assets/metrics.js" defer></script>
 </head>
@@ -806,7 +817,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
   <!-- 10 hero -->
   <section class="slide" id="s10" data-sec="C">
-    <img class="mock ri" src="assets/looma-deck/mock-hand.webp" alt="Приложение Looma на экране телефона" data-par="24">
+    <div class="mockw ri" data-par="24" role="img" aria-label="Приложение Looma на экране телефона"><div class="mk">
+      <img class="mk-b" src="assets/looma-deck/mock-hand.webp" alt="">
+      <img class="mk-s" src="assets/looma-deck/ob1.webp" alt="">
+      <span class="mk-gl" aria-hidden="true"></span>
+      <img class="mk-t" src="assets/looma-deck/mock-hand.webp" alt="">
+    </div></div>
     <div class="shade"></div>
     <div class="ov"><div class="eyebrow r" style="--d:1"><b>03</b></div><h2 class="hd r" style="--d:2">Проекти&shy;рование</h2></div>
   </section>
