@@ -1,0 +1,71 @@
+/* Looma · слой эффектов поверх кейса: сквозная нить, появление заголовков, счётчики, шаги теста, свечение курсора.
+   Включается классом html.fx (ставит looma-fx.js). Без JS и при prefers-reduced-motion страница остаётся статичной */
+
+/* ---------- сквозная нить ---------- */
+.fx-thread{position:absolute;left:0;top:0;width:100%;pointer-events:none;z-index:3;overflow:visible}
+.fx-thread path{fill:none;stroke-linecap:round}
+.fx-thread .base{stroke:rgba(254,93,87,.12);stroke-width:1}
+.fx-thread .lit{stroke:#FE5D57;stroke-width:1.6;filter:drop-shadow(0 0 6px rgba(254,93,87,.75))}
+.fx-thread .head{fill:#fff;filter:drop-shadow(0 0 6px rgba(254,93,87,1)) drop-shadow(0 0 14px rgba(254,93,87,.6))}
+.fx-thread .knot{fill:#0F0F0F;stroke:rgba(254,93,87,.35);stroke-width:1;transition:fill .5s,stroke .5s,r .5s}
+.fx-thread .knot.on{fill:#FE5D57;stroke:#FE5D57}
+.fx .shead .rule::after{transition:transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .6s}
+.fx .shead.fx-lit .rule::after{transform:scale(1.35);box-shadow:0 0 10px 3px rgba(254,93,87,1),0 0 26px 8px rgba(254,93,87,.5)}
+.fx .shead .rule::before{transform-origin:left;transition:transform 1.1s cubic-bezier(.2,.8,.2,1)}
+.fx .shead:not(.fx-lit) .rule::before{transform:scaleX(.15)}
+
+/* ---------- обложка ---------- */
+.fx .hero-f .art{transform-origin:62% 50%;animation:fx-kb 2.8s cubic-bezier(.2,.7,.2,1) both;will-change:transform}
+@keyframes fx-kb{from{transform:scale(1.1);filter:brightness(.4)}to{transform:none;filter:none}}
+.fx .hero-f .art.fx-par{animation:none}
+.fx .hero-f h1{clip-path:inset(0 100% 0 0);animation:fx-wipe 1.6s cubic-bezier(.65,0,.2,1) .35s forwards}
+@keyframes fx-wipe{to{clip-path:inset(0 0 0 0)}}
+.fx .hero-f .tag,.fx .hero-f .hero-top{opacity:0;animation:fx-up 1s cubic-bezier(.2,.8,.2,1) forwards}
+.fx .hero-f .hero-top{animation-delay:.2s}
+.fx .hero-f .tag{animation-delay:1.3s}
+.fx .hero-facts>div{opacity:0;animation:fx-up .9s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(1.5s + var(--i,0)*.12s)}
+@keyframes fx-up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* ---------- заголовки: слова выезжают из-под маски ---------- */
+.fx .fx-w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.fx .fx-w>span{display:inline-block;transform:translateY(105%);transition:transform 1s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0)*55ms)}
+.fx .in .fx-w>span,.fx .fx-w.in>span,.fx .in.fx-split .fx-w>span{transform:none}
+
+/* ---------- графики ---------- */
+.fx .r5-bars i::before{transform-origin:left;transition:transform 1.3s cubic-bezier(.2,.8,.2,1);transition-delay:calc(.25s + var(--i,0)*.14s)}
+.fx .r5-chart:not(.in) .r5-bars i::before{transform:scaleX(0)}
+.fx .s25 .bar i{transform-origin:left;transition:transform 1.3s cubic-bezier(.2,.8,.2,1) .35s}
+.fx .s25 .side:not(.in) .bar i{transform:scaleX(0)}
+
+/* ---------- 9 шагов → 4 шага ---------- */
+.fx .pstep li{transition:opacity .6s,transform .6s cubic-bezier(.2,.8,.2,1),color .6s;transition-delay:calc(var(--i,0)*80ms)}
+.fx .pstep .col:not(.in) li{opacity:0;transform:translateX(-14px)}
+.fx .pstep .col.lm li{transition-delay:calc(.9s + var(--i,0)*140ms)}
+.fx .pstep .col:not(.lm){transition:opacity 1s .2s}
+.fx .pstep.fx-done .col:not(.lm){opacity:.42}
+.fx .pstep.fx-done .col.lm li{color:#fff;text-shadow:0 0 18px rgba(254,93,87,.35)}
+
+/* ---------- метафора: шаги идут сами, телефон дышит ---------- */
+.fx .s12-phone{animation:fx-float 6s ease-in-out infinite}
+@keyframes fx-float{0%,100%{translate:0 0}50%{translate:0 -10px}}
+.fx .s12-stage .s12-prog{position:absolute;left:0;bottom:0;height:2px;width:100%;background:linear-gradient(90deg,#FE5D57,rgba(254,93,87,0));transform-origin:left;transform:scaleX(0);pointer-events:none;opacity:.8}
+.fx .s12-stage.fx-auto .s12-prog{animation:fx-prog var(--fx-step,2400ms) linear infinite}
+@keyframes fx-prog{to{transform:scaleX(1)}}
+
+/* ---------- экраны: наклон за курсором ---------- */
+.fx .fx-tilt{transition:transform .5s cubic-bezier(.2,.8,.2,1);transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateZ(0);will-change:transform}
+.fx .fx-tilt.fx-move{transition:transform .12s linear}
+
+/* ---------- главная кнопка: магнит ---------- */
+.fx .s28 .b.main{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,background .35s;transform:translate(var(--mx,0px),var(--my,0px))}
+
+/* ---------- свечение за курсором ---------- */
+.fx-glow{position:fixed;left:0;top:0;width:640px;height:640px;margin:-320px 0 0 -320px;border-radius:50%;pointer-events:none;z-index:2;
+  background:radial-gradient(closest-side,rgba(254,93,87,.10),rgba(254,93,87,.04) 45%,rgba(254,93,87,0));mix-blend-mode:screen;opacity:0;transition:opacity .6s}
+.fx-glow.on{opacity:1}
+
+/* ---------- полоса прогресса на узких экранах (вместо нити) ---------- */
+.fx-bar{position:fixed;left:0;top:0;height:2px;width:100%;z-index:60;pointer-events:none;transform-origin:left;transform:scaleX(var(--p,0));
+  background:linear-gradient(90deg,rgba(254,93,87,.3),#FE5D57);box-shadow:0 0 10px rgba(254,93,87,.8)}
+
+@media (prefers-reduced-motion:reduce){.fx-thread,.fx-glow,.fx-bar{display:none}}
