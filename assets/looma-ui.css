@@ -1,0 +1,173 @@
+/* Looma · живые фрагменты интерфейса вместо обрезанных скринов: «Вошло в MVP» и «Ключевые решения».
+   Токены — из прототипа. Анимации идут, когда фрагмент на экране (.ui.play ставит looma-fx.js); без анимации виден итоговый кадр */
+.ui{--bg0:#0f0f0f;--bg2:#161616;--s1:rgba(255,255,255,.04);--s2:rgba(255,255,255,.07);--b1:rgba(255,255,255,.1);--b2:rgba(255,255,255,.25);
+  --fg1:#f4f0ec;--fg2:rgba(244,240,236,.75);--fg3:rgba(244,240,236,.55);--ac:#fe5d57;--acd:#6b0f0c;--btn:#8a2426;--serif:"Cormorant Garamond",Georgia,serif;
+  position:relative;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;gap:10px;padding:18px;box-sizing:border-box;
+  font:400 12px/1.35 Inter,system-ui,sans-serif;color:var(--fg1);overflow:hidden;
+  background:radial-gradient(ellipse 90% 60% at 50% 0%,rgba(107,15,12,.35),transparent 70%),var(--bg0)}
+.ui *{box-sizing:border-box}
+.ui .u-t{font:500 22px/1.05 var(--serif);color:var(--fg1)}
+.ui .u-t.u-c{text-align:center}
+.ui .u-ov{font:500 9px/1 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--fg3)}
+.ui .u-ac{color:var(--ac)}
+.ui .av{width:34px;height:34px;border-radius:50%;object-fit:cover;flex:none;border:1px solid var(--b1)}
+.ui .u-card{border:1px solid var(--b1);border-radius:16px;background:var(--s1);padding:10px 12px}
+.ui .u-btn{display:flex;align-items:center;justify-content:center;height:34px;border-radius:12px;background:var(--btn);color:#fff;font:500 12px/1 Inter,sans-serif}
+.ui .u-btn.u-ghost{background:transparent;border:1px solid var(--ac);color:var(--ac)}
+@keyframes ui-a{0%,45%{opacity:1}50%,95%{opacity:0}100%{opacity:1}}
+@keyframes ui-b{0%,45%{opacity:0}50%,95%{opacity:1}100%{opacity:0}}
+
+/* 1 · роль */
+.ui-role .u-rc{position:relative;border:1px solid var(--b1);border-radius:16px;padding:12px 14px;background:var(--s1);text-align:center}
+.ui-role .u-rc b{display:block;font-weight:500;font-size:13px}
+.ui-role .u-rc span{display:block;margin-top:3px;color:var(--fg3);font-size:10px}
+.ui-role .u-rc i{position:absolute;inset:-1px;border-radius:16px;border:1.5px solid var(--ac);background:rgba(107,15,12,.35);box-shadow:0 0 18px rgba(254,93,87,.3);z-index:-1}
+.ui-role .u-rc{isolation:isolate}
+.ui-role .u-rc:nth-child(3) i{opacity:0}
+.ui.play.ui-role .u-rc:nth-child(2) i{animation:ui-a 5s infinite}
+.ui.play.ui-role .u-rc:nth-child(3) i{animation:ui-b 5s infinite}
+
+/* 2 · лента */
+.ui-feed .u-row{display:flex;justify-content:space-between;align-items:baseline}
+.ui-feed .u-row span{font-size:9px;color:var(--fg3)}
+.ui-feed .u-avs{display:flex;gap:8px}
+.ui-feed .u-avs img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:1px solid var(--b1)}
+.ui-feed .u-avs img:first-child{box-shadow:0 0 0 2px var(--bg0),0 0 0 3.5px var(--ac)}
+.ui.play.ui-feed .u-avs img:first-child{animation:ui-ring 2.4s ease-in-out infinite}
+@keyframes ui-ring{0%,100%{box-shadow:0 0 0 2px var(--bg0),0 0 0 3.5px var(--ac)}50%{box-shadow:0 0 0 2px var(--bg0),0 0 0 3.5px var(--ac),0 0 14px 2px rgba(254,93,87,.6)}}
+.ui-feed .u-card{border-left:2px solid var(--ac);border-radius:4px 16px 16px 4px}
+.ui-feed .u-card .u-t{font-size:18px;margin:3px 0 4px}
+.ui-feed .u-who{display:flex;align-items:center;gap:6px;margin-top:6px;color:var(--fg2);font-size:10px}
+.ui-feed .u-who img{width:16px;height:16px;border-radius:50%;object-fit:cover}
+
+/* 3 · запись и напоминание */
+.ui-book .u-push{display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:14px;background:rgba(40,39,39,.92);border:1px solid var(--b1);box-shadow:0 10px 30px rgba(0,0,0,.6)}
+.ui-book .u-push i{width:20px;height:20px;border-radius:6px;background:var(--acd);flex:none;display:grid;place-items:center;color:var(--ac);font:600 10px/1 var(--serif);font-style:normal}
+.ui-book .u-push b{display:block;font-weight:500;font-size:10px}
+.ui-book .u-push span{display:block;font-size:10px;color:var(--fg2)}
+.ui-book .u-card .u-t{font-size:18px}
+.ui-book .u-meta{margin-top:4px;color:var(--fg3);font-size:10px}
+.ui-book .u-bs{position:relative;height:34px}
+.ui-book .u-bs .u-btn{position:absolute;inset:0}
+.ui-book .u-bs .u-done{background:transparent;border:1px solid var(--b2);color:var(--fg1);opacity:0}
+.ui.play.ui-book .u-bs .u-go{animation:ui-a 6s infinite}
+.ui.play.ui-book .u-bs .u-done{animation:ui-b 6s infinite}
+.ui.play.ui-book .u-push{animation:ui-push 6s cubic-bezier(.2,.8,.2,1) infinite}
+@keyframes ui-push{0%,52%{opacity:0;transform:translateY(-14px)}60%,92%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-14px)}}
+
+/* 4 · связь и нить */
+.ui-conn{align-items:center;text-align:center}
+.ui-conn .u-pair{position:relative;display:flex;justify-content:space-between;width:100%;max-width:190px}
+.ui-conn .u-pair img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:1.5px solid var(--ac);position:relative;z-index:1}
+.ui-conn svg{position:absolute;left:52px;right:52px;top:22px;width:calc(100% - 104px);height:20px;overflow:visible}
+.ui-conn svg path{fill:none;stroke:var(--ac);stroke-width:1.4;stroke-dasharray:1;stroke-dashoffset:0;filter:drop-shadow(0 0 4px rgba(254,93,87,.8))}
+.ui-conn svg circle{fill:#fff;filter:drop-shadow(0 0 4px var(--ac))}
+.ui-conn .u-chip{display:inline-flex;gap:6px;align-items:baseline;padding:6px 10px;border-radius:999px;border:1px solid var(--b1);background:var(--s1);font-size:10px}
+.ui.play.ui-conn svg path{animation:ui-draw 5s ease-in-out infinite}
+.ui.play.ui-conn .u-chip,.ui.play.ui-conn svg circle{animation:ui-chip 5s ease-in-out infinite}
+@keyframes ui-draw{0%{stroke-dashoffset:1}35%,90%{stroke-dashoffset:0}100%{stroke-dashoffset:1}}
+@keyframes ui-chip{0%,35%{opacity:0}45%,90%{opacity:1}100%{opacity:0}}
+
+/* 5 · кабинет педагога */
+.ui-teach .u-days{display:flex;gap:5px;justify-content:space-between}
+.ui-teach .u-days span{flex:1;display:grid;gap:2px;justify-items:center;padding:6px 0;border-radius:10px;border:1px solid var(--b1);font-size:11px}
+.ui-teach .u-days span small{font-size:8px;color:var(--fg3)}
+.ui-teach .u-days span.u-on{background:var(--btn);border-color:var(--btn)}
+.ui-teach .u-days span.u-on small{color:#fff}
+.ui-teach .u-card{border-left:2px solid var(--ac);border-radius:4px 16px 16px 4px}
+.ui-teach .u-card .u-t{font-size:18px;margin:3px 0 2px}
+.ui-teach .u-bar{height:4px;border-radius:2px;background:var(--s2);margin-top:8px;overflow:hidden}
+.ui-teach .u-bar i{display:block;height:100%;width:66.6%;background:var(--ac);border-radius:2px}
+.ui-teach .u-cnt{margin-top:6px;font-size:10px;color:var(--fg2)}
+.ui.play.ui-teach .u-bar i{animation:ui-fill 5s cubic-bezier(.2,.8,.2,1) infinite}
+@keyframes ui-fill{0%{width:0}40%,90%{width:66.6%}100%{width:0}}
+
+/* решения · 1 · стили и кнопка */
+.ui-chips .u-g{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.ui-chips .u-g span{display:flex;align-items:center;gap:6px;height:28px;padding:0 9px;border-radius:9px;border:1px solid var(--b1);background:var(--s1);font-size:10px;white-space:nowrap}
+.ui-chips .u-g span::before{content:"";width:9px;height:9px;border-radius:50%;border:1px solid var(--b2);flex:none}
+.ui-chips .u-g span.u-s{position:relative;isolation:isolate}
+.ui-chips .u-g span.u-s::after{content:"";position:absolute;inset:-1px;border-radius:9px;border:1.5px solid var(--ac);background:rgba(107,15,12,.4);z-index:-1}
+.ui-chips .u-g span.u-s::before{background:var(--ac);border-color:var(--ac)}
+.ui-chips .u-bs{position:relative;height:32px}
+.ui-chips .u-bs .u-btn{position:absolute;inset:0;height:32px}
+.ui-chips .u-bs .u-off{background:var(--s2);color:var(--fg3);opacity:0}
+.ui.play.ui-chips .u-g span.u-s::after,.ui.play.ui-chips .u-g span.u-s::before{animation:ui-sel 6s infinite}
+.ui.play.ui-chips .u-g span.u-s2::after,.ui.play.ui-chips .u-g span.u-s2::before{animation-name:ui-sel2}
+.ui.play.ui-chips .u-bs .u-off{animation:ui-off 6s infinite}
+@keyframes ui-sel{0%,20%{opacity:0}26%,92%{opacity:1}100%{opacity:0}}
+@keyframes ui-sel2{0%,38%{opacity:0}44%,92%{opacity:1}100%{opacity:0}}
+@keyframes ui-off{0%,24%{opacity:1}28%,92%{opacity:0}100%{opacity:1}}
+
+/* решения · 2 · переключатель ролей */
+.ui-switch{gap:14px}
+.ui-switch .u-seg{position:relative;display:grid;grid-template-columns:1fr 1fr;height:32px;border-radius:999px;border:1px solid var(--b1);background:var(--s1);font-size:11px}
+.ui-switch .u-seg span{position:relative;z-index:1;display:grid;place-items:center}
+.ui-switch .u-seg i{position:absolute;top:2px;bottom:2px;left:2px;width:calc(50% - 2px);border-radius:999px;background:var(--btn)}
+.ui-switch .u-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;padding:8px 4px;border-radius:14px;border:1px solid var(--b1);background:var(--bg2);font-size:9px;text-align:center;color:var(--fg3)}
+.ui-switch .u-tabs span{display:grid;gap:4px;justify-items:center}
+.ui-switch .u-tabs span::before{content:"";width:14px;height:14px;border-radius:4px;border:1px solid var(--b2)}
+.ui-switch .u-tabs .u-sw{position:relative;color:var(--ac);min-height:26px}
+.ui-switch .u-tabs .u-sw::before{border-color:var(--ac)}
+.ui-switch .u-tabs .u-sw em{position:absolute;left:-6px;right:-6px;bottom:0;font-style:normal}
+.ui-switch .u-tabs .u-sw em+em{opacity:0}
+.ui-switch .u-note{font-size:10px;color:var(--fg3);text-align:center}
+.ui.play.ui-switch .u-seg i{animation:ui-knob 6s cubic-bezier(.6,0,.2,1) infinite}
+.ui.play.ui-switch .u-tabs .u-sw em:first-of-type{animation:ui-a 6s infinite}
+.ui.play.ui-switch .u-tabs .u-sw em+em{animation:ui-b 6s infinite}
+@keyframes ui-knob{0%,45%{transform:none}50%,95%{transform:translateX(100%)}100%{transform:none}}
+
+/* решения · 3 · сторис */
+.ui-story{justify-content:flex-start;padding:12px;background:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.75)),var(--story,#2a1a18) center/cover}
+.ui-story .u-bars{display:flex;gap:4px}
+.ui-story .u-bars span{flex:1;height:2px;border-radius:1px;background:rgba(255,255,255,.3);overflow:hidden}
+.ui-story .u-bars span i{display:block;height:100%;width:100%;background:#fff}
+.ui-story .u-bars span:nth-child(2) i{width:40%}.ui-story .u-bars span:nth-child(3) i{width:0}
+.ui-story .u-who{display:flex;align-items:center;gap:7px;margin-top:6px;font-size:10px}
+.ui-story .u-who img{width:24px;height:24px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1.5px var(--ac)}
+.ui-story .u-who small{display:block;color:var(--fg3);font-size:9px}
+.ui-story .u-t{margin-top:auto;font-size:22px}
+.ui-story p{font-size:10px;color:var(--fg2)}
+.ui.play.ui-story .u-bars span:nth-child(2) i{animation:ui-prog 4s linear infinite}
+@keyframes ui-prog{from{width:0}to{width:100%}}
+
+/* решения · 4 · связь по согласию */
+.ui-consent{align-items:center;text-align:center;gap:12px}
+.ui-consent .u-pair{display:flex;align-items:center;gap:10px}
+.ui-consent .u-pair img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:1px solid var(--b1)}
+.ui-consent .u-pair i{width:34px;height:1.5px;background:linear-gradient(90deg,transparent,var(--ac),transparent);opacity:.25}
+.ui-consent .u-bs{position:relative;width:100%;height:34px}
+.ui-consent .u-bs .u-btn{position:absolute;inset:0}
+.ui-consent .u-bs .u-wait{background:var(--s2);color:var(--fg2);border:1px solid var(--b1)}
+.ui-consent .u-bs .u-ok{background:var(--btn)}
+.ui-consent .u-bs .u-ask,.ui-consent .u-bs .u-wait{opacity:0}
+.ui-consent .u-st{font-size:10px;color:var(--fg3);min-height:14px;position:relative;width:100%}
+.ui-consent .u-st span{position:absolute;left:0;right:0}
+.ui-consent .u-st span:not(:last-child){opacity:0}
+.ui.play.ui-consent .u-bs .u-ask,.ui.play.ui-consent .u-st span:nth-child(1){animation:ui-t1 7s infinite}
+.ui.play.ui-consent .u-bs .u-wait,.ui.play.ui-consent .u-st span:nth-child(2){animation:ui-t2 7s infinite}
+.ui.play.ui-consent .u-bs .u-ok,.ui.play.ui-consent .u-st span:nth-child(3){animation:ui-t3 7s infinite}
+.ui.play.ui-consent .u-pair i{animation:ui-t3l 7s infinite}
+@keyframes ui-t1{0%,28%{opacity:1}33%,100%{opacity:0}}
+@keyframes ui-t2{0%,28%{opacity:0}33%,61%{opacity:1}66%,100%{opacity:0}}
+@keyframes ui-t3{0%,61%{opacity:0}66%,96%{opacity:1}100%{opacity:0}}
+@keyframes ui-t3l{0%,61%{opacity:.25}66%,96%{opacity:1}100%{opacity:.25}}
+
+.s08-shot .ui{border-radius:inherit}
+@media (prefers-reduced-motion:reduce){.ui *{animation:none!important}}
+
+/* перебиваем правила скринов (.s07 .h7-shot img, .s08 .s08-shot img) внутри живых фрагментов */
+.s07 .h7-shot .ui img,.s08 .s08-shot .ui img{position:static;left:auto;top:auto;width:auto;height:auto;max-width:none;object-fit:cover;object-position:50% 25%}
+.s07 .h7-shot .ui-feed .u-avs img{width:42px;height:42px}
+.s07 .h7-shot .ui-feed .u-who img{width:16px;height:16px}
+.s07 .h7-shot .ui-conn .u-pair img{width:64px;height:64px}
+.s08 .s08-shot .ui-story .u-who img{width:24px;height:24px}
+.s08 .s08-shot .ui-consent .u-pair img{width:48px;height:48px}
+.s07 .h7-shot,.s08 .s08-shot{background:#0f0f0f}
+@media (max-width:1000px){.s08 .s08-row .s08-shot{height:auto;min-height:260px}}
+@media (max-width:700px){.s08 .s08-row .s08-shot{width:100%;max-width:340px;min-height:300px}}
+
+.ui-switch .u-tabs{grid-template-columns:1fr 1.6fr 1fr 1fr}
+.ui-switch .u-tabs .u-sw{display:grid;grid-template-rows:auto auto;justify-items:center;min-height:0}
+.ui-switch .u-tabs .u-sw em{position:static;grid-area:2/1;white-space:nowrap}
+.ui-switch .u-tabs .u-sw::before{grid-area:1/1}

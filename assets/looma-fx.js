@@ -107,9 +107,13 @@
     }, { rootMargin: '600px 0px' }).observe(live);
   }
 
+  // ---------- живые фрагменты интерфейса: анимация идёт, только пока фрагмент на экране ----------
+  var uio = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.classList.toggle('play', e.isIntersecting); }); }, { threshold: .35 });
+  $$('.ui').forEach(function (el) { uio.observe(el); });
+
   // ---------- наклон экранов и магнитная кнопка ----------
   if (fine) {
-    $$('.h7-shot, .s08-shot, .s15-pair img, .ba .scr, .a4-ph').forEach(function (el) {
+    $$('.s15-pair img, .ba .scr, .a4-ph').forEach(function (el) {
       el.classList.add('fx-tilt');
       el.addEventListener('pointermove', function (e) {
         var r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
