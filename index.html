@@ -187,6 +187,13 @@ ul,ol{list-style:none}
 /* ---------- about ---------- */
 .ab{display:grid;grid-template-columns:4fr 8fr;gap:clamp(40px,6vw,112px);margin-top:48px;align-items:start}
 .polaroid{background:#FBF3E7;padding:16px 16px 20px;box-shadow:0 2px 0 rgba(42,22,16,.08),0 32px 56px -28px rgba(42,22,16,.45);transform:rotate(-4deg);max-width:360px;margin:16px auto 0;position:sticky;top:48px}
+.board{position:sticky;top:48px;max-width:360px;width:100%;margin:16px auto 0}
+.board .polaroid{position:relative;top:auto;margin:0}
+.board .minis{display:flex;justify-content:space-between;margin-top:-12px;padding:0 4px}
+.board .mini{width:52%;padding:8px 8px 12px;transform:rotate(5deg);margin-top:40px}
+.board .mini+.mini{transform:rotate(-6deg);margin-top:24px;margin-left:-8%}
+.board .mini::before{width:64px;height:20px;top:-12px}
+.board .mini figcaption{margin-top:8px;font-size:10px}
 .polaroid::before{content:"";position:absolute;top:-16px;left:50%;width:104px;height:32px;transform:translateX(-50%) rotate(3deg);background:rgba(200,155,114,.75)}
 .polaroid img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1)}
 .polaroid figcaption{margin-top:16px;text-align:center;color:var(--olive)}
@@ -218,6 +225,7 @@ footer{background:var(--ink);color:var(--olive-l);padding-top:24px;padding-botto
   .tools{grid-template-columns:1fr}
   .tools li,.tools li+li{padding:28px 0;border-left:0;border-bottom:1px solid var(--olive-l)}
   .polaroid{max-width:280px;margin-left:8px;position:relative;top:0}
+  .board{max-width:280px;margin-left:8px;position:relative;top:0}
 }
 /* ---------- phone ---------- */
 @media (max-width:720px){
@@ -577,10 +585,22 @@ body{font-variant-numeric:lining-nums}
 <section class="sec wrap" id="about" aria-labelledby="about-h">
   <div class="kick cap"><span>Профиль</span><span>Москва</span></div>
   <div class="ab">
-    <figure class="polaroid">
-      <img src="assets/resume-photo.jpg" width="320" height="400" alt="Портрет Екатерины Богдановой, чёрно-белое фото" loading="lazy">
-      <figcaption class="cap">Е. Богданова</figcaption>
-    </figure>
+    <div class="board">
+      <figure class="polaroid">
+        <img src="assets/resume-photo.jpg" width="320" height="400" alt="Портрет Екатерины Богдановой, чёрно-белое фото" loading="lazy">
+        <figcaption class="cap">Е. Богданова</figcaption>
+      </figure>
+      <div class="minis">
+        <figure class="polaroid mini">
+          <img src="assets/case/dancers-2.webp" width="960" height="1280" alt="Катя с девочками из танцевальной группы в студии у окон" loading="lazy">
+          <figcaption class="cap">Мои группы</figcaption>
+        </figure>
+        <figure class="polaroid mini">
+          <img src="assets/case/dancers-1.webp" width="960" height="1280" alt="Танцовщицы на каблуках позируют в студии на фоне чёрного занавеса" loading="lazy">
+          <figcaption class="cap">High Heels</figcaption>
+        </figure>
+      </div>
+    </div>
     <div>
       <h2 class="disp" id="about-h">Обо <em>мне</em><span>.</span></h2>
       <div class="cols">
