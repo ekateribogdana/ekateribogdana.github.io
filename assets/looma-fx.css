@@ -7,7 +7,7 @@
 .fx-thread .base{stroke:rgba(254,93,87,.12);stroke-width:1}
 .fx-thread .lit{stroke:#FE5D57;stroke-width:1.6;filter:drop-shadow(0 0 6px rgba(254,93,87,.75))}
 .fx-thread .head{fill:#fff;filter:drop-shadow(0 0 6px rgba(254,93,87,1)) drop-shadow(0 0 14px rgba(254,93,87,.6))}
-.fx-thread .br{stroke:#FE5D57;stroke-width:1.2;stroke-dasharray:1;stroke-dashoffset:1;opacity:.85;transition:stroke-dashoffset .7s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 0 4px rgba(254,93,87,.7))}
+.fx-thread .br{stroke:#FE5D57;stroke-width:2;stroke-linecap:butt;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .7s cubic-bezier(.2,.8,.2,1)}
 .fx-thread .br.on{stroke-dashoffset:0}
 .fx-thread .knot{fill:#0F0F0F;stroke:rgba(254,93,87,.35);stroke-width:1;transition:fill .5s,stroke .5s,r .5s}
 .fx-thread .knot.on{fill:#FE5D57;stroke:#FE5D57}
@@ -79,3 +79,6 @@
   background:linear-gradient(90deg,rgba(254,93,87,.3),#FE5D57);box-shadow:0 0 10px rgba(254,93,87,.8)}
 
 @media (prefers-reduced-motion:reduce){.fx-thread,.fx-glow,.fx-bar{display:none}}
+
+/* отвод нити переходит в линию заголовка без излома: линия начинается тем же цветом и толщиной */
+.fx .shead.fx-lit .rule::before{background:linear-gradient(90deg,#FE5D57,#FE5D57 70%,rgba(254,93,87,0))}

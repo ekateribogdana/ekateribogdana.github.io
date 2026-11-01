@@ -204,8 +204,8 @@
     // отводы к линиям заголовков — отдельные отрезки, прорисовываются, когда нить до них дошла
     anchors.forEach(function (a) {
       var br = document.createElementNS(NS, 'path'); br.setAttribute('class', 'br');
-      br.setAttribute('d', 'M' + xg + ' ' + (a.y + .5) + ' L' + a.x + ' ' + (a.y + .5)); br.setAttribute('pathLength', '1');
-      var c = document.createElementNS(NS, 'circle'); c.setAttribute('class', 'knot'); c.setAttribute('cx', xg); c.setAttribute('cy', a.y + .5); c.setAttribute('r', 3);
+      br.setAttribute('d', 'M' + xg + ' ' + a.y + ' L' + (a.x + 1) + ' ' + a.y); br.setAttribute('pathLength', '1');
+      var c = document.createElementNS(NS, 'circle'); c.setAttribute('class', 'knot'); c.setAttribute('cx', xg); c.setAttribute('cy', a.y); c.setAttribute('r', 3);
       svg.insertBefore(br, dot); svg.insertBefore(c, dot); knots.push({ c: c, b: br });
     });
   }
