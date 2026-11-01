@@ -36,7 +36,7 @@ Figma, Tilda (Zero Block), Photoshop.
 Ekaterina Bogdanova — Product Designer (UX/UI), Moscow, Russia. 2.5+ years in web and UX/UI design (freelance since February 2024). Open to full-time in-house roles: office in Moscow, hybrid or remote. Interested in B2C, e-commerce, edtech, sport, media, lifestyle products.
 
 - Also searchable as: Product Designer, UX/UI Designer, UI/UX Designer, Interface Designer, Web Designer
-- Core skills: product discovery, hypotheses and metrics, North Star metric, MVP prioritization, user flows, information architecture, prototyping, usability testing, mobile app design, responsive web design, design systems, UI kits, visual identity
+- Core skills: product discovery, hypotheses and how to test them, MVP prioritization, user flows, information architecture, prototyping, usability testing, mobile app design, responsive web design, design systems, UI kits, visual identity
 - Tools: Figma, Figma Agent, Tilda (Zero Block), Photoshop; AI in workflow: Claude, ChatGPT, prompting
 - Education: Bang Bang Education — UX/UI Design+ (2025); National Institute of Business — Economics degree (2018)
 - Languages: Russian (native), English (A2)
