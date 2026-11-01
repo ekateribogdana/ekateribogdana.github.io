@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Looma — продуктовый кейс Екатерины Богдановой</title>
-<meta name="description" content="Looma — приложение, где танцоры находят занятия, события и друг друга. Концепт-проект, соло, 2 месяца: гипотезы и метрики, скоуп MVP, метафора красной нити, онбординг, юзабилити-тест с 10 педагогами">
+<meta name="description" content="Looma — приложение, где танцоры находят занятия, события и друг друга. Концепт-проект, соло, 2 месяца: исследование, гипотезы и метрики, скоуп MVP, метафора красной нити, онбординг, юзабилити-тест с 5 педагогами">
 <meta name="author" content="Екатерина Богданова">
 <link rel="canonical" href="https://ekateribogdana.github.io/looma.html">
 <meta property="og:type" content="article">
@@ -12,14 +12,14 @@
 <meta property="og:locale" content="ru_RU">
 <meta property="og:url" content="https://ekateribogdana.github.io/looma.html">
 <meta property="og:title" content="Looma — продуктовый кейс">
-<meta property="og:description" content="Одно приложение вместо чатов, афиш и соцсетей студий. Концепт, соло, 2 месяца, тест с 10 педагогами">
+<meta property="og:description" content="Одно приложение вместо чатов, афиш и соцсетей студий. Концепт, соло, 2 месяца, тест с 5 педагогами">
 <meta property="og:image" content="https://ekateribogdana.github.io/assets/looma.jpg">
 <meta name="theme-color" content="#0F0F0F">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&family=PT+Mono&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"CreativeWork","name":"Looma — приложение для танцевального сообщества","dateCreated":"2026","creator":{"@type":"Person","@id":"https://ekateribogdana.github.io/#person","name":"Екатерина Богданова","url":"https://ekateribogdana.github.io/"},"isPartOf":{"@id":"https://ekateribogdana.github.io/"},"inLanguage":"ru","genre":"Продуктовый UX/UI-кейс","keywords":"продуктовый дизайн, UX/UI, мобильное приложение, гипотезы и метрики, North Star, MVP, онбординг, юзабилити-тестирование, дизайн-система, Figma","description":"Концепт-проект, соло, 2 месяца. Гипотезы и метрики, скоуп MVP, метафора и айдентика, онбординг, юзабилити-тест с 10 педагогами.","url":"https://ekateribogdana.github.io/looma.html"}
+{"@context":"https://schema.org","@type":"CreativeWork","name":"Looma — приложение для танцевального сообщества","dateCreated":"2026","creator":{"@type":"Person","@id":"https://ekateribogdana.github.io/#person","name":"Екатерина Богданова","url":"https://ekateribogdana.github.io/"},"isPartOf":{"@id":"https://ekateribogdana.github.io/"},"inLanguage":"ru","genre":"Продуктовый UX/UI-кейс","keywords":"продуктовый дизайн, UX/UI, мобильное приложение, гипотезы и метрики, North Star, MVP, онбординг, юзабилити-тестирование, дизайн-система, Figma","description":"Концепт-проект, соло, 2 месяца. Исследование, гипотезы и метрики, скоуп MVP, метафора и айдентика, онбординг, юзабилити-тест с 5 педагогами.","url":"https://ekateribogdana.github.io/looma.html"}
 </script>
 <style>
 /* Looma: чёрный фон, красная нить, Cormorant Garamond + Inter — как в презентации кейса */
@@ -235,6 +235,36 @@ footer a{text-decoration:none}
 @media (max-width:700px){.case-next .cn-top span+span{display:none}.case-next .cn-go{min-height:300px}.case-next .cn-d{font-size:16px}}
 @media (prefers-reduced-motion:reduce){.case-next *{transition:none!important}}
 .case-next{--cn-bg:#0F0F0F;--cn-fg:#FFFFFF;--cn-sub:rgba(255,255,255,.6);--cn-acc:#FE5D57;--cn-line:rgba(255,255,255,.12);--cn-title:600 clamp(52px,8vw,128px)/1 "Cormorant Garamond",Georgia,serif}
+/* исследование и тест */
+.research{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:40px}
+.research .quotes{display:grid;gap:16px;align-content:start}
+.bar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 16px;align-items:baseline;margin-top:16px}
+.bar b{font-weight:400}
+.bar span{color:var(--red)}
+.bar i{grid-column:1/-1;height:4px;border-radius:2px;background:var(--bg-3);position:relative;overflow:hidden}
+.bar i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);background:var(--red);border-radius:2px}
+.note{margin-top:20px;font-size:14px;color:var(--muted)}
+.quote p{font:italic 400 clamp(22px,2vw,26px)/1.35 var(--serif);color:var(--text)}
+.quote small{display:block;margin-top:12px;font-size:13px;color:var(--muted)}
+.insight{margin-top:16px}
+.insight p{font:400 clamp(22px,2vw,28px)/1.35 var(--serif);color:var(--text)}
+.scen.p3 .row{grid-template-columns:minmax(0,3fr) minmax(0,4fr) minmax(0,4fr)}
+.scen.p3 .row.h span{font:500 12px/1.5 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.scen.p3 .row span{color:var(--grey)}
+.scen.p3 .row span.done{color:var(--red)}
+.hyp .st{display:block;margin-top:14px;font:500 12px/1.5 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.cmp{margin-top:16px}
+.cmp .nums{display:flex;gap:40px;margin:4px 0 20px}
+.cmp .nums div{font:400 clamp(44px,5vw,64px)/1 var(--serif)}
+.cmp .nums small{display:block;margin-top:8px;font:400 13px/1.4 var(--sans);color:var(--muted)}
+.cmp .card.hot .nums div{color:var(--red)}
+.steps{list-style:none;margin:20px 0 0;padding:16px 0 0;border-top:1px solid var(--line);counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:28px minmax(0,1fr);padding:4px 0;color:var(--grey)}
+.steps li::before{content:counter(s);color:var(--muted)}
+.card.hot .steps li::before{color:var(--red)}
+.later{margin-top:16px}
+@media (max-width:1000px){.research{grid-template-columns:1fr}}
+@media (max-width:700px){.scen.p3 .row{grid-template-columns:1fr;gap:4px}.scen.p3 .row.h{display:none}.cmp .nums{gap:28px}}
 </style>
 <script src="assets/metrics.js" defer></script>
 </head>
@@ -266,7 +296,7 @@ footer a{text-decoration:none}
         <a class="btn" href="#test">Тестирование</a>
       </div>
     </div>
-    <img class="phone" src="assets/case/connected.webp" width="626" height="1536" alt="Экран «Связь установлена»">
+    <img class="phone" src="assets/case/connected.webp" width="630" height="1365" alt="Экран «Связь установлена»">
     <div class="hero-bottom"><span class="cap">(01) &nbsp;Продуктовый кейс · с нуля до MVP</span><span class="cap">Соло · 2 месяца</span></div>
   </section>
 
@@ -276,9 +306,9 @@ footer a{text-decoration:none}
     <h2 class="h2" id="tldr-h">Одно приложение вместо чатов, афиш и соцсетей студий</h2>
     <div class="grid4 tldr">
       <div class="card rv"><span class="cap">Проблема</span><p>Занятия, события и люди разбросаны по чатам и соцсетям — танцорам сложно найти своё, а знакомства теряются</p></div>
-      <div class="card rv"><span class="cap">Моя роль</span><p>Продуктовый дизайнер на всём цикле: проблема и гипотезы, метафора и айдентика, UX/UI, тестирование</p></div>
-      <div class="card rv"><span class="cap">Решение</span><p>Персональная лента занятий, событий и людей и «Ваша нить» — история общих встреч с теми, с кем вы на связи</p></div>
-      <div class="card hot rv"><span class="cap">Результат</span><p>10 педагогов прошли ключевые сценарии кабинета. Единственное узкое место — кнопка «Опубликовать» — исправлено</p></div>
+      <div class="card rv"><span class="cap">Моя роль</span><p>Концепт-проект, делала одна: проблема и гипотезы, метафора и айдентика, UX/UI, тестирование</p></div>
+      <div class="card rv"><span class="cap">Решение</span><p>Персональная лента занятий, событий и людей, кабинет педагога и «Ваша нить» — история общих встреч</p></div>
+      <div class="card hot rv"><span class="cap">Результат</span><p>Все 5 педагогов опубликовали занятие в прототипе сами — за 4 шага вместо 9. Поле с лимитом мест после теста сделала заметнее</p></div>
     </div>
     <div class="metric rv"><span class="cap">Главная метрика</span><b>Записи на занятия и события в неделю</b></div>
   </section>
@@ -299,21 +329,48 @@ footer a{text-decoration:none}
     </div>
   </section>
 
+  <!-- A. Исследование -->
+  <section class="sec" id="research" aria-labelledby="res-h">
+    <p class="label">(A) <b>Исследование</b></p>
+    <h2 class="h2" id="res-h">Как танцоры находят занятия</h2>
+    <p class="lead">Провела интервью с 6 знакомыми танцорами: как они находят занятия и где узнали о последних — набралось 10 случаев. Ещё поговорила с 3 педагогами о том, как они публикуют расписание и собирают записи</p>
+    <div class="research">
+      <div class="card rv"><span class="cap">Где нашли последнее занятие · 10 случаев</span>
+        <div class="bar"><b>Чаты танцевальных групп</b><span>4</span><i style="--w:100%"></i></div>
+        <div class="bar"><b>Сторис педагогов</b><span>3</span><i style="--w:75%"></i></div>
+        <div class="bar"><b>Рекомендации знакомых</b><span>2</span><i style="--w:50%"></i></div>
+        <div class="bar"><b>Сайт студии</b><span>1</span><i style="--w:25%"></i></div>
+        <p class="note">Это 10 случаев от 6 танцоров из моего окружения, а не доля каналов в целом. Выборка маленькая — это ограничение исследования</p>
+      </div>
+      <div class="quotes">
+        <figure class="card quote rv"><p>«Расписание у меня в трёх местах: чат группы, сторис и пост. Если что-то переношу — правлю везде и всё равно кто-то приходит не в то время»</p><small>— педагог, Frame Up</small></figure>
+        <figure class="card quote rv"><p>«Про мастер-класс узнала из сторис подруги. Пока собралась записаться, сторис уже пропала»</p><small>— танцовщица, 2 года в High Heels</small></figure>
+      </div>
+    </div>
+    <div class="card insight rv"><span class="cap">Что заметила в разговорах</span><p>Думала, что главная проблема — нет единого места для поиска занятий. В разговорах заметила ещё одну: даже найдя занятие, человек не уверен, что расписание актуально</p></div>
+    <div class="scen p3 rv" role="table" aria-label="Проблемы и решения">
+      <div class="row h" role="row"><span role="columnheader">Проблема</span><span role="columnheader">Что заметила</span><span role="columnheader">Что сделала в Looma</span></div>
+      <div class="row" role="row"><b role="cell">1. Информация разбросана</b><span role="cell">Расписание, стоимость и запись могут находиться в разных местах. Иногда приходится писать педагогу, чтобы уточнить детали</span><span class="done" role="cell">Карточка занятия: время, место, цена и запись на одном экране</span></div>
+      <div class="row" role="row"><b role="cell">2. Непонятно, актуальна ли информация</b><span role="cell">Анонсы в сторис исчезают, а изменения расписания не всегда дублируются во всех каналах</span><span class="done" role="cell">Педагог меняет или отменяет занятие в одном месте — ученики видят актуальную версию и получают уведомление</span></div>
+    </div>
+  </section>
+
   <!-- A. Гипотезы -->
   <section class="sec" aria-labelledby="hyp-h">
     <p class="label">(A) <b>Гипотезы и метрики</b></p>
     <h2 class="h2" id="hyp-h">Что должно сработать и как я пойму, что сработало</h2>
-    <p class="lead">Главная ценность Looma — человек находит занятие и приходит на него. Связи и нить растут из этих встреч</p>
+    <p class="lead">Человек нашёл занятие и записался — ради этого всё и затевалось. Связи растут уже из этих встреч</p>
+    <p class="note">Одна гипотеза выросла из исследования, две — мои предположения, которые ещё нужно проверить. У каждой есть метрика</p>
     <div class="grid3 hyps" style="margin-top:40px">
-      <div class="card hyp hot rv"><span class="n">01</span><h3>Ценность до регистрации</h3><p>Если сначала показать, что даёт Looma, и собрать интересы, а форму регистрации дать последней, больше новичков дойдут до первой записи</p><div class="m"><span class="cap">Метрика</span>Доля дошедших от старта онбординга до первой записи</div></div>
-      <div class="card hyp rv"><span class="n">02</span><h3>Всё в одном месте</h3><p>Если собрать занятия, события и людей в одной ленте, танцорам не придётся искать по чатам и соцсетям</p><div class="m"><span class="cap">Метрика</span>Время от открытия приложения до записи</div></div>
-      <div class="card hyp rv"><span class="n">03</span><h3>Связь удерживает</h3><p>Если после общей встречи предложить связь и показать «Вашу нить», люди будут возвращаться в приложение</p><div class="m"><span class="cap">Метрика</span>Доля принятых запросов на связь и возврат через 30 дней</div></div>
+      <div class="card hyp rv"><span class="n">01</span><h3>Ценность до регистрации</h3><p>Если сначала показать подборку, а регистрацию дать последней, больше новичков дойдут до первой записи</p><span class="st">Предположение · не проверено</span><div class="m"><span class="cap">Метрика</span>Доля дошедших от старта онбординга до первой записи</div></div>
+      <div class="card hyp hot rv"><span class="n">02</span><h3>Расписание в Looma</h3><p>Если опубликовать занятие проще, чем вести чаты, педагоги начнут вести расписание в Looma</p><span class="st">Из исследования</span><div class="m"><span class="cap">Метрика</span>Доля педагогов, опубликовавших первое занятие в первую неделю</div></div>
+      <div class="card hyp rv"><span class="n">03</span><h3>Связь удерживает</h3><p>Если после общей встречи предложить связь, люди будут возвращаться в приложение</p><span class="st">Из моего опыта · не проверено</span><div class="m"><span class="cap">Метрика</span>Доля принятых запросов на связь и доля вернувшихся через 30 дней</div></div>
     </div>
     <div class="grid2 scope">
       <div class="card rv"><span class="cap" style="color:var(--red)">Вошло в MVP</span><p style="color:var(--text)">Сфокусировалась на главном пути: найти занятие, прийти и познакомиться</p>
-        <ul><li><b>Онбординг с выбором роли</b><span>Без него не собрать персональную подборку</span></li><li><b>Лента «Для тебя»</b><span>Главная точка входа: занятия, события и люди</span></li><li><b>Запись на занятие</b><span>Ключевое действие и главная метрика</span></li><li><b>Связи и «Ваша нить»</b><span>Отличает Looma от расписаний и афиш</span></li><li><b>Кабинет педагога</b><span>Без педагогов нет занятий в ленте</span></li></ul></div>
+        <ul><li><b>Онбординг с выбором роли</b><span>Без него не собрать персональную подборку</span></li><li><b>Лента «Для вас»</b><span>Главная точка входа: занятия, события и люди</span></li><li><b>Запись, напоминание, отмена</b><span>Важно не только записаться, но и прийти</span></li><li><b>Связи и «Ваша нить»</b><span>Отличает Looma от расписаний и афиш</span></li><li><b>Кабинет педагога</b><span>Без педагогов нет занятий в ленте</span></li></ul></div>
       <div class="card off rv"><span class="cap">Отложила</span><p style="color:var(--text)">Остальное — в следующие версии</p>
-        <ul class="off"><li><b>Чат между пользователями</b><span>Сначала проверить, нужны ли связи вообще</span></li><li><b>Оплата внутри приложения</b><span>Сложно и дорого; на старте — переход к студии</span></li><li><b>Отзывы и рейтинги педагогов</b><span>Нужна база занятий, чтобы было что оценивать</span></li><li><b>Уведомления о пересечениях</b><span>Добавлю, когда связи начнут расти</span></li></ul></div>
+        <ul class="off"><li><b>Чат между пользователями</b><span>Сначала проверить, нужны ли связи вообще</span></li><li><b>Оплата внутри приложения</b><span>Сложно и дорого; на старте — оплата в студии</span></li><li><b>Отзывы и рейтинги педагогов</b><span>Нужна база занятий, чтобы было что оценивать</span></li><li><b>Уведомления о пересечениях</b><span>Добавлю, когда связи начнут расти</span></li></ul></div>
     </div>
   </section>
 
@@ -346,45 +403,57 @@ footer a{text-decoration:none}
     <h2 class="h2" id="des-h">Сначала подборка, потом регистрация</h2>
     <p class="lead">Главная метрика — записи, а новичков легче всего потерять на форме регистрации. Поэтому онбординг сначала показывает ценность и собирает интересы, а форма идёт последней</p>
     <div class="rail" id="rail-ob" aria-label="Экраны онбординга, листайте">
-      <figure class="shot"><img src="assets/case/ob1.webp" width="631" height="1366" alt="Онбординг: старт" loading="lazy"><figcaption><span class="cap">Шаг 1 · Старт</span><b>Платформа для танцоров</b><span>Знакомство с Looma и выбор роли: учиться, преподавать или обе</span></figcaption></figure>
-      <figure class="shot"><img src="assets/case/ob3.webp" width="631" height="1366" alt="Онбординг: нить рекомендаций" loading="lazy"><figcaption><span class="cap">Шаг 2 · Рекомендации</span><b>Нить рекомендаций под вас</b><span>Подходящие уроки, события и возможности для роста по роли</span></figcaption></figure>
-      <figure class="shot"><img src="assets/case/ob4.webp" width="631" height="1366" alt="Онбординг: выбор вайба" loading="lazy"><figcaption><span class="cap">Шаг 3 · Вайб</span><b>Выбери свой вайб</b><span>Направления, которые интересны, — опыт персонализируется с первых шагов</span></figcaption></figure>
-      <figure class="shot key"><img src="assets/case/ob6.webp" width="631" height="1366" alt="Онбординг: создание профиля" loading="lazy"><figcaption><span class="cap" style="color:var(--red)">Шаг 4 · Последним</span><b>Создай свой профиль</b><span>Форма в самом конце, когда ценность уже понятна</span></figcaption></figure>
+      <figure class="shot"><img src="assets/case/ob1.webp" width="630" height="1365" alt="Онбординг: старт" loading="lazy"><figcaption><span class="cap">Шаг 1 · Старт</span><b>Платформа для танцоров</b><span>Знакомство с Looma и выбор роли: учиться, преподавать или обе</span></figcaption></figure>
+      <figure class="shot"><img src="assets/case/ob3.webp" width="630" height="1365" alt="Онбординг: нить рекомендаций" loading="lazy"><figcaption><span class="cap">Шаг 2 · Рекомендации</span><b>Нить рекомендаций под вас</b><span>Подходящие занятия, события и возможности для роста по роли</span></figcaption></figure>
+      <figure class="shot"><img src="assets/case/ob4.webp" width="630" height="1365" alt="Онбординг: выбор вайба" loading="lazy"><figcaption><span class="cap">Шаг 3 · Вайб</span><b>Выберите свой вайб</b><span>Направления, которые интересны, — опыт персонализируется с первых шагов</span></figcaption></figure>
+      <figure class="shot key"><img src="assets/case/ob6.webp" width="630" height="1365" alt="Онбординг: создание профиля" loading="lazy"><figcaption><span class="cap" style="color:var(--red)">Шаг 4 · Последним</span><b>Создайте свой профиль</b><span>Форма в самом конце, когда ценность уже понятна</span></figcaption></figure>
     </div>
     <div class="card decision rv"><span class="cap">Цена решения</span><p style="color:var(--text)">Минус в том, что кто-то уйдёт, так и не оставив контакт. Проверить решение хочу A/B-тестом: подборка до регистрации против регистрации сразу</p></div>
 
     <h3 class="h2" style="font-size:clamp(32px,3.8vw,52px);margin-top:96px">Ключевые экраны</h3>
     <div class="rail" id="rail-key" aria-label="Ключевые экраны, листайте">
-      <figure class="shot"><img src="assets/case/home.webp" width="583" height="1366" alt="Лента «Для тебя»" loading="lazy"><figcaption><span class="cap">Рекомендации</span><b>Лента «Для тебя»</b><span>Занятия, люди и события подбираются под интересы пользователя</span></figcaption></figure>
-      <figure class="shot"><img src="assets/case/st1.webp" width="622" height="1526" alt="Stories педагога" loading="lazy"><figcaption><span class="cap">Stories</span><b>Знакомство до связи</b><span>Короткие видео передают характер, стиль и энергию танцора ещё до перехода в профиль</span></figcaption></figure>
-      <figure class="shot"><img src="assets/case/people.webp" width="626" height="1536" alt="Экран «Люди»" loading="lazy"><figcaption><span class="cap">Люди</span><b>Поиск танцоров и педагогов</b><span>Можно открыть профиль и предложить связь</span></figcaption></figure>
-      <figure class="shot"><img src="assets/case/request.webp" width="640" height="1533" alt="Запрос на связь отправлен" loading="lazy"><figcaption><span class="cap">Связи</span><b>Запрос отправлен</b><span>Ожидание подтверждения: запрос можно отменить в любой момент</span></figcaption></figure>
-      <figure class="shot key"><img src="assets/case/connected.webp" width="626" height="1536" alt="Связь установлена, «Ваша нить»" loading="lazy"><figcaption><span class="cap" style="color:var(--red)">Нить</span><b>«Ваша нить»</b><span>Каждое пересечение — ещё одна точка в общей истории. Из точек складывается линия</span></figcaption></figure>
+      <figure class="shot"><img src="assets/case/home.webp" width="630" height="1593" alt="Лента «Для вас»" loading="lazy"><figcaption><span class="cap">Рекомендации</span><b>Лента «Для вас»</b><span>Занятия, люди и события подбираются под интересы пользователя</span></figcaption></figure>
+      <figure class="shot"><img src="assets/case/st1.webp" width="630" height="1365" alt="Stories педагога" loading="lazy"><figcaption><span class="cap">Stories</span><b>Знакомство до связи</b><span>Короткие видео передают характер, стиль и энергию танцора ещё до перехода в профиль</span></figcaption></figure>
+      <figure class="shot"><img src="assets/case/people.webp" width="630" height="1654" alt="Экран «Люди»" loading="lazy"><figcaption><span class="cap">Люди</span><b>Поиск танцоров и педагогов</b><span>С кем были на одном занятии — предложить связь, с остальными — подписаться</span></figcaption></figure>
+      <figure class="shot"><img src="assets/case/request.webp" width="644" height="1378" alt="Запрос на связь отправлен" loading="lazy"><figcaption><span class="cap">Связи</span><b>Запрос отправлен</b><span>Ожидание подтверждения: запрос можно отменить в любой момент</span></figcaption></figure>
+      <figure class="shot key"><img src="assets/case/connected.webp" width="630" height="1365" alt="Связь установлена, «Ваша нить»" loading="lazy"><figcaption><span class="cap" style="color:var(--red)">Нить</span><b>«Ваша нить»</b><span>Каждое пересечение — ещё одна точка в общей истории. Из точек складывается линия</span></figcaption></figure>
     </div>
+    <div class="card decision rv"><span class="cap">Цена решения · связь только по согласию</span><p style="color:var(--text)">Связь появляется, когда её подтверждают оба. Сеть растёт медленнее, зато без спама и навязчивых контактов</p></div>
     <div class="rail-ctrl"><button type="button" data-rail="rail-key" data-dir="-1" aria-label="Назад">←</button><button type="button" data-rail="rail-key" data-dir="1" aria-label="Вперёд">→</button></div>
   </section>
 
   <!-- D. Тестирование -->
   <section class="sec" id="test" aria-labelledby="test-h">
     <p class="label">(D) <b>Тестирование</b></p>
-    <h2 class="h2" id="test-h">Юзабилити-тест кабинета педагога</h2>
-    <p class="lead">Гипотеза: педагог без подсказок справится с ключевыми задачами кабинета — создаст, опубликует, найдёт и отменит занятие</p>
+    <h2 class="h2" id="test-h">Публикация занятия: привычный способ и Looma</h2>
+    <p class="lead">Начала с педагогов: без их занятий лента пустая и танцору нечего искать. Попросила 5 педагогов показать, как они обычно размещают анонсы, а затем выполнить ту же задачу в прототипе</p>
     <div class="grid4 test-stats">
-      <div class="card hot rv"><span class="cap">Участников</span><div class="big">10</div></div>
-      <div class="card rv"><span class="cap">Справились</span><div class="big">10<small> из </small>10</div></div>
-      <div class="card rv"><span class="cap">Метод</span><p style="color:var(--text);font-size:18px">Качественное тестирование</p></div>
-      <div class="card rv"><span class="cap">Вывод</span><p style="color:var(--text);font-size:18px">Гипотеза подтвердилась. Одно узкое место — кнопка «Опубликовать»</p></div>
+      <div class="card hot rv"><span class="cap">Участников</span><div class="big">5</div></div>
+      <div class="card rv"><span class="cap">Справились сами</span><div class="big">5<small> из </small>5</div></div>
+      <div class="card rv"><span class="cap">Метод</span><p style="color:var(--text);font-size:18px">Юзабилити-тест с модератором</p></div>
+      <div class="card rv"><span class="cap">Раздел</span><p style="color:var(--text);font-size:18px">Кабинет педагога</p></div>
     </div>
-    <div class="scen rv" role="table" aria-label="Сценарии теста">
-      <div class="row" role="row"><b role="cell">Найти занятие</b><span class="ok" role="cell">Справились</span></div>
-      <div class="row" role="row"><b role="cell">Опубликовать занятие</b><span class="warn" role="cell">Справились, но кнопку «Опубликовать» замечали не сразу</span></div>
-      <div class="row" role="row"><b role="cell">Найти созданное занятие</b><span class="ok" role="cell">Справились</span></div>
-      <div class="row" role="row"><b role="cell">Отменить занятие</b><span class="ok" role="cell">Справились</span></div>
+    <div class="grid2 cmp">
+      <div class="card rv"><span class="cap">Как сейчас · 5 педагогов</span>
+        <div class="nums"><div>3<small>места</small></div><div>9<small>шагов</small></div><div>~6<small>минут</small></div></div>
+        <p>Анонс публикуют в чате группы и сторис, иногда закрепляют в профиле. Записи собирают через сообщения, а свободные места отслеживают вручную</p>
+        <ol class="steps"><li>Написать текст анонса</li><li>Отправить его в чат группы</li><li>Закрепить сообщение в чате</li><li>Снять сторис в Instagram</li><li>Добавить детали и опубликовать сторис</li><li>Закрепить сторис в актуальном</li><li>Ответить в директ тем, кто хочет записаться</li><li>Внести учеников в свой список</li><li>Пересчитать места и написать, когда их не осталось</li></ol>
+      </div>
+      <div class="card hot rv"><span class="cap">В Looma · прототип, 5 педагогов</span>
+        <div class="nums"><div>1<small>место</small></div><div>4<small>шага</small></div><div>~2<small>минуты</small></div></div>
+        <p>Педагог заполняет информацию о занятии и публикует его в общей ленте. Запись участников и количество свободных мест отображаются автоматически</p>
+        <ol class="steps"><li>Открыть «Мои занятия» в профиле</li><li>Нажать «Новое занятие»</li><li>Заполнить форму: стиль, уровень, дата, время, место, цена и число мест</li><li>Нажать «Опубликовать» — записи и свободные места Looma считает сама</li></ol>
+      </div>
+    </div>
+    <p class="note">Шаги — типичный путь участников теста. Время засекала от начала до конца задачи и округлила</p>
+    <div class="scen rv" role="table" aria-label="Сценарий теста">
+      <div class="row" role="row"><b role="cell">Создать и опубликовать занятие</b><span class="warn" role="cell">5 из 5 справились сами. Один не сразу нашёл, где указать количество мест</span></div>
     </div>
     <div class="grid2 fix">
-      <div class="card rv"><span class="cap">До</span><p style="color:var(--text)">«Опубликовать» была красной ссылкой в шапке формы — было не сразу понятно, куда нажать</p></div>
-      <div class="card hot rv"><span class="cap">После</span><p style="color:var(--text)">Действие перенесено вниз и стало главной кнопкой экрана</p></div>
+      <div class="card rv"><span class="cap">До</span><p style="color:var(--text)">Лимит мест был спрятан в «Настройках записи» в конце формы — его легко пропустить</p></div>
+      <div class="card hot rv"><span class="cap">После</span><p style="color:var(--text)">Поле «Мест» рядом с ценой и пояснение, что будет, когда места закончатся</p></div>
     </div>
+    <p class="note">Тест проверял удобство интерфейса, а не готовность педагогов полностью перейти на новую платформу</p>
   </section>
 
   <!-- Итоги -->
@@ -392,9 +461,10 @@ footer a{text-decoration:none}
     <p class="label">(D) <b>Итоги</b></p>
     <h2 class="h2" id="out-h">Что дал проект и что я проверю дальше</h2>
     <div class="grid2" style="margin-top:40px">
-      <div class="card scope rv"><span class="cap">Что получилось</span><ul><li><b>Метафора нити собрала продукт, айдентику и интерфейс вокруг одной идеи</b></li><li><b>Тест показал, что сценарии педагога понятны</b></li><li><b>Главная находка — кнопку «Опубликовать» замечали не сразу. Я сделала её заметнее</b></li></ul></div>
-      <div class="card scope off rv"><span class="cap">Что дальше</span><ul class="off"><li><b>A/B-тест: подборка до регистрации против регистрации сразу</b><span>Метрика — доля дошедших до первой записи</span></li><li><b>Протестировать путь танцора</b><span>Поиск занятия, запись и установление связи</span></li><li><b>Следить за долей принятых запросов на связь</b><span>Так проверяется гипотеза «Связь удерживает»</span></li></ul></div>
+      <div class="card scope rv"><span class="cap">Что получилось</span><ul><li><b>Нашла две проблемы: информация разбросана, и непонятно, актуальна ли она</b><span>На них построены карточка занятия и кабинет педагога</span></li><li><b>Все 5 педагогов опубликовали занятие без помощи — за 4 шага вместо 9</b><span>Поле с лимитом мест после теста сделала заметнее</span></li><li><b>Красную нить провела через всё</b><span>Логотип, иллюстрации пустых экранов и функция «Ваша нить»</span></li></ul></div>
+      <div class="card scope off rv"><span class="cap">Что дальше</span><ul class="off"><li><b>A/B-тест: подборка до регистрации против регистрации сразу</b><span>Метрика — доля дошедших до первой записи</span></li><li><b>Проверить гипотезу «Расписание в Looma» после запуска</b><span>Тест показал, что публиковать проще. Начнут ли педагоги вести расписание в Looma, покажет доля опубликовавших первое занятие в первую неделю</span></li><li><b>Протестировать путь танцора</b><span>Поиск, запись и связь. Следить за долей принятых запросов и вернувшихся через 30 дней — так проверяется гипотеза «Связь удерживает»</span></li></ul></div>
     </div>
+    <div class="card scope off later rv"><span class="cap">Что сделала бы иначе</span><ul class="off"><li><b>Собрала бы компоненты до экранов</b><span>Первые экраны рисовала без библиотеки, и потом приводила их к одной системе</span></li></ul></div>
   </section>
 
   <section class="final" aria-labelledby="fin-h">
@@ -404,12 +474,12 @@ footer a{text-decoration:none}
     <p class="sub">Онбординг, запись на занятие, связь с человеком и кабинет педагога — всё кликабельно</p>
     <div class="btns">
       <a class="btn main" href="https://ekateribogdana.github.io/looma/prototype/" target="_blank" rel="noopener">Открыть прототип <span class="ar" aria-hidden="true">↗</span></a>
-      <a class="btn" href="https://www.figma.com/proto/EnDFu6EhXxf3KT4INIy6IQ/%D0%BA%D0%B5%D0%B9%D1%81-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F?node-id=735-5446&amp;p=f&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;page-id=735%3A5080" target="_blank" rel="noopener">Полная презентация в Figma <span class="ar" aria-hidden="true">↗</span></a>
+      <a class="btn" href="https://www.figma.com/proto/u447DlmzAF0nb9kqw5iXc9/Looma?node-id=2-561&amp;starting-point-node-id=2-561" target="_blank" rel="noopener">Полная версия в Figma <span class="ar" aria-hidden="true">↗</span></a>
     </div>
     <dl class="credits">
       <div><dt class="cap">Продуктовый дизайнер</dt><dd>Екатерина Богданова</dd></div>
       <div><dt class="cap">Роль в проекте</dt><dd>Соло: исследование, продукт, UX/UI, айдентика, тест</dd></div>
-      <div><dt class="cap">Срок и программы</dt><dd>2 месяца · Figma, Photoshop</dd></div>
+      <div><dt class="cap">Срок и программы</dt><dd>2 месяца · Figma, Photoshop, ChatGPT, Claude</dd></div>
       <div><dt class="cap">Связаться</dt><dd><a href="https://t.me/ekateribog_dana" target="_blank" rel="noopener">@ekateribog_dana ↗</a></dd></div>
     </dl>
   </section>
