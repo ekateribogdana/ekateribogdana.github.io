@@ -263,6 +263,11 @@ footer a{text-decoration:none}
 .steps li::before{content:counter(s);color:var(--muted)}
 .card.hot .steps li::before{color:var(--red)}
 .later{margin-top:16px}
+.crew{margin:40px 0 0}
+.crew .row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.crew img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:20px;box-shadow:0 0 0 1px var(--line)}
+.crew figcaption{margin-top:16px;font-size:14px;color:var(--muted)}
+@media (max-width:700px){.crew .row{grid-template-columns:repeat(3,72%);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-right:calc(-1*var(--pad))}.crew img{scroll-snap-align:start}}
 @media (max-width:1000px){.research{grid-template-columns:1fr}}
 @media (max-width:700px){.scen.p3 .row{grid-template-columns:1fr;gap:4px}.scen.p3 .row.h{display:none}.cmp .nums{gap:28px}}
 </style>
@@ -334,6 +339,14 @@ footer a{text-decoration:none}
     <p class="label">(A) <b>Исследование</b></p>
     <h2 class="h2" id="res-h">Как танцоры находят занятия</h2>
     <p class="lead">Провела интервью с 6 знакомыми танцорами: как они находят занятия и где узнали о последних — набралось 10 случаев. Ещё поговорила с 3 педагогами о том, как они публикуют расписание и собирают записи</p>
+    <figure class="crew rv">
+      <div class="row">
+      <img src="assets/case/dancers-1.webp" width="960" height="1280" alt="Восемь танцовщиц в студии на фоне чёрного занавеса, на каблуках-стрипах, позируют вокруг стола" loading="lazy">
+      <img src="assets/case/dancers-2.webp" width="960" height="1280" alt="Группа танцовщиц в красных и чёрных платьях у больших окон лофт-студии" loading="lazy">
+      <img src="assets/case/dancers-3.webp" width="960" height="1280" alt="Большая группа танцоров в чёрном в тёмном зале с лампочками" loading="lazy">
+      </div>
+      <figcaption>Девочки, с которыми я занимаюсь. С ними я много раз обсуждала, где искать занятия, — среди них и участницы интервью</figcaption>
+    </figure>
     <div class="research">
       <div class="card rv"><span class="cap">Где нашли последнее занятие · 10 случаев</span>
         <div class="bar"><b>Чаты танцевальных групп</b><span>4</span><i style="--w:100%"></i></div>
