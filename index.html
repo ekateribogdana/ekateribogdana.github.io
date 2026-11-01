@@ -454,6 +454,16 @@ body{font-variant-numeric:lining-nums}
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .lstage figure{z-index:2}
 .lstage figure:nth-child(3){z-index:3}
+
+/* ---------- «Обо мне»: полароидки можно отклеить и переклеить (только мышь/трекпад) ---------- */
+@media (pointer:fine){
+  .board.drag .polaroid{cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
+  .board.drag .polaroid img{pointer-events:none;-webkit-user-drag:none}
+  .board.drag .polaroid:hover{box-shadow:0 2px 0 rgba(42,22,16,.08),0 40px 64px -26px rgba(42,22,16,.55)}
+  .board.drag .polaroid.lift{cursor:grabbing;transition:box-shadow .3s;box-shadow:0 2px 0 rgba(42,22,16,.06),0 60px 90px -30px rgba(42,22,16,.6)}
+  .board.drag .polaroid::before{transition:opacity .25s,transform .35s cubic-bezier(.2,.8,.2,1)}
+  .board.drag .polaroid.lift::before{opacity:0;transform:translateX(-50%) rotate(14deg) translateY(-10px)}
+}
 </style>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/transitions.css"><script src="/assets/transitions.js"></script>
@@ -702,6 +712,35 @@ body{font-variant-numeric:lining-nums}
       var t0=performance.now(); (function tick(t){ var k=Math.min(1,(t-t0)/1200), ease=1-Math.pow(1-k,3);
         nodes.forEach(function(x){ x.n.nodeValue=String(Math.round(x.to*ease)); }); if(k<1) requestAnimationFrame(tick); })(t0); });},{threshold:.6}).observe(stats[0].closest('.stats'));
   }
+})();
+</script>
+<script>
+// «Обо мне»: перетаскивание полароидок — отклеить, перенести в пределах доски, приклеить с новым наклоном
+(function(){
+  if(!matchMedia('(pointer:fine)').matches)return;
+  var board=document.querySelector('#about .board');if(!board)return;
+  board.classList.add('drag');
+  var ps=[].slice.call(board.querySelectorAll('.polaroid')),z=3;
+  ps.forEach(function(el){
+    var m=getComputedStyle(el).transform,rot=0;
+    if(m&&m!=='none'){var v=m.match(/matrix\(([^)]+)\)/);if(v){var a=v[1].split(',').map(parseFloat);rot=Math.round(Math.atan2(a[1],a[0])*180/Math.PI*10)/10;}}
+    el._s={x:0,y:0,r:rot};el.style.transform='translate(0px,0px) rotate('+rot+'deg)';
+    el.addEventListener('pointerdown',function(e){
+      if(e.button!==0)return;e.preventDefault();
+      var s=el._s,sx=e.clientX,sy=e.clientY,ox=s.x,oy=s.y;
+      var br=board.getBoundingClientRect(),er=el.getBoundingClientRect(),pad=48;
+      var minX=ox+(br.left-pad-er.left),maxX=ox+(br.right+pad-er.right),minY=oy+(br.top-pad-er.top),maxY=oy+(br.bottom+pad-er.bottom);
+      el.setPointerCapture(e.pointerId);el.classList.add('lift');el.style.zIndex=++z;
+      el.style.transform='translate('+s.x+'px,'+s.y+'px) rotate('+(s.r*.3)+'deg) scale(1.04)';
+      function mv(ev){s.x=Math.max(minX,Math.min(maxX,ox+ev.clientX-sx));s.y=Math.max(minY,Math.min(maxY,oy+ev.clientY-sy));
+        var tilt=Math.max(-8,Math.min(8,(ev.movementX||0)*.6));
+        el.style.transform='translate('+s.x+'px,'+s.y+'px) rotate('+(s.r*.3+tilt)+'deg) scale(1.04)';}
+      function up(){el.removeEventListener('pointermove',mv);el.removeEventListener('pointerup',up);el.removeEventListener('pointercancel',up);
+        el.classList.remove('lift');s.r=Math.round((Math.random()*12-6)*10)/10;
+        el.style.transform='translate('+s.x+'px,'+s.y+'px) rotate('+s.r+'deg)';}
+      el.addEventListener('pointermove',mv);el.addEventListener('pointerup',up);el.addEventListener('pointercancel',up);
+    });
+  });
 })();
 </script>
 </body>
