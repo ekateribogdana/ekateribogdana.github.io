@@ -345,6 +345,30 @@ h1,h2,h3{font-weight:500}
 @media (max-width:700px){.facts{grid-template-columns:1fr}.scen.p3 .row{font-size:16px}}
 </style>
 <style>
+main{overflow-x:clip}
+/* 00 · Обложка — как в Figma (2:2531): фото пары с телефоном, затемнение слева, свечение под логотипом, строка фактов */
+.hero-f{min-height:min(743px,calc(100svh - 96px));padding:56px clamp(24px,5vw,70px) 64px;justify-content:flex-start}
+.hero-f .art{background:#000 url(assets/case/fig/00-cover.webp) center/cover no-repeat;opacity:1}
+.hero-f::before{background:
+  radial-gradient(ellipse 27.5% 26% at 20% 46%,rgba(254,93,87,.088),rgba(254,93,87,.028) 45%,rgba(254,93,87,0) 75%),
+  linear-gradient(180deg,rgba(0,0,0,0) 51%,rgba(0,0,0,.49) 78%,rgba(0,0,0,.63) 100%),
+  radial-gradient(ellipse 62% 62% at 50% 50%,rgba(0,0,0,0) 45%,rgba(0,0,0,.7) 100%),
+  linear-gradient(90deg,#080606 0%,rgba(8,6,6,.85) 37%,rgba(8,6,6,0) 68%)}
+.hero-f .hero-top{font:500 13px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+.hero-f .hero-mid{max-width:none;margin-top:auto}
+.hero-f h1{width:min(780px,100%);aspect-ratio:3/1;margin-left:clamp(-62px,-4.3vw,-16px);overflow:hidden}
+.hero-f .logo{width:100%;height:100%;margin:0;object-fit:contain;mix-blend-mode:screen;filter:none}
+.hero-f .tag{font:italic 400 28px/1.3 var(--serif);color:var(--text);margin-top:-30px}
+.hero-facts{display:flex;flex-wrap:wrap;gap:16px 0;margin-top:clamp(56px,9vw,132px)}
+.hero-facts>div{padding:0 40px;border-left:1px solid rgba(255,255,255,.14)}
+.hero-facts>div:first-child{padding-left:0;border-left:0}
+.hero-facts dt{font:500 13px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.hero-facts dd{margin-top:8px;font:400 16px/1.5 var(--sans);color:var(--text)}
+@media (max-width:1000px){.hero-f .art{background-position:62% 50%}.hero-facts>div{padding:0 24px}}
+@media (max-width:700px){.hero-f{min-height:auto;padding:24px 20px 32px}.hero-f .art{background-position:68% 50%;opacity:.7}.hero-f .tag{font-size:22px;margin-top:-12px}
+  .hero-facts{display:grid;grid-template-columns:1fr 1fr;gap:20px 16px;margin-top:48px}.hero-facts>div{padding:0;border:0}}
+</style>
+<style>
 /* Разделы, собранные по Figma «LOOMA — кейс» (2:561) */
 /* 04 */
 .s04 .shead+.a4-roles{margin-top:72px}
@@ -931,20 +955,19 @@ h1,h2,h3{font-weight:500}
 
 <main id="top">
 <div class="wrap">
-  <section class="hero" aria-labelledby="hero-h">
+  <section class="hero hero-f" aria-labelledby="hero-h">
     <div class="art" aria-hidden="true"></div>
-    <div class="hero-top"><span>Екатерина Богданова · Продуктовый дизайн</span><span>2026</span></div>
+    <div class="hero-top"><span>Екатерина Богданова · Концепт-проект</span><span>2026</span></div>
     <div class="hero-mid">
-      <h1 id="hero-h"><img class="logo" src="assets/case/logo.webp" width="1536" height="1024" alt="Looma"></h1>
+      <h1 id="hero-h"><img class="logo" src="assets/case/fig/00-logo.webp" width="1560" height="521" alt="Looma"></h1>
       <p class="tag">Занятия, события и люди — в одном месте</p>
-      <div class="btns">
-        <a class="btn" href="#design">Проектирование</a>
-        <a class="btn" href="#metaphor">Метафора</a>
-        <a class="btn" href="#test">Тестирование</a>
-      </div>
     </div>
-    <img class="phone" src="assets/case/connected.webp" width="630" height="1365" alt="Экран «Связь установлена»">
-    <div class="hero-bottom"><span class="cap">(01) &nbsp;Продуктовый кейс · с нуля до MVP</span><span class="cap">Соло · 2 месяца</span></div>
+    <dl class="hero-facts">
+      <div><dt>Роль</dt><dd>Продуктовый дизайнер, соло</dd></div>
+      <div><dt>Срок</dt><dd>2 месяца</dd></div>
+      <div><dt>Исследование</dt><dd>6 танцоров и 3 педагога</dd></div>
+      <div><dt>Тест прототипа</dt><dd>5 педагогов, все справились сами</dd></div>
+    </dl>
   </section>
 
   <!-- 30 секунд -->
