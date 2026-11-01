@@ -894,7 +894,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
       </div>
     </div>
     <div class="stagewrap ri" style="--d:1">
-      <div class="device"><div class="ph-load">Looma</div><iframe id="protoFrame" title="Интерактивный прототип Looma" data-src="/looma/prototype/" loading="lazy"></iframe></div>
+      <div class="device"><div class="ph-load">Looma</div><iframe id="protoFrame" title="Интерактивный прототип Looma" data-src="/looma/prototype/?v=3" loading="lazy"></iframe></div>
     </div>
     <div class="side">
       <div class="r" style="--d:5" id="qrBlock"><span class="lbl">На телефоне</span><div class="qr" id="qr" style="margin-top:14px"></div></div>
@@ -1120,7 +1120,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   document.getElementById('protoReset').addEventListener('click',()=>{
     try{ pframe.contentWindow.localStorage.removeItem('looma'); }catch(e){}
     try{ localStorage.removeItem('looma'); }catch(e){}
-    pframe.src=pframe.dataset.src+'?r='+Date.now();
+    pframe.src=pframe.dataset.src+'&r='+Date.now();
   });
   const host=location.hostname;
   const qrOk=/^https?:$/.test(location.protocol) && !/claude|anthropic|usercontent|localhost|^127\./.test(host);
