@@ -460,6 +460,27 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 #s15 .h2{font-size:var(--t-h2)}
 #comp .ptbl .row{padding:16px 0}
 #comp .ptbl .row.h{padding:0 0 10px}
+
+/* s5 · метафора: один экран меняется вместе с активным шагом */
+#s5 .mx{position:relative;display:grid;place-items:center;height:860px}
+#s5 .mx-glow{position:absolute;width:760px;height:760px;border-radius:50%;background:radial-gradient(closest-side,rgba(254,93,87,.22),rgba(254,93,87,.06) 55%,transparent);filter:blur(6px);animation:mx-breathe 5s ease-in-out infinite}
+@keyframes mx-breathe{0%,100%{transform:scale(.94);opacity:.8}50%{transform:scale(1.04);opacity:1}}
+#s5 .mx-ph{position:relative;width:372px;aspect-ratio:630/1365;border-radius:52px;overflow:hidden;background:#0f0f0f;box-shadow:0 0 0 1px rgba(255,255,255,.1),0 0 0 9px #0b0b0b,0 0 0 10px rgba(254,93,87,.35),0 60px 140px -30px rgba(0,0,0,.95),0 0 90px rgba(254,93,87,.2)}
+#s5 .mx-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transform:translateY(16px) scale(1.03);transition:opacity .7s var(--ease),transform .9s var(--ease)}
+#s5 .mx[data-k="1"] img[data-k="1"],#s5 .mx[data-k="2"] img[data-k="2"],#s5 .mx[data-k="3"] img[data-k="3"]{opacity:1;transform:none}
+#s5 .mx-dots{position:absolute;bottom:4px;display:flex;gap:10px}
+#s5 .mx-dots i{width:28px;height:3px;border-radius:2px;background:rgba(255,255,255,.15);overflow:hidden;position:relative}
+#s5 .mx-dots i::after{content:"";position:absolute;inset:0;background:var(--red);transform:scaleX(0);transform-origin:left}
+#s5 .mx[data-k="1"] .mx-dots i:nth-child(1)::after,#s5 .mx[data-k="2"] .mx-dots i:nth-child(2)::after,#s5 .mx[data-k="3"] .mx-dots i:nth-child(3)::after{animation:mx-fill var(--mx-t,3200ms) linear forwards}
+#s5 .mx.held .mx-dots i::after{animation:none!important}
+#s5 .mx[data-k="1"].held .mx-dots i:nth-child(1)::after,#s5 .mx[data-k="2"].held .mx-dots i:nth-child(2)::after,#s5 .mx[data-k="3"].held .mx-dots i:nth-child(3)::after{transform:none}
+@keyframes mx-fill{to{transform:none}}
+#s5 .step{cursor:pointer}
+#s5 .step .o{transition:all .5s var(--ease)}
+#s5 .step.on .o{background:var(--red);color:var(--bg);border-color:var(--red);box-shadow:0 0 40px rgba(254,93,87,.55)}
+#s5 .steps .step:not(.on){opacity:.42}
+#s5 .steps:has(.step:hover) .step:not(:hover){opacity:.42}
+#s5 .steps .step:hover{opacity:1}
 </style>
 <script src="assets/metrics.js" defer></script>
 </head>
@@ -658,14 +679,19 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
       <div class="r" style="--d:0"><div class="eyebrow"><b>Метафора и бренд</b><span>Метафора</span></div></div>
       <h2 class="h2 r" style="--d:1">Красная нить — метафора связи между людьми</h2>
       <div class="steps">
-        <div class="step r" style="--d:2"><div class="o">1</div><div><h3>Пересечения</h3><p>Вы встречаетесь в танцевальной среде: на занятиях, событиях или через общие интересы</p></div></div>
-        <div class="step r" style="--d:3"><div class="o">2</div><div><h3>Связь</h3><p>Вы добавляете друг друга и устанавливаете связь</p></div></div>
-        <div class="step r" style="--d:4"><div class="o">3</div><div><h3>Ваша нить</h3><p>История всех ваших пересечений собирается в одну нить — историю ваших общих точек</p></div></div>
+        <div class="step r on" data-k="1" style="--d:2"><div class="o">1</div><div><h3>Пересечения</h3><p>Вы встречаетесь в танцевальной среде: на занятиях, событиях или через общие интересы</p></div></div>
+        <div class="step r" data-k="2" style="--d:3"><div class="o">2</div><div><h3>Связь</h3><p>Вы добавляете друг друга и устанавливаете связь</p></div></div>
+        <div class="step r" data-k="3" style="--d:4"><div class="o">3</div><div><h3>Ваша нить</h3><p>История всех ваших пересечений собирается в одну нить — историю ваших общих точек</p></div></div>
       </div>
     </div>
-    <div class="panel ri" style="--d:1">
-      <div class="orbit a"></div><div class="orbit b"></div><div class="orbit c"></div>
-      <img class="phone" src="assets/looma-deck/connected.webp" alt="Экран «Связь установлена»" data-tilt>
+    <div class="mx ri" style="--d:1" data-k="1">
+      <span class="mx-glow" aria-hidden="true"></span>
+      <div class="mx-ph">
+        <img data-k="1" src="assets/looma-deck/people.webp" alt="Экран «Люди»: пометка «Были вместе на занятии» и кнопка «Создать связь»">
+        <img data-k="2" src="assets/looma-deck/request.webp" alt="Экран «Запрос отправлен»: связь появится после подтверждения">
+        <img data-k="3" src="assets/looma-deck/connected.webp" alt="Экран «Связь установлена» и «Ваша нить»">
+      </div>
+      <div class="mx-dots" aria-hidden="true"><i></i><i></i><i></i></div>
     </div>
   </section>
 
@@ -1058,6 +1084,16 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   const start=slides.findIndex(s=>'#'+s.id===location.hash);
   go(start>=0?start:0);
 })();
+</script>
+<script>
+// s5 · метафора: шаги идут сами, пока слайд открыт; наведение выбирает шаг и останавливает автопоказ
+(function(){var s=document.getElementById('s5');if(!s)return;var mx=s.querySelector('.mx'),st=[].slice.call(s.querySelectorAll('.step[data-k]')),T=3200,k=1,tm=null,held=false;
+function go(n){k=n;mx.dataset.k=n;st.forEach(function(x){x.classList.toggle('on',+x.dataset.k===n)});}
+function run(){clearInterval(tm);tm=null;if(held||!s.classList.contains('active')||matchMedia('(prefers-reduced-motion: reduce)').matches)return;tm=setInterval(function(){go(k%3+1)},T);}
+st.forEach(function(x){x.addEventListener('mouseenter',function(){held=true;mx.classList.add('held');go(+x.dataset.k);clearInterval(tm);tm=null});x.addEventListener('click',function(){held=true;mx.classList.add('held');go(+x.dataset.k)});});
+s.querySelector('.steps').addEventListener('mouseleave',function(){held=false;mx.classList.remove('held');go(k);run()});
+new MutationObserver(function(){if(s.classList.contains('active')){go(1);run()}else{clearInterval(tm);tm=null}}).observe(s,{attributes:true,attributeFilter:['class']});
+mx.style.setProperty('--mx-t',T+'ms');if(s.classList.contains('active'))run();})();
 </script>
 </body>
 </html>
