@@ -77,20 +77,54 @@
     setTimeout(function () { requestAnimationFrame(step); }, 250);
   }
 
-  // ---------- метафора: шаги идут сами, пока блок на экране и его не трогают ----------
-  var stage = document.querySelector('.s12-stage');
-  if (stage) {
-    var btns = $$('.s12-pt', stage), STEP = 2400, timer = null, held = false, n = 1;
-    stage.style.setProperty('--fx-step', STEP + 'ms');
-    var prog = document.createElement('span'); prog.className = 's12-prog'; prog.setAttribute('aria-hidden', 'true'); stage.appendChild(prog);
-    function go(k) { n = k; stage.setAttribute('data-step', String(k)); btns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-go') === String(k) ? 'true' : 'false'); }); }
-    function play() { if (timer || held) return; stage.classList.add('fx-auto'); timer = setInterval(function () { go(n % 3 + 1); }, STEP); }
-    function stop() { clearInterval(timer); timer = null; stage.classList.remove('fx-auto'); }
-    stage.addEventListener('pointerenter', function () { held = true; stop(); });
-    stage.addEventListener('pointerleave', function () { held = false; play(); });
-    stage.addEventListener('focusin', function () { held = true; stop(); });
-    stage.addEventListener('focusout', function () { held = false; play(); });
-    new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { go(1); play(); } else stop(); }); }, { threshold: .45 }).observe(stage);
+  // ---------- метафора: на широком экране блок закреплён и шаги идут по прокрутке, на узком — по касанию и сами ----------
+  var mt = document.querySelector('.mt');
+  if (mt) {
+    var mpin = mt.querySelector('.mt-pin'), msts = $$('.mt-st', mt), wide = matchMedia('(min-width: 1001px)');
+    var mk = 1, mtimer = null, mheld = false;
+    function mgo(k) {
+      mk = k; mt.setAttribute('data-step', String(k));
+      msts.forEach(function (li) { var on = +li.dataset.k <= k; li.classList.toggle('on', on); li.classList.toggle('cur', +li.dataset.k === k); });
+    }
+    function mlayout() {
+      if (wide.matches) { mt.classList.add('mt-sticky'); mt.style.height = (mpin.offsetHeight + innerHeight * 1.6) + 'px'; }
+      else { mt.classList.remove('mt-sticky'); mt.style.height = ''; }
+    }
+    function mscroll() {
+      if (!wide.matches) return;
+      var r = mt.getBoundingClientRect(), run = mt.offsetHeight - mpin.offsetHeight;
+      var p = Math.min(1, Math.max(0, (-r.top + 96) / Math.max(1, run)));
+      mt.style.setProperty('--mt-p', p.toFixed(3));
+      var k = p < .34 ? 1 : p < .67 ? 2 : 3; if (k !== mk) mgo(k);
+    }
+    msts.forEach(function (li) {
+      li.querySelector('.mt-b').addEventListener('click', function () {
+        var k = +li.dataset.k;
+        if (wide.matches) { var run = mt.offsetHeight - mpin.offsetHeight, top = mt.getBoundingClientRect().top + scrollY - 96; scrollTo({ top: top + run * ((k - 1) / 3 + .17), behavior: 'smooth' }); }
+        else { mheld = true; clearInterval(mtimer); mtimer = null; mgo(k); mt.style.setProperty('--mt-p', ((k - 1) / 2).toFixed(2)); }
+      });
+    });
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (wide.matches || mheld) return;
+        if (e.isIntersecting && !mtimer) mtimer = setInterval(function () { var k = mk % 3 + 1; mgo(k); mt.style.setProperty('--mt-p', ((k - 1) / 2).toFixed(2)); }, 2800);
+        else if (!e.isIntersecting) { clearInterval(mtimer); mtimer = null; }
+      });
+    }, { threshold: .4 }).observe(mt);
+    mgo(1); mt.style.setProperty('--mt-p', '0');
+    mlayout(); mscroll();
+    addEventListener('scroll', mscroll, { passive: true });
+    addEventListener('resize', function () { mlayout(); mscroll(); });
+  }
+
+  // ---------- финал: живой прототип грузится, когда блок близко к экрану (только широкие экраны) ----------
+  var live = document.querySelector('.live'), fr = live && live.querySelector('.live-fr');
+  if (fr && matchMedia('(min-width: 1001px)').matches) {
+    new IntersectionObserver(function (es, o) {
+      if (!es[0].isIntersecting) return; o.disconnect();
+      fr.addEventListener('load', function () { setTimeout(function () { live.classList.add('ready'); fr.removeAttribute('tabindex'); }, 400); });
+      fr.src = fr.dataset.src;
+    }, { rootMargin: '600px 0px' }).observe(live);
   }
 
   // ---------- наклон экранов и магнитная кнопка ----------
@@ -134,15 +168,19 @@
   var samples = [], total = 0, anchors = [], knots = [], headY = [], useThread = false, ticking = false;
 
   // положение в документе без учёта transform (заголовки до появления сдвинуты анимацией)
-  function pagePos(el) { var x = 0, y = 0; while (el) { x += el.offsetLeft; y += el.offsetTop; el = el.offsetParent; } return { x: x, y: y }; }
+  function pagePos(el) { var r = el.getBoundingClientRect(); return { x: r.left + scrollX, y: r.top + scrollY }; }
 
   function build() {
+    d.classList.add('fx-measure'); void d.offsetHeight;
+    try { buildIn(); } finally { d.classList.remove('fx-measure'); }
+  }
+  function buildIn() {
     var rules = heads.map(function (h) { return h.querySelector('.rule'); }).filter(Boolean);
     var gutter = rules.length ? pagePos(rules[0]).x - scrollX * 0 : 0;
     useThread = gutter >= 44 && rules.length > 1;
     svg.style.display = useThread ? '' : 'none'; bar.style.display = useThread ? 'none' : '';
     knots.forEach(function (k) { k.c.remove(); k.b.remove(); }); knots = [];
-    headY = heads.map(function (h) { return pagePos(h).y; });
+    headY = heads.map(function (h) { var r = h.querySelector('.rule'); return pagePos(r || h).y; });
     if (!useThread) return;
     var hero = document.querySelector('.hero-f');
     var startY = hero ? pagePos(hero).y + hero.offsetHeight * .55 : 0;

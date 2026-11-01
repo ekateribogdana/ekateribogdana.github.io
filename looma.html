@@ -205,8 +205,8 @@ footer a{text-decoration:none}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{transition:none}.js .rv:not(.in){opacity:1;transform:none}.btn,.shot img{transition:none}}
 </style>
 <link rel="stylesheet" href="/assets/transitions.css"><script src="/assets/transitions.js"></script>
-<link rel="stylesheet" href="assets/looma-fx.css?v=3">
-<script src="assets/looma-fx.js?v=3" defer></script>
+<link rel="stylesheet" href="assets/looma-fx.css?v=4">
+<script src="assets/looma-fx.js?v=4" defer></script>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Onest:wght@400&family=PT+Mono&display=swap" rel="stylesheet">
 <style>
@@ -947,6 +947,45 @@ main .final.s28{margin-top:0}
   .s28 .crd dd{font-size:18px}
 }
 @media (max-width:420px){.top .wrap{gap:8px}.home-mark{letter-spacing:.06em}.nav a.proto{padding:8px 12px;font-size:13px}}
+/* метафора: три шага и телефон (поведение — в looma-fx.js) */
+.mt{position:relative;margin-top:56px}
+.mt-pin{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,380px);gap:clamp(40px,8vw,140px);align-items:center;padding:clamp(32px,4vw,64px) clamp(24px,5vw,80px);border-radius:32px;border:1px solid rgba(255,255,255,.08);
+  background:radial-gradient(ellipse 60% 70% at 78% 50%,rgba(158,5,0,.28),transparent 70%),radial-gradient(ellipse 50% 60% at 10% 100%,rgba(107,15,12,.25),transparent 70%),#0d0c0c;overflow:hidden}
+.mt-steps{position:relative;padding-left:44px}
+.mt-rail{position:absolute;left:7px;top:14px;bottom:14px;width:2px;background:rgba(255,255,255,.08);border-radius:1px}
+.mt-rail i{position:absolute;inset:0;background:linear-gradient(180deg,#FE5D57,rgba(254,93,87,.6));box-shadow:0 0 12px rgba(254,93,87,.7);transform-origin:top;transform:scaleY(var(--mt-p,1));border-radius:1px}
+.mt-steps ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:clamp(28px,4vh,48px)}
+.mt-st{position:relative}
+.mt-st::before{content:"";position:absolute;left:-44px;top:14px;width:16px;height:16px;margin-left:0;border-radius:50%;background:#0d0c0c;border:1.5px solid rgba(254,93,87,.45);box-sizing:border-box;transition:background .5s,border-color .5s,box-shadow .5s}
+.mt-st.on::before{background:#FE5D57;border-color:#FE5D57;box-shadow:0 0 0 5px rgba(254,93,87,.15),0 0 18px rgba(254,93,87,.8)}
+.mt-b{all:unset;cursor:pointer;display:flex;align-items:baseline;gap:20px}
+.mt-b:focus-visible{outline:2px solid #FE5D57;outline-offset:6px;border-radius:4px}
+.mt-n{font:500 13px/1 var(--sans);letter-spacing:.14em;color:#FE5D57}
+.mt-t{font:500 clamp(34px,3.6vw,52px)/1.05 var(--serif);color:#F4F0EC}
+.mt-st p{margin-top:12px;max-width:440px;font:400 18px/1.55 var(--sans);color:rgba(244,240,236,.7)}
+.mt-phone{position:relative;justify-self:center;width:100%;max-width:340px}
+.mt-glow{position:absolute;inset:-18% -30%;background:radial-gradient(closest-side,rgba(254,93,87,.35),rgba(254,93,87,0));filter:blur(10px);pointer-events:none}
+.mt-scr{position:relative;aspect-ratio:630/1365;border-radius:44px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.1),0 40px 90px -20px rgba(0,0,0,.9)}
+.mt-scr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transform:scale(1.04) translateY(10px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.mt[data-step="1"] .mt-scr img[data-k="1"],.mt[data-step="2"] .mt-scr img[data-k="2"],.mt[data-step="3"] .mt-scr img[data-k="3"]{opacity:1;transform:none}
+@media (max-width:1000px){
+  .mt-pin{grid-template-columns:1fr;gap:40px;padding:32px 24px}
+  .mt-phone{order:-1;max-width:260px}
+  .mt-t{font-size:32px}.mt-st p{font-size:16px}
+}
+/* финал: живой прототип в рамке телефона (загрузка — в looma-fx.js) */
+.s28 .cta{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(40px,6vw,96px);align-items:center;padding:clamp(40px,5vw,72px);
+  background:radial-gradient(ellipse 50% 80% at 85% 50%,rgba(158,5,0,.32),transparent 70%),#0d0c0c}
+.s28 .cta .copy{order:-1}
+.live{position:relative;display:grid;justify-items:center;gap:20px}
+.live-glow{position:absolute;inset:-12% -40%;background:radial-gradient(closest-side,rgba(254,93,87,.32),rgba(254,93,87,0));filter:blur(12px);pointer-events:none;animation:s28-breathe 4s ease-in-out infinite}
+.live-dev{position:relative;width:300px;height:650px;border-radius:46px;overflow:hidden;background:#000;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 0 0 7px #0b0b0b,0 0 0 8px rgba(254,93,87,.35),0 50px 120px -30px rgba(0,0,0,.95),0 0 80px rgba(254,93,87,.18)}
+.live-ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;transition:opacity .6s}
+.live-fr{position:absolute;left:0;top:0;width:375px;height:812px;border:0;transform:scale(.8);transform-origin:0 0;opacity:0;transition:opacity .6s;background:#0f0f0f}
+.live.ready .live-fr{opacity:1}.live.ready .live-ph{opacity:0}
+.live-cap{display:flex;align-items:center;gap:10px;font:500 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:rgba(244,240,236,.6)}
+.live-cap i{width:8px;height:8px;border-radius:50%;background:#FE5D57;box-shadow:0 0 10px rgba(254,93,87,.9);animation:s28-breathe 1.6s ease-in-out infinite}
+@media (max-width:1000px){.s28 .cta{grid-template-columns:1fr}.live{display:none}}
 </style>
 <script src="assets/metrics.js" defer></script>
 </head>
@@ -1175,29 +1214,25 @@ main .final.s28{margin-top:0}
     <div class="rule" aria-hidden="true"></div>
     <div class="trow"><h2 id="s12-h">Метафора</h2><p class="desc">Красная нить — метафора связи между людьми</p></div>
   </header>
-  <div class="s12-stage rv" data-step="1">
-    <img class="s12-bg" src="assets/case/fig/12-metaphor-bg.webp" width="1323" height="718" loading="lazy" alt="">
-    <div class="s12-shade" aria-hidden="true"></div>
-    <div class="s12-steps">
-      <div class="s12-bigglow" aria-hidden="true"></div>
-      <svg class="s12-lines" viewBox="208 118 908 184" aria-hidden="true" focusable="false">
-        <defs><filter id="s12-lf" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur stdDeviation="4" in="SourceGraphic" result="b"/><feColorMatrix in="b" type="matrix" values="0 0 0 0 0.996 0 0 0 0 0.365 0 0 0 0 0.341 0 0 0 0.9 0"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-        <path class="s12-faint" d="M392 210C436.5 244 454.3 244 481 230.4C507.7 216.8 534.4 203.2 570 210"/><path class="s12-faint" d="M754 210C798.5 176 816.3 176 843 189.6C869.7 203.2 896.4 216.8 932 210"/>
-        <path class="s12-lit s12-lit1" d="M392 210C436.5 244 454.3 244 481 230.4C507.7 216.8 534.4 203.2 570 210" filter="url(#s12-lf)"/><path class="s12-lit s12-lit2" d="M754 210C798.5 176 816.3 176 843 189.6C869.7 203.2 896.4 216.8 932 210" filter="url(#s12-lf)"/>
-      </svg>
-      <ol class="s12-pts" aria-label="Три шага метафоры">
-          <li><button type="button" class="s12-pt" data-go="1" aria-controls="s12-cap" aria-pressed="true"><span class="s12-ring" aria-hidden="true"></span><span class="s12-num" aria-hidden="true">1</span><span class="s12-lbl">Пересечения</span></button></li>
-          <li><button type="button" class="s12-pt" data-go="2" aria-controls="s12-cap" aria-pressed="false"><span class="s12-ring" aria-hidden="true"></span><span class="s12-num" aria-hidden="true">2</span><span class="s12-lbl">Связь</span></button></li>
-          <li><button type="button" class="s12-pt" data-go="3" aria-controls="s12-cap" aria-pressed="false"><span class="s12-ring" aria-hidden="true"></span><span class="s12-num" aria-hidden="true">3</span><span class="s12-lbl">Ваша нить</span></button></li>
-      </ol>
+  <div class="mt" data-step="3">
+    <div class="mt-pin">
+      <div class="mt-steps">
+        <span class="mt-rail" aria-hidden="true"><i></i></span>
+        <ol>
+          <li class="mt-st on" data-k="1"><button type="button" class="mt-b" aria-controls="mt-scr"><span class="mt-n">01</span><span class="mt-t">Пересечения</span></button><p>Вы встречаетесь в танцевальной среде — на занятиях, событиях или через общие интересы</p></li>
+          <li class="mt-st on" data-k="2"><button type="button" class="mt-b" aria-controls="mt-scr"><span class="mt-n">02</span><span class="mt-t">Связь</span></button><p>Вы добавляете друг друга и устанавливаете связь</p></li>
+          <li class="mt-st on" data-k="3"><button type="button" class="mt-b" aria-controls="mt-scr"><span class="mt-n">03</span><span class="mt-t">Ваша нить</span></button><p>Все пересечения собираются в одну нить — историю ваших общих точек</p></li>
+        </ol>
+      </div>
+      <div class="mt-phone" id="mt-scr">
+        <span class="mt-glow" aria-hidden="true"></span>
+        <div class="mt-scr">
+          <img data-k="1" src="assets/case/people.webp" width="630" height="1654" loading="lazy" alt="Экран «Люди»: у Кати и Насти пометка «Были вместе на Frame Up» и кнопка «Создать связь»">
+          <img data-k="2" src="assets/case/request.webp" width="644" height="1378" loading="lazy" alt="Экран «Запрос отправлен»: связь появится, когда Алина подтвердит">
+          <img data-k="3" src="assets/case/connected.webp" width="630" height="1365" loading="lazy" alt="Экран «Связь установлена»: две аватарки, соединённые нитью, и блок «Ваша нить»">
+        </div>
+      </div>
     </div>
-    <div class="s12-caps" id="s12-cap" aria-live="polite">
-        <div class="s12-cap s12-cap1"><span class="s12-k">Шаг 1 из 3</span><p>Вы встречаетесь в танцевальной среде — на занятиях, событиях или через общие интересы</p></div>
-        <div class="s12-cap s12-cap2"><span class="s12-k">Шаг 2 из 3</span><p>Вы добавляете друг друга и устанавливаете связь</p></div>
-        <div class="s12-cap s12-cap3"><span class="s12-k">Шаг 3 из 3</span><p>Все пересечения собираются в одну нить — историю ваших общих точек</p></div>
-    </div>
-    <img class="s12-phone" src="assets/case/fig/12-phone-connected.webp" width="512" height="1256" loading="lazy" alt="Экран «Связь установлена»: две аватарки, соединённые нитью">
-    <p class="s12-hint">Наведите на точку, чтобы пройти путь</p>
   </div>
   <div class="s12-logo">
     <div class="shead s12-sub rv">
@@ -1253,11 +1288,6 @@ main .final.s28{margin-top:0}
 </svg><figcaption>Иконка</figcaption></figure>
     </div>
   </div>
-  <script>
-  (function(){var s=document.querySelector('.s12 .s12-stage');if(!s)return;var b=s.querySelectorAll('.s12-pt');
-  function go(n){s.setAttribute('data-step',n);b.forEach(function(x){x.setAttribute('aria-pressed',x.getAttribute('data-go')===n?'true':'false')})}
-  b.forEach(function(x){var n=x.getAttribute('data-go');x.addEventListener('mouseenter',function(){go(n)});x.addEventListener('focus',function(){go(n)});x.addEventListener('click',function(){go(n)})})})();
-  </script>
 </section>
 
 <section class="sec s15" id="onboarding" aria-labelledby="s15-h">
@@ -1462,13 +1492,13 @@ main .final.s28{margin-top:0}
 
   <section class="final s28" id="final" aria-labelledby="fin-h">
     <div class="cta rv">
-      <div class="viz" aria-hidden="true">
-        <span class="gl"></span>
-        <span class="orb o1"></span>
-        <span class="orb o2"></span>
-        <span class="rot r1"><i></i></span>
-        <span class="rot r2"><i></i></span>
-        <img class="phone" src="assets/case/fig/28-phone-connected.webp" width="500" height="1083" loading="lazy" decoding="async" alt="">
+      <div class="live">
+        <span class="live-glow" aria-hidden="true"></span>
+        <div class="live-dev">
+          <img class="live-ph" src="assets/case/connected.webp" width="630" height="1365" loading="lazy" decoding="async" alt="Экран прототипа «Связь установлена»">
+          <iframe class="live-fr" title="Живой прототип Looma" data-src="https://ekateribogdana.github.io/looma/prototype/" tabindex="-1"></iframe>
+        </div>
+        <p class="live-cap"><i aria-hidden="true"></i>Живой прототип — нажимайте прямо здесь</p>
       </div>
       <div class="copy">
         <p class="eyebrow">Живой прототип</p>
