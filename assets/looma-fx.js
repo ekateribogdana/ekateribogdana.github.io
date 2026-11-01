@@ -131,48 +131,51 @@
   var bar = document.createElement('div'); bar.className = 'fx-bar'; bar.setAttribute('aria-hidden', 'true');
   document.body.appendChild(svg); document.body.appendChild(bar);
 
-  var samples = [], total = 0, anchors = [], knots = [], useThread = false, ticking = false;
+  var samples = [], total = 0, anchors = [], knots = [], headY = [], useThread = false, ticking = false;
+
+  // положение в документе без учёта transform (заголовки до появления сдвинуты анимацией)
+  function pagePos(el) { var x = 0, y = 0; while (el) { x += el.offsetLeft; y += el.offsetTop; el = el.offsetParent; } return { x: x, y: y }; }
 
   function build() {
-    var docTop = function (el) { var r = el.getBoundingClientRect(); return { x: r.left + scrollX, y: r.top + scrollY, w: r.width }; };
     var rules = heads.map(function (h) { return h.querySelector('.rule'); }).filter(Boolean);
-    var gutter = rules.length ? rules[0].getBoundingClientRect().left : 0;
+    var gutter = rules.length ? pagePos(rules[0]).x - scrollX * 0 : 0;
     useThread = gutter >= 44 && rules.length > 1;
     svg.style.display = useThread ? '' : 'none'; bar.style.display = useThread ? 'none' : '';
-    knots.forEach(function (k) { k.remove(); }); knots = [];
+    knots.forEach(function (k) { k.c.remove(); k.b.remove(); }); knots = [];
+    headY = heads.map(function (h) { return pagePos(h).y; });
     if (!useThread) return;
     var hero = document.querySelector('.hero-f');
-    var hp = hero ? docTop(hero) : { x: gutter, y: 0 };
-    var startY = hp.y + (hero ? hero.offsetHeight * .55 : 0);
-    anchors = rules.map(function (r) { var p = docTop(r); return { x: p.x, y: p.y }; });
-    var endEl = document.querySelector('.s28'); var endY = endEl ? docTop(endEl).y + 80 : anchors[anchors.length - 1].y + 400;
+    var startY = hero ? pagePos(hero).y + hero.offsetHeight * .55 : 0;
+    anchors = rules.map(function (r) { var q = pagePos(r); return { x: q.x, y: q.y }; });
+    var endEl = document.querySelector('.s28'); var endY = endEl ? pagePos(endEl).y + 80 : anchors[anchors.length - 1].y + 400;
     var xg = Math.max(14, gutter * .42);
-    var dStr = 'M' + xg + ' ' + startY, prev = { x: xg, y: startY };
-    anchors.concat([{ x: xg, y: endY, end: true }]).forEach(function (a, i) {
-      var dy = a.y - prev.y, sway = (i % 2 ? 1 : -1) * Math.min(14, xg * .5);
-      var c1 = { x: prev.end || i === 0 ? xg : xg + sway * .3, y: prev.y + dy * .28 };
-      var c2 = { x: a.end ? xg : xg + sway, y: a.y - Math.min(160, dy * .3) };
-      dStr += ' C' + c1.x + ' ' + c1.y + ' ' + c2.x + ' ' + c2.y + ' ' + (a.end ? xg : xg) + ' ' + a.y;
-      if (!a.end) dStr += ' L' + a.x + ' ' + a.y + ' M' + xg + ' ' + a.y; // отвод к линии заголовка
-      prev = { x: xg, y: a.y, end: a.end };
+    // одна непрерывная линия без разрывов: пунктир, которым рисуется нить, не сбивается
+    var dStr = 'M' + xg + ' ' + startY, prevY = startY;
+    anchors.concat([{ y: endY }]).forEach(function (a, i) {
+      var dy = a.y - prevY, sway = (i % 2 ? 1 : -1) * Math.min(14, xg * .5);
+      dStr += ' C' + (xg + sway * .3) + ' ' + (prevY + dy * .3) + ' ' + (xg + sway) + ' ' + (a.y - dy * .3) + ' ' + xg + ' ' + a.y;
+      prevY = a.y;
     });
-    svg.setAttribute('height', document.documentElement.scrollHeight);
-    svg.style.height = document.documentElement.scrollHeight + 'px';
+    var H = document.documentElement.scrollHeight;
+    svg.setAttribute('height', H); svg.style.height = H + 'px';
     base.setAttribute('d', dStr); lit.setAttribute('d', dStr);
     total = lit.getTotalLength();
     lit.style.strokeDasharray = total + ' ' + total;
     samples = [];
-    for (var L = 0; L <= total; L += 6) { var p = lit.getPointAtLength(L); samples.push([L, p.y]); }
+    for (var L = 0; L <= total; L += 6) { var pt = lit.getPointAtLength(L); samples.push([L, pt.y]); }
+    // отводы к линиям заголовков — отдельные отрезки, прорисовываются, когда нить до них дошла
     anchors.forEach(function (a) {
-      var k = document.createElementNS(NS, 'circle'); k.setAttribute('class', 'knot'); k.setAttribute('cx', xg); k.setAttribute('cy', a.y); k.setAttribute('r', 3);
-      svg.insertBefore(k, dot); knots.push(k);
+      var br = document.createElementNS(NS, 'path'); br.setAttribute('class', 'br');
+      br.setAttribute('d', 'M' + xg + ' ' + (a.y + .5) + ' L' + a.x + ' ' + (a.y + .5)); br.setAttribute('pathLength', '1');
+      var c = document.createElementNS(NS, 'circle'); c.setAttribute('class', 'knot'); c.setAttribute('cx', xg); c.setAttribute('cy', a.y + .5); c.setAttribute('r', 3);
+      svg.insertBefore(br, dot); svg.insertBefore(c, dot); knots.push({ c: c, b: br });
     });
   }
 
   function update() {
     ticking = false;
     var target = scrollY + innerHeight * .62;
-    heads.forEach(function (h) { h.classList.toggle('fx-lit', h.getBoundingClientRect().top + scrollY < target); });
+    heads.forEach(function (h, i) { h.classList.toggle('fx-lit', headY[i] < target); });
     if (!useThread) { var max = document.documentElement.scrollHeight - innerHeight; bar.style.setProperty('--p', max > 0 ? (scrollY / max).toFixed(4) : 0); return; }
     // наибольшая длина пути, точка которой выше цели (путь монотонно идёт вниз)
     var lo = 0, hi = samples.length - 1, best = 0;
@@ -180,7 +183,7 @@
     var L = samples.length ? samples[best][0] : 0;
     lit.style.strokeDashoffset = (total - L).toFixed(1);
     var p = lit.getPointAtLength(L); dot.setAttribute('cx', p.x); dot.setAttribute('cy', p.y);
-    knots.forEach(function (k, i) { var on = anchors[i].y < target; k.classList.toggle('on', on); k.setAttribute('r', on ? 4 : 3); });
+    knots.forEach(function (k, i) { var on = anchors[i].y < target; k.c.classList.toggle('on', on); k.b.classList.toggle('on', on); k.c.setAttribute('r', on ? 4 : 3); });
   }
   function req() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
   var rb; function rebuild() { clearTimeout(rb); rb = setTimeout(function () { build(); update(); }, 120); }
