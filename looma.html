@@ -481,6 +481,43 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 #s5 .steps .step:not(.on){opacity:.42}
 #s5 .steps:has(.step:hover) .step:not(:hover){opacity:.42}
 #s5 .steps .step:hover{opacity:1}
+
+/* s8 · компоненты по токенам Figma */
+#s8 .pal .s{width:118px}
+#s8 .s span{font-size:17px;line-height:1.25;white-space:normal}
+#s8 .s small{font-size:15px}
+#s8 .b-pri{background:#8A2426;border-color:#9E0500}
+#s8 .b-sec{border-color:rgba(255,255,255,.24);color:#F4F0EC}
+#s8 .inp{background:#282727;border-color:rgba(255,255,255,.08);color:#F4F0EC}
+#s8 .inp::placeholder{color:rgba(244,240,236,.55)}
+.k-chip{display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 22px;border-radius:14px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04);font-size:var(--t-small);color:#F4F0EC}
+.k-chip i{width:16px;height:16px;border-radius:50%;border:1.5px solid rgba(255,255,255,.32)}
+.k-chip.on{border-color:rgba(254,93,87,.8);background:rgba(107,15,12,.35)}
+.k-chip.on i{background:#FE5D57;border-color:#FE5D57}
+.kcards{align-items:stretch;flex-wrap:nowrap}
+.k-card{width:310px;border-radius:22px;border:1px solid rgba(255,255,255,.08);background:#161515;padding:20px;display:flex;flex-direction:column;gap:6px;color:#F4F0EC;transition:transform .6s var(--ease),box-shadow .6s}
+.k-card:hover{transform:translateY(-6px);box-shadow:0 30px 70px rgba(0,0,0,.6),0 0 60px rgba(254,93,87,.15)}
+.k-card img{border-radius:50%;object-fit:cover}
+.k-top{display:flex;gap:14px;align-items:center}
+.k-top img{width:64px;height:64px;flex:none}
+.k-top b,.k-class b{font-weight:500;font-size:var(--t-small)}
+.k-top span,.k-class>span{display:block;font-size:var(--t-label);color:rgba(244,240,236,.55)}
+.k-top em{display:block;font-style:normal;font-size:var(--t-label);color:#FE5D57;margin-top:2px}
+.k-acts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.k-acts span{display:grid;place-items:center;height:40px;border-radius:12px;border:1px solid rgba(255,255,255,.24);font-size:var(--t-label)}
+.k-acts .a{border-color:rgba(254,93,87,.8);color:#FE5D57}
+.k-class{border-left:3px solid #FE5D57;border-radius:6px 22px 22px 6px}
+.k-row{display:flex;justify-content:space-between;font-size:var(--t-label)}
+.k-row em{font-style:normal;color:#FE5D57}.k-row span{color:rgba(244,240,236,.55)}
+.k-class b{font-family:var(--serif);font-size:var(--t-lead);margin-top:6px}
+.k-who{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:10px;font-size:var(--t-label);color:rgba(244,240,236,.75)}
+.k-who img{width:26px;height:26px}
+
+#s8 .kcards{gap:16px}
+#s8 .k-card{width:304px;padding:18px}
+#s8 .k-top b,#s8 .k-class>b{font-size:18px}
+#s8 .k-top span,#s8 .k-class>span,#s8 .k-top em,#s8 .k-row,#s8 .k-acts span,#s8 .k-who{font-size:14px;white-space:nowrap}
+#s8 .k-class>b{font-size:26px}
 </style>
 <script src="assets/metrics.js" defer></script>
 </head>
@@ -711,33 +748,37 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   <!-- 8 UI kit colours + components -->
   <section class="slide" id="s8" data-sec="B">
     <div class="pal">
-      <div class="r" style="--d:0"><div class="eyebrow"><b>Метафора и бренд</b><span>UI Kit</span></div><h2 class="h2" style="margin-top:14px">Цвет</h2></div>
-      <div class="grp r" style="--d:1"><span class="lbl">Background</span><div class="sw">
-        <button class="s" data-hex="#0F0F0F"><i style="background:#0F0F0F"></i><span>Primary</span><small>#0F0F0F</small></button>
-        <button class="s" data-hex="#282727"><i style="background:#282727"></i><span>Secondary</span><small>#282727</small></button>
-        <button class="s" data-hex="#151515"><i style="background:#151515"></i><span>Tertiary</span><small>#151515</small></button></div></div>
-      <div class="grp r" style="--d:2"><span class="lbl">Text</span><div class="sw">
-        <button class="s" data-hex="#FFFFFF"><i style="background:#FFFFFF"></i><span>White</span><small>#FFFFFF</small></button>
-        <button class="s" data-hex="#FFFFFF 60%"><i style="background:rgba(255,255,255,.6)"></i><span>Grey</span><small>#FFFFFF 60%</small></button>
-        <button class="s" data-hex="#B8B8C7"><i style="background:#B8B8C7"></i><span>Light Grey</span><small>#B8B8C7</small></button>
-        <button class="s" data-hex="#FFFFFF 40%"><i style="background:rgba(255,255,255,.4)"></i><span>Muted</span><small>#FFFFFF 40%</small></button></div></div>
-      <div class="grp r" style="--d:3"><span class="lbl">Stroke</span><div class="sw">
-        <button class="s" data-hex="#3C3C3C"><i style="background:#3C3C3C"></i><span>Grey</span><small>#3C3C3C</small></button>
-        <button class="s" data-hex="#FFFFFF 10%"><i style="background:rgba(255,255,255,.1)"></i><span>Light</span><small>#FFFFFF 10%</small></button>
-        <button class="s" data-hex="#FFFFFF 25%"><i style="background:rgba(255,255,255,.25)"></i><span>White</span><small>#FFFFFF 25%</small></button></div></div>
-      <div class="grp r" style="--d:4"><span class="lbl">Accent</span><div class="sw">
-        <button class="s" data-hex="#FE5D57"><i style="background:#FE5D57"></i><span>Red</span><small>#FE5D57</small></button>
-        <button class="s" data-hex="#6B0F0C"><i style="background:#6B0F0C"></i><span>Dark Red</span><small>#6B0F0C</small></button>
-        <button class="s" data-hex="#9E0500"><i style="background:#9E0500"></i><span>Deep Red</span><small>#9E0500</small></button>
-        <button class="s" data-hex="#983834"><i style="background:#983834"></i><span>Muted Red</span><small>#983834</small></button></div></div>
+      <div class="r" style="--d:0"><div class="eyebrow"><b>Метафора и бренд</b><span>Дизайн-система</span></div><h2 class="h2" style="margin-top:14px">Цвет</h2></div>
+      <div class="grp r" style="--d:1"><span class="lbl">Фон</span><div class="sw">
+        <button class="s" data-hex="#0F0F0F"><i style="background:#0F0F0F"></i><span>bg/<wbr>base</span><small>#0F0F0F</small></button>
+        <button class="s" data-hex="#111111"><i style="background:#111111"></i><span>bg/<wbr>section</span><small>#111111</small></button>
+        <button class="s" data-hex="#161515"><i style="background:#161515"></i><span>bg/<wbr>card</span><small>#161515</small></button>
+        <button class="s" data-hex="#282727"><i style="background:#282727"></i><span>bg/<wbr>control</span><small>#282727</small></button></div></div>
+      <div class="grp r" style="--d:2"><span class="lbl">Текст</span><div class="sw">
+        <button class="s" data-hex="#F4F0EC"><i style="background:#F4F0EC"></i><span>text/<wbr>primary</span><small>#F4F0EC</small></button>
+        <button class="s" data-hex="#F4F0EC 75%"><i style="background:rgba(244,240,236,.75)"></i><span>text/<wbr>secondary</span><small>#F4F0EC 75%</small></button>
+        <button class="s" data-hex="#F4F0EC 55%"><i style="background:rgba(244,240,236,.55)"></i><span>text/<wbr>tertiary</span><small>#F4F0EC 55%</small></button>
+        <button class="s" data-hex="#FE5D57"><i style="background:#FE5D57"></i><span>text/<wbr>accent</span><small>#FE5D57</small></button></div></div>
+      <div class="grp r" style="--d:3"><span class="lbl">Обводка</span><div class="sw">
+        <button class="s" data-hex="#FFFFFF 8%"><i style="background:transparent;border:2px solid rgba(255,255,255,.08)"></i><span>border/<wbr>subtle</span><small>#FFFFFF 8%</small></button>
+        <button class="s" data-hex="#FFFFFF 16%"><i style="background:transparent;border:2px solid rgba(255,255,255,.16)"></i><span>border/<wbr>strong</span><small>#FFFFFF 16%</small></button>
+        <button class="s" data-hex="#FE5D57 80%"><i style="background:transparent;border:2px solid rgba(254,93,87,.8)"></i><span>border/<wbr>accent</span><small>#FE5D57 80%</small></button></div></div>
+      <div class="grp r" style="--d:4"><span class="lbl">Акцент и кнопка</span><div class="sw">
+        <button class="s" data-hex="#FE5D57"><i style="background:#FE5D57"></i><span>bg/<wbr>accent</span><small>#FE5D57</small></button>
+        <button class="s" data-hex="#6B0F0C"><i style="background:#6B0F0C"></i><span>accent-deep</span><small>#6B0F0C</small></button>
+        <button class="s" data-hex="#8A2426"><i style="background:#8A2426"></i><span>button/<wbr>primary</span><small>#8A2426</small></button>
+        <button class="s" data-hex="#9E0500"><i style="background:#9E0500"></i><span>primary-border</span><small>#9E0500</small></button></div></div>
     </div>
     <div class="comps">
       <h2 class="h2 r" style="--d:0;margin-top:41px">Компоненты</h2>
-      <div class="grp r" style="--d:1"><span class="lbl">Buttons</span><div class="btnrow"><button class="b-pri">Начать</button><button class="b-sec">Продолжить</button></div></div>
-      <div class="grp r" style="--d:2"><span class="lbl">Input</span><div class="btnrow"><input class="inp" id="kit-input" placeholder="Введите значение" aria-label="Пример поля ввода"></div></div>
-      <div class="grp r" style="--d:3"><span class="lbl">Cards</span><div class="btnrow" style="align-items:flex-start;flex-wrap:nowrap"><img class="cardimg" src="assets/looma-deck/card-person.webp" alt="Карточка человека" style="width:310px"><img class="cardimg" src="assets/looma-deck/card-event.webp" alt="Карточка события" style="width:310px"></div></div>
+      <div class="grp r" style="--d:1"><span class="lbl">App Button · Choice Chip</span><div class="btnrow"><button class="b-pri">Начать</button><button class="b-sec">Продолжить</button></div><div class="btnrow" style="margin-top:14px"><span class="k-chip on"><i></i>Frame Up</span><span class="k-chip"><i></i>Vogue</span><span class="k-chip"><i></i>High Heels</span></div></div>
+      <div class="grp r" style="--d:2"><span class="lbl">Text Field</span><div class="btnrow"><input class="inp" id="kit-input" placeholder="example@mail.ru" aria-label="Пример поля ввода"></div></div>
+      <div class="grp r" style="--d:3"><span class="lbl">Person Card · Class Card</span><div class="btnrow kcards">
+        <div class="k-card k-person"><div class="k-top"><img src="assets/case/ui/av-alina.webp" alt=""><div><b>Алина Соколова</b><span>Frame Up · High Heels</span><em>Педагог</em></div></div><div class="k-acts"><span>Профиль</span><span class="a">Создать связь</span></div></div>
+        <div class="k-card k-class"><div class="k-row"><em>Сегодня, 18:00</em><span>Dance First</span></div><b>Frame Up</b><span>Начинающие</span><div class="k-who"><img src="assets/case/ui/av-alina.webp" alt="">Алина Соколова</div></div>
+      </div></div>
     </div>
-    <div class="toast" id="toast">Скопировано</div>
+<div class="toast" id="toast">Скопировано</div>
   </section>
 
   <!-- 9 type -->
