@@ -82,3 +82,9 @@
 
 /* отвод нити переходит в линию заголовка без излома: линия начинается тем же цветом и толщиной */
 .fx .shead.fx-lit .rule::before{background:linear-gradient(90deg,#FE5D57,#FE5D57 70%,rgba(254,93,87,0))}
+/* метафора: закреплённый кадр */
+.fx .mc.mc-sticky .mc-pin{position:sticky;top:calc((100vh - min(760px,100vh)) / 2)}
+.fx .mc-pt:not(.on) h3{color:rgba(244,240,236,.3)}
+.fx .mc-pt:not(.on) p{color:rgba(244,240,236,.25)}
+.fx .mc-bg{animation:fx-mc 18s ease-in-out infinite alternate}
+@keyframes fx-mc{to{transform:scale(1.14) translateX(-1.5%)}}

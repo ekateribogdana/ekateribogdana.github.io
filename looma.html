@@ -205,8 +205,8 @@ footer a{text-decoration:none}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{transition:none}.js .rv:not(.in){opacity:1;transform:none}.btn,.shot img{transition:none}}
 </style>
 <link rel="stylesheet" href="/assets/transitions.css"><script src="/assets/transitions.js"></script>
-<link rel="stylesheet" href="assets/looma-fx.css?v=5">
-<script src="assets/looma-fx.js?v=5" defer></script>
+<link rel="stylesheet" href="assets/looma-fx.css?v=6">
+<script src="assets/looma-fx.js?v=6" defer></script>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Onest:wght@400&family=PT+Mono&display=swap" rel="stylesheet">
 <style>
@@ -986,6 +986,38 @@ main .final.s28{margin-top:0}
 .live-cap{display:flex;align-items:center;gap:10px;font:500 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:rgba(244,240,236,.6)}
 .live-cap i{width:8px;height:8px;border-radius:50%;background:#FE5D57;box-shadow:0 0 10px rgba(254,93,87,.9);animation:s28-breathe 1.6s ease-in-out infinite}
 @media (max-width:1000px){.s28 .cta{grid-template-columns:1fr}.live{display:none}}
+/* метафора: кадр во всю ширину, нить протягивается по прокрутке (поведение — в looma-fx.js) */
+.mc{position:relative;margin:56px calc(50% - 50vw) 0}
+.mc-pin{position:relative;min-height:min(760px,100vh);display:flex;align-items:center;overflow:hidden;isolation:isolate}
+.mc-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transform:scale(1.06);opacity:.55}
+.mc-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#111 0%,rgba(17,17,17,.2) 30%,rgba(17,17,17,.35) 70%,#111 100%),radial-gradient(ellipse 70% 60% at 50% 50%,rgba(158,5,0,.25),transparent 70%)}
+.mc-in{position:relative;width:100%;max-width:1360px;margin:0 auto;padding:0 var(--pad)}
+.mc-line{position:absolute;left:var(--pad);right:var(--pad);top:11px;width:calc(100% - 2*var(--pad));height:44px;overflow:visible}
+.mc-line path{fill:none;stroke-linecap:round}
+.mc-base{stroke:rgba(254,93,87,.18);stroke-width:1.2;vector-effect:non-scaling-stroke}
+.mc-lit{stroke:#FE5D57;stroke-width:2;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--mc-p,1));filter:drop-shadow(0 0 6px rgba(254,93,87,.8))}
+.mc-pts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px}
+.mc-pt{position:relative;padding-top:64px}
+.mc-pt:nth-child(2){text-align:center}.mc-pt:nth-child(3){text-align:right}
+.mc-dot{position:absolute;top:22px;left:0;width:22px;height:22px;margin-top:0;border-radius:50%;background:#111;border:1.5px solid rgba(254,93,87,.5);box-sizing:border-box;transition:background .5s,border-color .5s,box-shadow .5s,transform .5s}
+.mc-pt:nth-child(2) .mc-dot{left:50%;margin-left:-11px}.mc-pt:nth-child(3) .mc-dot{left:auto;right:0}
+.mc-pt.on .mc-dot{background:#FE5D57;border-color:#FE5D57;box-shadow:0 0 0 7px rgba(254,93,87,.14),0 0 24px rgba(254,93,87,.9);transform:scale(1.1)}
+.mc-n{display:block;font:500 13px/1 var(--sans);letter-spacing:.14em;color:#FE5D57}
+.mc-pt h3{margin-top:14px;font:500 clamp(36px,4vw,60px)/1 var(--serif);color:#F4F0EC;transition:color .5s}
+.mc-pt p{margin-top:14px;font:400 18px/1.55 var(--sans);color:rgba(244,240,236,.72);transition:color .5s}
+.mc-pt:nth-child(2) p{margin-left:auto;margin-right:auto}.mc-pt:nth-child(3) p{margin-left:auto}
+.mc-pt p{max-width:360px}
+@media (max-width:1000px){
+  .mc-pin{min-height:0;padding:72px 0}
+  .mc-line{display:none}
+  .mc-pts{grid-template-columns:1fr;gap:40px;border-left:2px solid rgba(254,93,87,.6);padding-left:28px}
+  .mc-pt,.mc-pt:nth-child(2),.mc-pt:nth-child(3){text-align:left;padding-top:0}
+  .mc-dot,.mc-pt:nth-child(2) .mc-dot,.mc-pt:nth-child(3) .mc-dot{top:4px;left:-40px;right:auto;margin-left:0;background:#FE5D57;border-color:#FE5D57}
+  .mc-pt p{margin-left:0!important}
+}
+/* финал: кнопка и ссылки в блоке «Спасибо» */
+.s28 .go{margin-top:40px}
+.s28 .thx{margin-top:0}
 </style>
 <script src="assets/metrics.js" defer></script>
 </head>
@@ -1214,23 +1246,20 @@ main .final.s28{margin-top:0}
     <div class="rule" aria-hidden="true"></div>
     <div class="trow"><h2 id="s12-h">Метафора</h2><p class="desc">Красная нить — метафора связи между людьми</p></div>
   </header>
-  <div class="mt" data-step="3">
-    <div class="mt-pin">
-      <div class="mt-steps">
-        <span class="mt-rail" aria-hidden="true"><i></i></span>
-        <ol>
-          <li class="mt-st on" data-k="1"><button type="button" class="mt-b" aria-controls="mt-scr"><span class="mt-n">01</span><span class="mt-t">Пересечения</span></button><p>Вы встречаетесь в танцевальной среде — на занятиях, событиях или через общие интересы</p></li>
-          <li class="mt-st on" data-k="2"><button type="button" class="mt-b" aria-controls="mt-scr"><span class="mt-n">02</span><span class="mt-t">Связь</span></button><p>Вы добавляете друг друга и устанавливаете связь</p></li>
-          <li class="mt-st on" data-k="3"><button type="button" class="mt-b" aria-controls="mt-scr"><span class="mt-n">03</span><span class="mt-t">Ваша нить</span></button><p>Все пересечения собираются в одну нить — историю ваших общих точек</p></li>
+  <div class="mc">
+    <div class="mc-pin">
+      <img class="mc-bg" src="assets/case/fig/12-metaphor-bg.webp" width="1323" height="718" loading="lazy" alt="">
+      <span class="mc-shade" aria-hidden="true"></span>
+      <div class="mc-in">
+        <svg class="mc-line" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true">
+          <path class="mc-base" d="M0 30 C120 6 220 54 333 30 S560 6 667 30 S880 54 1000 30"/>
+          <path class="mc-lit" d="M0 30 C120 6 220 54 333 30 S560 6 667 30 S880 54 1000 30" pathLength="1"/>
+        </svg>
+        <ol class="mc-pts">
+          <li class="mc-pt"><span class="mc-dot" aria-hidden="true"></span><span class="mc-n">01</span><h3>Пересечения</h3><p>Вы встречаетесь в танцевальной среде — на занятиях, событиях или через общие интересы</p></li>
+          <li class="mc-pt"><span class="mc-dot" aria-hidden="true"></span><span class="mc-n">02</span><h3>Связь</h3><p>Вы добавляете друг друга и устанавливаете связь</p></li>
+          <li class="mc-pt"><span class="mc-dot" aria-hidden="true"></span><span class="mc-n">03</span><h3>Ваша нить</h3><p>Все пересечения собираются в одну нить — историю ваших общих точек</p></li>
         </ol>
-      </div>
-      <div class="mt-phone" id="mt-scr">
-        <span class="mt-glow" aria-hidden="true"></span>
-        <div class="mt-scr">
-          <img data-k="1" src="assets/case/people.webp" width="630" height="1654" loading="lazy" alt="Экран «Люди»: у Кати и Насти пометка «Были вместе на Frame Up» и кнопка «Создать связь»">
-          <img data-k="2" src="assets/case/request.webp" width="644" height="1378" loading="lazy" alt="Экран «Запрос отправлен»: связь появится, когда Алина подтвердит">
-          <img data-k="3" src="assets/case/connected.webp" width="630" height="1365" loading="lazy" alt="Экран «Связь установлена»: две аватарки, соединённые нитью, и блок «Ваша нить»">
-        </div>
       </div>
     </div>
   </div>
@@ -1491,26 +1520,6 @@ main .final.s28{margin-top:0}
   </section>
 
   <section class="final s28" id="final" aria-labelledby="fin-h">
-    <div class="cta rv">
-      <div class="live">
-        <span class="live-glow" aria-hidden="true"></span>
-        <div class="live-dev">
-          <img class="live-ph" src="assets/case/connected.webp" width="630" height="1365" loading="lazy" decoding="async" alt="Экран прототипа «Связь установлена»">
-          <iframe class="live-fr" title="Живой прототип Looma" data-src="https://ekateribogdana.github.io/looma/prototype/" tabindex="-1"></iframe>
-        </div>
-        <p class="live-cap"><i aria-hidden="true"></i>Живой прототип — нажимайте прямо здесь</p>
-      </div>
-      <div class="copy">
-        <p class="eyebrow">Живой прототип</p>
-        <h2 id="fin-h">Попробуйте Looma</h2>
-        <p class="lead">Онбординг, запись на занятие, связь с человеком и кабинет педагога — всё кликабельно</p>
-        <div class="acts">
-          <a class="b main" href="https://ekateribogdana.github.io/looma/prototype/" target="_blank" rel="noopener">Открыть прототип<svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M3.66667 11H17.4167M11.9167 16.5L17.4167 11L11.9167 5.5" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"/></svg></a>
-        </div>
-        <p class="tlinks"><a class="tl" href="https://www.figma.com/proto/u447DlmzAF0nb9kqw5iXc9/Looma?node-id=2-561&amp;starting-point-node-id=2-561" target="_blank" rel="noopener">Полная версия в Figma&nbsp;&nbsp;<i aria-hidden="true">↗</i></a><a class="tl" href="looma/case/">Презентация кейса&nbsp;&nbsp;<i aria-hidden="true">→</i></a></p>
-      </div>
-    </div>
-
     <div class="thx">
       <div class="bg" aria-hidden="true">
         <div class="photo"><img src="assets/case/fig/28-hands.webp" width="853" height="936" loading="lazy" decoding="async" alt=""></div>
@@ -1528,6 +1537,12 @@ main .final.s28{margin-top:0}
         </div>
         <p class="big">Спасибо<br><em>за</em> внимание</p>
         <p class="quote">Пусть ваша нить найдёт своих людей</p>
+        <div class="go">
+          <div class="acts">
+            <a class="b main" href="https://ekateribogdana.github.io/looma/prototype/" target="_blank" rel="noopener">Открыть прототип<svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M3.66667 11H17.4167M11.9167 16.5L17.4167 11L11.9167 5.5" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"/></svg></a>
+          </div>
+          <p class="tlinks"><a class="tl" href="https://www.figma.com/proto/u447DlmzAF0nb9kqw5iXc9/Looma?node-id=2-561&amp;starting-point-node-id=2-561" target="_blank" rel="noopener">Полная версия в Figma&nbsp;&nbsp;<i aria-hidden="true">↗</i></a><a class="tl" href="looma/case/">Презентация кейса&nbsp;&nbsp;<i aria-hidden="true">→</i></a></p>
+        </div>
         <dl class="crd">
           <div><dt class="cap">Продуктовый дизайнер</dt><dd>Екатерина Богданова</dd></div>
           <div><dt class="cap">Роль в проекте</dt><dd>Соло: исследование, продукт, UX/UI, айдентика, тест</dd></div>

@@ -77,44 +77,24 @@
     setTimeout(function () { requestAnimationFrame(step); }, 250);
   }
 
-  // ---------- метафора: на широком экране блок закреплён и шаги идут по прокрутке, на узком — по касанию и сами ----------
-  var mt = document.querySelector('.mt');
-  if (mt) {
-    var mpin = mt.querySelector('.mt-pin'), msts = $$('.mt-st', mt), wide = matchMedia('(min-width: 1001px)');
-    var mk = 1, mtimer = null, mheld = false;
-    function mgo(k) {
-      mk = k; mt.setAttribute('data-step', String(k));
-      msts.forEach(function (li) { var on = +li.dataset.k <= k; li.classList.toggle('on', on); li.classList.toggle('cur', +li.dataset.k === k); });
+  // ---------- метафора: кадр закреплён, нить протягивается и зажигает точки по прокрутке (широкие экраны) ----------
+  var mc = document.querySelector('.mc');
+  if (mc) {
+    var mpin = mc.querySelector('.mc-pin'), mpts = $$('.mc-pt', mc), wideM = matchMedia('(min-width: 1001px)');
+    function mcLayout() {
+      if (wideM.matches) { mc.classList.add('mc-sticky'); mc.style.height = (mpin.offsetHeight + innerHeight * 1.2) + 'px'; }
+      else { mc.classList.remove('mc-sticky'); mc.style.height = ''; mc.style.setProperty('--mc-p', 1); mpts.forEach(function (li) { li.classList.add('on'); }); }
     }
-    function mlayout() {
-      if (wide.matches) { mt.classList.add('mt-sticky'); mt.style.height = (mpin.offsetHeight + innerHeight * 1.6) + 'px'; }
-      else { mt.classList.remove('mt-sticky'); mt.style.height = ''; }
+    function mcScroll() {
+      if (!wideM.matches) return;
+      var r = mc.getBoundingClientRect(), run = mc.offsetHeight - mpin.offsetHeight;
+      var p = Math.min(1, Math.max(0, (-r.top + (innerHeight - mpin.offsetHeight) / 2) / Math.max(1, run)));
+      mc.style.setProperty('--mc-p', p.toFixed(3));
+      mpts.forEach(function (li, i) { li.classList.toggle('on', p >= i * .5 - .001); });
     }
-    function mscroll() {
-      if (!wide.matches) return;
-      var r = mt.getBoundingClientRect(), run = mt.offsetHeight - mpin.offsetHeight;
-      var p = Math.min(1, Math.max(0, (-r.top + 96) / Math.max(1, run)));
-      mt.style.setProperty('--mt-p', p.toFixed(3));
-      var k = p < .34 ? 1 : p < .67 ? 2 : 3; if (k !== mk) mgo(k);
-    }
-    msts.forEach(function (li) {
-      li.querySelector('.mt-b').addEventListener('click', function () {
-        var k = +li.dataset.k;
-        if (wide.matches) { var run = mt.offsetHeight - mpin.offsetHeight, top = mt.getBoundingClientRect().top + scrollY - 96; scrollTo({ top: top + run * ((k - 1) / 3 + .17), behavior: 'smooth' }); }
-        else { mheld = true; clearInterval(mtimer); mtimer = null; mgo(k); mt.style.setProperty('--mt-p', ((k - 1) / 2).toFixed(2)); }
-      });
-    });
-    new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        if (wide.matches || mheld) return;
-        if (e.isIntersecting && !mtimer) mtimer = setInterval(function () { var k = mk % 3 + 1; mgo(k); mt.style.setProperty('--mt-p', ((k - 1) / 2).toFixed(2)); }, 2800);
-        else if (!e.isIntersecting) { clearInterval(mtimer); mtimer = null; }
-      });
-    }, { threshold: .4 }).observe(mt);
-    mgo(1); mt.style.setProperty('--mt-p', '0');
-    mlayout(); mscroll();
-    addEventListener('scroll', mscroll, { passive: true });
-    addEventListener('resize', function () { mlayout(); mscroll(); });
+    mcLayout(); mcScroll();
+    addEventListener('scroll', mcScroll, { passive: true });
+    addEventListener('resize', function () { mcLayout(); mcScroll(); });
   }
 
   // ---------- финал: живой прототип грузится, когда блок близко к экрану (только широкие экраны) ----------
