@@ -5,7 +5,7 @@
   var vt = document.createElement('div');
   vt.id = 'vt';
   vt.setAttribute('aria-hidden', 'true');
-  vt.innerHTML = '<span><i></i>Е. Богданова</span>';
+  vt.innerHTML = '<span><i></i>Екатерина Богданова</span>';
   d.appendChild(vt);
 
   function reveal() {
