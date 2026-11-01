@@ -286,7 +286,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* ---------- phones ---------- */
 .phones{display:flex;gap:28px;align-items:flex-end;justify-content:center}
 .ph{display:flex;flex-direction:column;gap:18px;align-items:center;transition:transform .7s var(--ease), opacity .5s, filter .5s}
-.ph img{display:block;border-radius:36px;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06);transition:box-shadow .6s}
+/* экран: один формат на весь кейс. L 352 — один экран, M 316 — два-три, S 252 — ряд из шести. Рамка корпуса только у живого прототипа */
+.ph{--pw:316px}
+.ph img{display:block;width:var(--pw);height:auto;aspect-ratio:630/1365;object-fit:cover;object-position:top;border-radius:calc(var(--pw) * .14);box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06);transition:box-shadow .6s}
 .ph .n{font-size:var(--t-small);color:var(--faint);transition:color .3s}
 .ph:hover{transform:translateY(-22px)}
 .ph:hover img{box-shadow:0 50px 100px rgba(0,0,0,.7),0 0 0 1.5px rgba(254,93,87,.5),0 0 90px rgba(254,93,87,.28)}
@@ -294,8 +296,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .phones:has(.ph:hover) .ph:not(:hover){opacity:.45;filter:saturate(.5)}
 
 #s11{display:flex;flex-direction:column;gap:56px}
-#s11 .ph img{width:252px}
-#s12{display:grid;grid-template-columns:560px 1fr 460px;gap:40px;align-items:center}
+#s11 .ph{--pw:252px}
+#s12{display:grid;grid-template-columns:536px 1fr 460px;gap:40px;align-items:center}
 #s12 .left{display:flex;flex-direction:column;gap:20px;align-self:start;position:relative;z-index:2}
 #s12 .blocks{position:relative;z-index:2}
 .rings{position:relative;height:824px;display:grid;place-items:center}
@@ -306,7 +308,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .ring.pulse{width:540px;height:540px;margin:-270px;border:1.5px solid rgba(254,93,87,.5);animation:pulse 3.6s var(--ease) infinite}
 @keyframes pulse{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.85);opacity:0}}
 .rings .ph{position:relative;z-index:2}
-.rings .ph img{width:300px}
+.rings .ph{--pw:352px}
 .pins{position:absolute;inset:0;pointer-events:none}
 .pins i{position:absolute;right:-18px;width:36px;height:36px;margin-top:-18px;border-radius:50%;background:var(--red);color:var(--bg);display:grid;place-items:center;font:500 18px/1 var(--sans);font-style:normal;box-shadow:0 0 0 4px rgba(15,15,15,.9),0 0 24px rgba(254,93,87,.6);transition:transform .4s var(--ease),box-shadow .4s}
 #s12:has(.blocks div:nth-child(1):hover) .pins i:nth-child(1),#s12:has(.blocks div:nth-child(2):hover) .pins i:nth-child(2),#s12:has(.blocks div:nth-child(3):hover) .pins i:nth-child(3),#s12:has(.blocks div:nth-child(4):hover) .pins i:nth-child(4),#s12:has(.blocks div:nth-child(5):hover) .pins i:nth-child(5){transform:scale(1.3);box-shadow:0 0 0 4px rgba(15,15,15,.9),0 0 40px rgba(254,93,87,.9)}
@@ -320,14 +322,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 #s13 .left{display:flex;flex-direction:column;gap:20px}
 #s13 .ph img{width:320px}
 #s13 .phones{align-self:end;justify-content:flex-end;gap:32px}
-#s13 .ph img{width:316px}
 
-#s14{display:flex;flex-direction:column;gap:40px}
-#s14 .flow{display:grid;grid-template-columns:256px 1fr 256px 1fr 256px;align-items:start;justify-items:center;padding:0 60px}
-#s14 .ph img{width:248px;aspect-ratio:630/1365;object-fit:cover;object-position:top}
-#s14 .ph{gap:14px}
-#s14 .conn{margin-top:230px}
-#s14{gap:28px}
+#s14{display:grid;grid-template-columns:536px 1fr;gap:56px}
+#s14 .left{display:flex;flex-direction:column;gap:20px}
+#s14 .flow{display:grid;grid-template-columns:316px 1fr 316px 1fr 316px;align-items:start;justify-items:center;align-self:end}
+#s14 .conn{margin-top:300px}
 .conn{width:100%;height:80px;overflow:visible}
 .conn path{fill:none;stroke:var(--red);stroke-width:2;filter:drop-shadow(0 0 6px var(--red));stroke-dasharray:6 10;animation:flow 1.2s linear infinite}
 .conn circle{fill:#fff;filter:drop-shadow(0 0 8px var(--red))}
@@ -496,14 +495,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 #iter .ba div.on{border-color:rgba(254,93,87,.55)}
 #iter .ba p{font-family:var(--serif);font-size:var(--t-h3);line-height:1.15}
 #iter .phones{gap:56px;align-items:flex-start;justify-content:center;margin-top:44px}
-#iter .ph img{width:auto;height:736px;border-radius:32px}
 #iter .ph:nth-child(2) .n{color:var(--red)}
 
 /* s5 · метафора: один экран меняется вместе с активным шагом */
 #s5 .mx{position:relative;display:grid;place-items:center;height:824px}
 #s5 .mx-glow{position:absolute;width:760px;height:760px;border-radius:50%;background:radial-gradient(closest-side,rgba(254,93,87,.22),rgba(254,93,87,.06) 55%,transparent);filter:blur(6px);animation:mx-breathe 5s ease-in-out infinite}
 @keyframes mx-breathe{0%,100%{transform:scale(.94);opacity:.8}50%{transform:scale(1.04);opacity:1}}
-#s5 .mx-ph{position:relative;width:352px;aspect-ratio:630/1365;border-radius:52px;overflow:hidden;background:#0f0f0f;box-shadow:0 0 0 1px rgba(255,255,255,.1),0 0 0 9px #0b0b0b,0 0 0 10px rgba(254,93,87,.35),0 60px 140px -30px rgba(0,0,0,.95),0 0 90px rgba(254,93,87,.2)}
+#s5 .mx-ph{position:relative;width:352px;aspect-ratio:630/1365;border-radius:calc(352px * .14);overflow:hidden;background:#0f0f0f;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06)}
 #s5 .mx-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transform:translateY(16px) scale(1.03);transition:opacity .7s var(--ease),transform .9s var(--ease)}
 #s5 .mx[data-k="1"] img[data-k="1"],#s5 .mx[data-k="2"] img[data-k="2"],#s5 .mx[data-k="3"] img[data-k="3"]{opacity:1;transform:none}
 #s5 .mx-dots{position:absolute;bottom:0;display:flex;gap:10px}
@@ -768,8 +766,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     <div class="mx ri" style="--d:1" data-k="1">
       <span class="mx-glow" aria-hidden="true"></span>
       <div class="mx-ph">
-        <img data-k="1" src="assets/looma-deck/people.webp" alt="Экран «Люди»: пометка «Были вместе на занятии» и кнопка «Создать связь»">
-        <img data-k="2" src="assets/looma-deck/request.webp" alt="Экран «Запрос отправлен»: связь появится после подтверждения">
+        <img data-k="1" src="assets/looma-deck/people-ph.webp" alt="Экран «Люди»: пометка «Были вместе на занятии» и кнопка «Создать связь»">
+        <img data-k="2" src="assets/looma-deck/request-ph.webp" alt="Экран «Запрос отправлен»: связь появится после подтверждения">
         <img data-k="3" src="assets/looma-deck/connected.webp" alt="Экран «Связь установлена» и «Ваша нить»">
       </div>
       <div class="mx-dots" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -880,14 +878,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     </div>
     <div class="rings ri" style="--d:1">
       <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div><div class="ring pulse"></div>
-      <div class="ph" style="position:relative"><img src="assets/looma-deck/home.webp" alt="Главный экран «Для вас»" data-tilt><span class="pins" aria-hidden="true"><i style="top:15%">1</i><i style="top:25%">2</i><i style="top:48%">3</i><i style="top:71%">4</i><i style="top:88.5%">5</i></span></div>
+      <div class="ph" style="position:relative"><img src="assets/looma-deck/home-ph.webp" alt="Главный экран «Для вас»" data-tilt><span class="pins" aria-hidden="true"><i style="top:17.5%">1</i><i style="top:29%">2</i><i style="top:56%">3</i><i style="top:80%">4</i></span></div>
     </div>
     <div class="blocks">
       <div class="r" style="--d:3"><span>1</span>Фильтры: люди, занятия, события, стили</div>
       <div class="r" style="--d:4"><span>2</span>Рекомендуемые люди</div>
       <div class="r" style="--d:5"><span>3</span>Ближайшие занятия</div>
       <div class="r" style="--d:6"><span>4</span>Ближайшие события</div>
-      <div class="r" style="--d:7"><span>5</span>Настроить рекомендации</div>
     </div>
   </section>
 
@@ -907,14 +904,15 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
   <!-- 14 connections -->
   <section class="slide" id="s14" data-sec="C">
-    <div class="top r" style="--d:0">
-      <div class="col"><div class="eyebrow"><b>Проектирование</b><span>Знакомства</span></div><h2 class="h2">Связи</h2></div>
-      <div class="col"><span class="lbl">Сценарий</span><p class="lead" style="max-width:900px">Найти человека, отправить запрос и получить общую нить&nbsp;— историю ваших пересечений. С кем были на одном занятии&nbsp;— предложить связь, с остальными&nbsp;— подписаться</p></div>
+    <div class="left">
+      <div class="r" style="--d:0"><div class="eyebrow"><b>Проектирование</b><span>Знакомства</span></div></div>
+      <h2 class="h2 r" style="--d:1">Связи</h2>
+      <p class="lead r" style="--d:2;margin-top:8px">Найти человека, отправить запрос и&nbsp;получить общую нить&nbsp;— историю ваших пересечений. С&nbsp;кем были на одном занятии&nbsp;— предложить связь, с&nbsp;остальными&nbsp;— подписаться</p>
     </div>
     <div class="flow phones">
-      <div class="ph r" style="--d:1"><img src="assets/looma-deck/people.webp" alt="Экран «Люди»"><span class="n">Люди</span></div>
+      <div class="ph r" style="--d:1"><img src="assets/looma-deck/people-ph.webp" alt="Экран «Люди»"><span class="n">Люди</span></div>
       <svg class="conn r" style="--d:2" viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 C 60 0, 140 80, 200 40"/><circle cx="200" cy="40" r="5"/></svg>
-      <div class="ph r" style="--d:3"><img src="assets/looma-deck/request.webp" alt="Экран «Запрос отправлен»"><span class="n">Запрос отправлен</span></div>
+      <div class="ph r" style="--d:3"><img src="assets/looma-deck/request-ph.webp" alt="Экран «Запрос отправлен»"><span class="n">Запрос отправлен</span></div>
       <svg class="conn r" style="--d:4" viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 C 60 80, 140 0, 200 40"/><circle cx="200" cy="40" r="5"/></svg>
       <div class="ph r" style="--d:5"><img src="assets/looma-deck/connected.webp" alt="Экран «Связь установлена»"><span class="n">Связь установлена</span></div>
     </div>
@@ -1001,8 +999,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
       </div>
     </div>
     <div class="phones">
-      <div class="ph r" style="--d:3"><img src="assets/case/fig/26-form-before.webp" width="604" height="1694" alt="Форма «Новое занятие» до правки: лимит мест спрятан в «Настройках записи» внизу формы, под описанием"><span class="n">До</span></div>
-      <div class="ph r" style="--d:4"><img src="assets/case/fig/26-form-after.webp" width="604" height="1733" alt="Форма «Новое занятие» после правки: поле «Мест» стоит рядом с ценой, под ними пояснение&nbsp;— когда места закончатся, запись закроется, а новые ученики смогут встать в лист ожидания"><span class="n">После</span></div>
+      <div class="ph r" style="--d:3"><img src="assets/case/fig/26-form-before-ph.webp" width="604" height="1309" alt="Форма «Новое занятие» до правки: лимит мест спрятан в «Настройках записи» внизу формы, под описанием"><span class="n">До</span></div>
+      <div class="ph r" style="--d:4"><img src="assets/case/fig/26-form-after-ph.webp" width="604" height="1309" alt="Форма «Новое занятие» после правки: поле «Мест» стоит рядом с ценой, под ними пояснение&nbsp;— когда места закончатся, запись закроется, а новые ученики смогут встать в лист ожидания"><span class="n">После</span></div>
     </div>
   </section>
 
