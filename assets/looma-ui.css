@@ -164,8 +164,16 @@
 .s08 .s08-shot .ui-story .u-who img{width:24px;height:24px}
 .s08 .s08-shot .ui-consent .u-pair img{width:48px;height:48px}
 .s07 .h7-shot,.s08 .s08-shot{background:#0f0f0f}
-@media (max-width:1000px){.s08 .s08-row .s08-shot{height:auto;min-height:260px}}
-@media (max-width:700px){.s08 .s08-row .s08-shot{width:100%;max-width:340px;min-height:300px}}
+@media (max-width:1000px){.s08 .s08-row .s08-shot{width:260px;height:340px;min-height:0}}
+@media (max-width:700px){
+  .s08 .s08-row .s08-shot{width:100%;max-width:340px;height:auto;aspect-ratio:1/1;min-height:0}
+  .s08 .s08-row .s08-shot:has(.ui-story){aspect-ratio:4/5}
+  .s08 .s08-row .s08-shot:has(.ui-switch),.s08 .s08-row .s08-shot:has(.ui-consent){aspect-ratio:4/3}
+  .s08 .s08-shot .ui{position:absolute;inset:0;height:auto}
+  .s08 .s08-shot .ui-story .u-t{font-size:26px}
+  .s08 .s08-shot .ui-consent .u-pair img{width:64px;height:64px}
+  .s08 .s08-shot .ui-consent .u-pair i{width:56px}
+}
 
 .ui-switch .u-tabs{grid-template-columns:1fr 1.6fr 1fr 1fr}
 .ui-switch .u-tabs .u-sw{display:grid;grid-template-rows:auto auto;justify-items:center;min-height:0}
