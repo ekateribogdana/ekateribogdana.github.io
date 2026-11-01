@@ -1,0 +1,21 @@
+/* Переходы между страницами сайта (кейсы, резюме, прототип Looma).
+   Cross-document View Transitions: Chrome/Edge 126+, Safari 18.2+; в остальных браузерах обычный переход.
+   Подключать на каждой странице в <head>: <link rel="stylesheet" href="/assets/transitions.css"><script src="/assets/transitions.js"></script> */
+@view-transition{navigation:auto}
+
+/* новая страница поднимается занавесом снизу, старая уезжает вверх и темнеет */
+::view-transition-group(root){animation-duration:.8s;animation-timing-function:cubic-bezier(.7,0,.2,1)}
+::view-transition-old(root){animation:vt-out .8s cubic-bezier(.7,0,.2,1) both}
+::view-transition-new(root){animation:vt-in .8s cubic-bezier(.7,0,.2,1) both}
+@keyframes vt-out{to{transform:translateY(-12vh);filter:brightness(.4)}}
+@keyframes vt-in{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0)}}
+
+/* назад — занавес опускается сверху */
+html:active-view-transition-type(back)::view-transition-old(root){animation-name:vt-out-back}
+html:active-view-transition-type(back)::view-transition-new(root){animation-name:vt-in-back}
+@keyframes vt-out-back{to{transform:translateY(12vh);filter:brightness(.4)}}
+@keyframes vt-in-back{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0)}}
+
+@media (prefers-reduced-motion:reduce){
+  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
+}
