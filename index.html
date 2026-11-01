@@ -126,7 +126,7 @@ ul,ol{list-style:none}
 .l-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,6vw,96px);margin-top:48px}
 .l-text p{max-width:460px}
 .l-text p+p{margin-top:20px}
-.hl{color:var(--bow);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.hl{color:var(--bow)}
 .l-text .pills{margin-top:32px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink)}
 .stats li{padding:20px 20px 0 0}
@@ -188,12 +188,13 @@ ul,ol{list-style:none}
 .ab{display:grid;grid-template-columns:4fr 8fr;gap:clamp(40px,6vw,112px);margin-top:48px;align-items:start}
 .polaroid{background:#FBF3E7;padding:16px 16px 20px;box-shadow:0 2px 0 rgba(42,22,16,.08),0 32px 56px -28px rgba(42,22,16,.45);transform:rotate(-4deg);max-width:360px;margin:16px auto 0;position:sticky;top:48px}
 .board{position:sticky;top:48px;max-width:360px;width:100%;margin:16px auto 0}
-.board .polaroid{position:relative;top:auto;margin:0}
+.board .polaroid{position:relative;top:auto;margin:0;padding:12px 12px 0}
+.board .polaroid figcaption{margin:0;min-height:44px;padding:8px 0;display:flex;align-items:center;justify-content:center}
 .board .minis{display:flex;justify-content:space-between;margin-top:-12px;padding:0 4px}
-.board .mini{width:52%;padding:8px 8px 12px;transform:rotate(5deg);margin-top:40px}
+.board .mini{flex:0 0 52%;min-width:0;transform:rotate(5deg);margin-top:40px}
 .board .mini+.mini{transform:rotate(-6deg);margin-top:24px;margin-left:-8%}
 .board .mini::before{width:64px;height:20px;top:-12px}
-.board .mini figcaption{margin-top:8px;font-size:10px}
+.board .mini figcaption{font-size:10px;letter-spacing:.06em;min-height:48px;text-align:center}
 .polaroid::before{content:"";position:absolute;top:-16px;left:50%;width:104px;height:32px;transform:translateX(-50%) rotate(3deg);background:rgba(200,155,114,.75)}
 .polaroid img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1)}
 .polaroid figcaption{margin-top:16px;text-align:center;color:var(--olive)}
@@ -511,6 +512,7 @@ body{font-variant-numeric:lining-nums}
       <p>Одно из&nbsp;ключевых решений — <span class="hl">сначала подборка, потом регистрация</span>. Главная метрика Looma — записи на&nbsp;занятия, а&nbsp;новичков легче всего потерять на&nbsp;форме регистрации. Поэтому человек сначала выбирает интересы и&nbsp;видит занятия, а&nbsp;форму заполняет в&nbsp;конце. Минус в&nbsp;том, что кто-то уйдёт, так и&nbsp;не&nbsp;оставив контакт. Проверить решение хочу A/B-тестом.</p>
       <div class="pills">
         <a class="pill solid" href="looma.html">Читать кейс <span class="ar" aria-hidden="true">→</span></a>
+        <a class="pill line" href="https://ekateribogdana.github.io/looma/prototype/" target="_blank" rel="noopener">Открыть прототип <span class="ar" aria-hidden="true">↗</span></a>
       </div>
     </div>
     <div class="l-proof">
