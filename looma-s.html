@@ -119,14 +119,14 @@ a{color:inherit}
 
 /* ---------- toc ---------- */
 .toc{display:flex;flex-direction:column;margin-top:28px}
-.toc button{display:grid;grid-template-columns:44px 1fr 18px;gap:4px 8px;align-items:baseline;padding:18px 0;border-top:1px solid var(--line);width:100%}
-.toc button:last-child{border-bottom:1px solid var(--line)}
+.toc>div{display:grid;grid-template-columns:44px 1fr;gap:4px 8px;align-items:baseline;padding:18px 0;border-top:1px solid var(--line);width:100%}
+.toc>div:last-child{border-bottom:1px solid var(--line)}
 .toc .k{font-family:var(--serif);font-size:24px;color:var(--faint)}
 .toc .t{font-family:var(--serif);font-size:27px;line-height:1.05;color:var(--muted)}
 .toc .d{grid-column:2;font-size:13px;line-height:1.4;color:var(--faint);margin-top:2px}
 .toc svg{width:18px;height:18px;stroke:var(--red);fill:none;stroke-width:1.6;align-self:center}
-.toc button.on .k{color:var(--red)}
-.toc button.on .t{color:var(--text)}
+.toc .on .k{color:var(--red)}
+.toc .on .t{color:var(--text)}
 
 /* ---------- pieces ---------- */
 .quote{font-family:var(--serif);font-size:40px;line-height:1.04}
@@ -284,7 +284,7 @@ a{color:inherit}
 #stage.short .step{padding:14px 0}
 #stage.short .ol{gap:4px}
 #stage.short .ol li{font-size:14px}
-#stage.short .toc button{padding:13px 0}
+#stage.short .toc>div{padding:13px 0}
 #stage.short .ten{font-size:120px}
 #stage.short .chap .big{font-size:48px}
 #stage.short #s-cover .in{bottom:60px;gap:12px}
@@ -340,10 +340,10 @@ a{color:inherit}
     <div class="eb r"><b>Содержание</b><span>4 этапа · 2 месяца</span></div>
     <h2 class="h r" style="--d:1">Процесс работы</h2>
     <div class="toc r" style="--d:2">
-      <button class="on" data-go="s-about"><span class="k">01</span><span class="t">О проекте и исследование</span><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg><span class="d">Контекст, интервью, конкуренты, гипотезы, MVP</span></button>
-      <button data-go="s-chap2"><span class="k">02</span><span class="t">Метафора и бренд</span><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg><span class="d">Красная нить, логотип, цвет, типографика</span></button>
-      <button data-go="s-chap3"><span class="k">03</span><span class="t">Проектирование</span><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg><span class="d">Онбординг, лента, истории, связи, прототип</span></button>
-      <button data-go="s-chap4"><span class="k">04</span><span class="t">Тестирование и итоги</span><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg><span class="d">Тест с&nbsp;педагогами, итерация, выводы</span></button>
+      <div class="on"><span class="k">01</span><span class="t">О проекте и исследование</span><span class="d">Контекст, интервью, конкуренты, гипотезы, MVP</span></div>
+      <div><span class="k">02</span><span class="t">Метафора и бренд</span><span class="d">Красная нить, логотип, цвет, типографика</span></div>
+      <div><span class="k">03</span><span class="t">Проектирование</span><span class="d">Онбординг, лента, истории, связи, прототип</span></div>
+      <div><span class="k">04</span><span class="t">Тестирование и итоги</span><span class="d">Тест с&nbsp;педагогами, итерация, выводы</span></div>
     </div>
   </section>
 
@@ -684,7 +684,7 @@ a{color:inherit}
     <div class="eb r"><b>Живой прототип</b></div>
     <h2 class="h r" style="--d:1">Попробуйте Looma</h2>
     <p class="ld r" style="--d:2">Онбординг, запись на занятие, связь и кабинет педагога</p>
-    <div class="fill r" style="--d:3"><a class="device" href="/looma/prototype/" target="_blank" rel="noopener" aria-label="Открыть прототип Looma"><img src="assets/looma-deck/ob1.webp" alt=""></a></div>
+    <div class="fill r" style="--d:3"><div class="device"><img src="assets/looma-deck/ob1.webp" alt="Стартовый экран прототипа Looma"></div></div>
     <a class="btn main r" style="--d:4" href="/looma/prototype/" target="_blank" rel="noopener">Открыть прототип <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
   </section>
 
