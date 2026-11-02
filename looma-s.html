@@ -256,6 +256,22 @@ a{color:inherit}
 .cn-pill{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:22px;border:1px solid var(--line2);font-size:14px;text-decoration:none}
 .cn-pill i{width:7px;height:7px;border-radius:50%;background:#7E2625}
 
+/* type «мысль»: one big phrase on a dark red field */
+.s.accent{background:radial-gradient(ellipse 120% 70% at 50% 110%,rgba(158,5,0,.55),rgba(60,8,6,.35) 45%,transparent 75%),#120B0A}
+.st{font-family:var(--serif);font-weight:500;font-size:42px;line-height:1.08;letter-spacing:-.005em;margin:auto 0 0}
+.st:last-child{margin-bottom:auto}
+.st+.who,.st+.txt{margin-bottom:auto}
+.st+.txt{margin-top:24px}
+.st em{font-style:italic;color:var(--red)}
+.st.q{font-weight:400;font-style:italic;font-size:32px;line-height:1.22}
+.st+.who{margin-top:16px}
+.accent .eb b{color:var(--red)}
+/* type «тезис с экраном»: the screen that proves the point peeks from the bottom edge */
+.peek{position:absolute;left:50%;bottom:0;width:250px;height:290px;transform:translateX(-50%);overflow:hidden;border-radius:35px 35px 0 0;box-shadow:0 -20px 60px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08);background:#0f0f0f}
+.peek img{display:block;width:100%;height:auto}
+.peek::after{content:"";position:absolute;left:0;right:0;bottom:0;height:60px;background:linear-gradient(180deg,rgba(15,15,15,0),rgba(15,15,15,.85))}
+.s.pk::before{content:"";position:absolute;left:50%;bottom:-80px;width:420px;height:300px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(254,93,87,.16),transparent);pointer-events:none}
+
 /* short screens (iPhone SE and alike): the same layout, a step smaller */
 #stage.short .s{padding-top:80px;padding-bottom:22px}
 #stage.short .h{font-size:31px}
@@ -273,6 +289,9 @@ a{color:inherit}
 #stage.short .chap .big{font-size:48px}
 #stage.short #s-cover .in{bottom:60px;gap:12px}
 #stage.short .opt{display:none}
+#stage.short .peek{width:190px;height:200px;border-radius:27px 27px 0 0}
+#stage.short .st{font-size:36px}
+#stage.short .st.q{font-size:27px}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -330,19 +349,23 @@ a{color:inherit}
 
   <!-- ===================== 01 ===================== -->
   <section class="s" id="s-about" data-ch="1">
-    <div class="eb r"><b>О проекте и исследование</b><span>Коротко</span></div>
+    <div class="eb r"><b>Коротко</b></div>
     <h2 class="h r" style="--d:1">О проекте</h2>
     <div class="list body r" style="--d:2;gap:0">
       <div><span class="lb">Приложение</span><b>Looma&nbsp;— пространство для танцоров</b></div>
       <div><span class="lb">Задача</span><b>Находить занятия и события, знакомиться и расти внутри сообщества</b></div>
       <div><span class="lb">Проблема</span><b>Занятия, события и люди живут в разных местах</b></div>
     </div>
-    <p class="quote low r" style="--d:4">Информация есть,<br><em>связей</em> между ней&nbsp;— <span class="strike">нет</span></p>
+  </section>
+
+  <section class="s accent" id="s-gap" data-ch="1">
+    <div class="eb r"><b>Главное</b></div>
+    <p class="st r" style="--d:1">Информация есть,<br><em>связей</em> между ней&nbsp;— <span class="strike">нет</span></p>
   </section>
 
   <section class="s" id="s-points" data-ch="1">
     <img class="bgimg" src="assets/looma-deck/threads-bg.webp" alt="">
-    <div class="eb r" style="position:relative"><b>О проекте и исследование</b><span>Что объединяет Looma</span></div>
+    <div class="eb r" style="position:relative"><b>Что объединяет Looma</b></div>
     <h2 class="h r" style="--d:1;position:relative">Четыре точки одной нити</h2>
     <div class="fill r" style="--d:2">
       <div class="circles">
@@ -354,15 +377,14 @@ a{color:inherit}
     </div>
   </section>
 
-  <section class="s" id="s-ctx" data-ch="1">
-    <div class="eb r"><b>О проекте и исследование</b><span>Контекст</span></div>
-    <h2 class="h r" style="--d:1">Откуда проект</h2>
-    <p class="say body r" style="--d:2">Проект вырос из моего опыта в&nbsp;танцах: занятия ищешь в чатах, о&nbsp;событиях узнаёшь из соцсетей студий, а&nbsp;знакомства с мастер-классов теряются</p>
-    <p class="txt r" style="--d:3;margin-top:20px">Я много раз обсуждала это с танцорами в раздевалках и на занятиях&nbsp;— и раз за разом слышала одно и то же</p>
+  <section class="s accent" id="s-ctx" data-ch="1">
+    <div class="eb r"><b>Откуда проект</b></div>
+    <p class="st q r" style="--d:1">Занятия ищешь в&nbsp;чатах, о&nbsp;событиях узнаёшь из соцсетей студий, а&nbsp;знакомства с&nbsp;мастер-классов теряются</p>
+    <p class="txt r" style="--d:2">Проект вырос из моего опыта в танцах. Я много раз обсуждала это с танцорами в раздевалках&nbsp;— и слышала одно и то же</p>
   </section>
 
   <section class="s" id="s-roles" data-ch="1">
-    <div class="eb r"><b>О проекте и исследование</b><span>Для кого</span></div>
+    <div class="eb r"><b>Для кого</b></div>
     <h2 class="h r" style="--d:1">Две роли</h2>
     <div class="body">
       <div class="card r" style="--d:2"><span class="lb red">Учиться танцевать</span><h3>Танцоры</h3><p>Хотят находить занятия под свой стиль и уровень и знакомиться</p><div class="m"><span class="lb">Боль</span><p>Информация разбросана, о педагоге ничего не понятно до первого занятия</p></div></div>
@@ -371,7 +393,7 @@ a{color:inherit}
   </section>
 
   <section class="s" id="s-res" data-ch="1">
-    <div class="eb r"><b>О проекте и исследование</b><span>Исследование</span></div>
+    <div class="eb r"><b>Исследование</b></div>
     <h2 class="h r" style="--d:1">Как танцоры находят занятия</h2>
     <p class="ld r" style="--d:2">Интервью с 6 танцорами и 3 педагогами. Спрашивала, где нашли последнее занятие&nbsp;— набралось 10 случаев</p>
     <div class="card body r" style="--d:3;gap:16px">
@@ -385,15 +407,20 @@ a{color:inherit}
     </div>
   </section>
 
-  <section class="s" id="s-q1" data-ch="1">
-    <div class="eb r"><b>О проекте и исследование</b><span>Что говорили</span></div>
-    <h2 class="h r" style="--d:1">Педагог</h2>
-    <div class="body r" style="--d:2"><p class="say">«Расписание у меня в трёх местах: чат группы, сторис и пост. Если что-то переношу&nbsp;— правлю везде и всё равно кто-то приходит не в то время»</p><p class="who">— педагог, Frame Up</p></div>
-    <div class="body low r" style="--d:3;border-top:1px solid var(--line);padding-top:20px"><span class="lb">Танцовщица</span><p class="say" style="font-size:23px">«Про мастер-класс узнала из сторис подруги. Пока собралась записаться, сторис уже пропала»</p><p class="who" style="margin-top:0">— 2 года в High Heels</p></div>
+  <section class="s accent" id="s-q1" data-ch="1">
+    <div class="eb r"><b>Что говорили · педагог</b></div>
+    <p class="st q r" style="--d:1">«Расписание у меня в&nbsp;трёх местах: чат группы, сторис и&nbsp;пост. Если что-то переношу&nbsp;— правлю везде и&nbsp;всё равно кто-то приходит не&nbsp;в&nbsp;то время»</p>
+    <p class="who r" style="--d:2">— педагог, Frame Up</p>
+  </section>
+
+  <section class="s accent" id="s-q2" data-ch="1">
+    <div class="eb r"><b>Что говорили · танцовщица</b></div>
+    <p class="st q r" style="--d:1">«Про мастер-класс узнала из сторис подруги. Пока собралась записаться, сторис уже пропала»</p>
+    <p class="who r" style="--d:2">— 2 года в High Heels</p>
   </section>
 
   <section class="s" id="s-crew" data-ch="1">
-    <div class="eb r"><b>О проекте и исследование</b><span>С кем говорила</span></div>
+    <div class="eb r"><b>С кем говорила</b></div>
     <h2 class="h r" style="--d:1">Мои танцевальные группы</h2>
     <p class="ld r" style="--d:2">Среди них и участницы интервью</p>
     <div class="fill r" style="--d:3">
@@ -405,22 +432,24 @@ a{color:inherit}
     </div>
   </section>
 
-  <section class="s" id="s-p1" data-ch="1">
-    <div class="eb r"><b>О проекте и исследование</b><span>Проблема 1 из 2</span></div>
+  <section class="s pk" id="s-p1" data-ch="1">
+    <div class="eb r"><b>Проблема 1 из 2</b></div>
     <h2 class="h r" style="--d:1">Информация разбросана</h2>
     <p class="ld r" style="--d:2">Расписание, стоимость и запись лежат в разных местах. Иногда приходится писать педагогу, чтобы уточнить детали</p>
     <div class="card hot body r" style="--d:3"><span class="lb red">Что сделала в Looma</span><p style="color:var(--text);font-size:18px">Карточка занятия: время, место, цена и запись на одном экране</p></div>
+      <div class="peek r" style="--d:4"><img src="assets/case/fig/07-class.webp" alt="Карточка занятия: дата, время, место и цена на одном экране"></div>
   </section>
 
-  <section class="s" id="s-p2" data-ch="1">
-    <div class="eb r"><b>О проекте и исследование</b><span>Проблема 2 из 2</span></div>
+  <section class="s pk" id="s-p2" data-ch="1">
+    <div class="eb r"><b>Проблема 2 из 2</b></div>
     <h2 class="h r" style="--d:1">Непонятно, актуальна ли информация</h2>
     <p class="ld r" style="--d:2">Анонсы в сторис исчезают, а изменения расписания не всегда доходят до всех каналов</p>
     <div class="card hot body r" style="--d:3"><span class="lb red">Что сделала в Looma</span><p style="color:var(--text);font-size:18px">Педагог меняет занятие в одном месте&nbsp;— ученики видят актуальную версию и получают уведомление</p></div>
+      <div class="peek r" style="--d:4"><img src="assets/case/fig/07-teacher.webp" alt="Кабинет педагога: занятия и число записавшихся"></div>
   </section>
 
   <section class="s" id="s-comp" data-ch="1">
-    <div class="eb r"><b>О проекте и исследование</b><span>Конкуренты</span></div>
+    <div class="eb r"><b>Конкуренты</b></div>
     <h2 class="h r" style="--d:1">Где ещё ищут занятия</h2>
     <p class="ld r" style="--d:2">Ни один канал не связывает людей после занятия</p>
     <div class="cmp body r" style="--d:3;gap:0">
@@ -433,7 +462,7 @@ a{color:inherit}
   </section>
 
   <section class="s" id="s-hyp" data-ch="1">
-    <div class="eb r"><b>О проекте и исследование</b><span>Гипотезы</span></div>
+    <div class="eb r"><b>Гипотезы</b></div>
     <h2 class="h r" style="--d:1">Три гипотезы</h2>
     <p class="ld r" style="--d:2">Одна выросла из исследования, две&nbsp;— мои предположения. Каждую проверю на 5 людях</p>
     <div class="steps body r" style="--d:3;gap:0">
@@ -443,29 +472,32 @@ a{color:inherit}
     </div>
   </section>
 
-  <section class="s" id="s-hyp1" data-ch="1">
-    <div class="eb r"><b>О проекте и исследование</b><span>Гипотеза 1 из 3</span></div>
+  <section class="s pk" id="s-hyp1" data-ch="1">
+    <div class="eb r"><b>Гипотеза 1 из 3</b></div>
     <h2 class="h r" style="--d:1">Ценность до регистрации</h2>
     <p class="ld r" style="--d:2">Если сначала показать подборку, а регистрацию дать последней, больше новичков дойдут до первой записи</p>
     <div class="card body r" style="--d:3"><span class="lb">Предположение · не проверено</span><div class="m"><span class="lb red">Как проверю</span><p>Спрошу 5 танцоров, нашли ли они занятие в Looma быстрее, чем в чатах, и дошли ли до записи</p></div></div>
+      <div class="peek r" style="--d:4"><img src="assets/looma-deck/home-ph.webp" alt="Лента «Для вас» до регистрации"></div>
   </section>
 
-  <section class="s" id="s-hyp2" data-ch="1">
-    <div class="eb r"><b>О проекте и исследование</b><span>Гипотеза 2 из 3</span></div>
+  <section class="s pk" id="s-hyp2" data-ch="1">
+    <div class="eb r"><b>Гипотеза 2 из 3</b></div>
     <h2 class="h r" style="--d:1">Расписание в Looma</h2>
     <p class="ld r" style="--d:2">Если опубликовать занятие проще, чем вести чаты, педагоги начнут вести расписание в Looma</p>
     <div class="card hot body r" style="--d:3"><span class="lb red">Из исследования</span><div class="m"><span class="lb red">Как проверю</span><p>Попрошу 5 педагогов неделю вести расписание только в Looma и спрошу, вернулись бы они к чатам</p></div></div>
+      <div class="peek r" style="--d:4"><img src="assets/case/fig/07-teacher.webp" alt="Кабинет педагога «Мои занятия»"></div>
   </section>
 
-  <section class="s" id="s-hyp3" data-ch="1">
-    <div class="eb r"><b>О проекте и исследование</b><span>Гипотеза 3 из 3</span></div>
+  <section class="s pk" id="s-hyp3" data-ch="1">
+    <div class="eb r"><b>Гипотеза 3 из 3</b></div>
     <h2 class="h r" style="--d:1">Связь удерживает</h2>
     <p class="ld r" style="--d:2">Если после общей встречи предложить связь, люди будут возвращаться в приложение</p>
     <div class="card body r" style="--d:3"><span class="lb">Из моего опыта · не проверено</span><div class="m"><span class="lb red">Как проверю</span><p>После общего занятия спрошу 5 танцоров, отправили бы они запрос на связь и открыли бы приложение снова</p></div></div>
+      <div class="peek r" style="--d:4"><img src="assets/case/fig/07-connected.webp" alt="«Связь установлена» и «Ваша нить»"></div>
   </section>
 
   <section class="s" id="s-scope1" data-ch="1">
-    <div class="eb r"><b>О проекте и исследование</b><span>Приоритизация</span></div>
+    <div class="eb r"><b>Приоритизация</b></div>
     <h2 class="h r" style="--d:1">Что вошло в MVP</h2>
     <p class="ld r" style="--d:2">Главный путь: найти занятие, прийти и познакомиться</p>
     <div class="list body r" style="--d:3;gap:0">
@@ -478,7 +510,7 @@ a{color:inherit}
   </section>
 
   <section class="s" id="s-scope2" data-ch="1">
-    <div class="eb r"><b>О проекте и исследование</b><span>Приоритизация</span></div>
+    <div class="eb r"><b>Приоритизация</b></div>
     <h2 class="h r" style="--d:1">Что отложила</h2>
     <p class="ld r" style="--d:2">Это пригодится, когда базовый путь заработает</p>
     <div class="list body r" style="--d:3;gap:0">
@@ -497,7 +529,7 @@ a{color:inherit}
   </section>
 
   <section class="s" id="s-metaphor" data-ch="2">
-    <div class="eb r"><b>Метафора и бренд</b><span>Метафора</span></div>
+    <div class="eb r"><b>Метафора</b></div>
     <h2 class="h r" style="--d:1">Красная нить&nbsp;— метафора связи между людьми</h2>
     <div class="steps body r" style="--d:2;gap:0">
       <div class="step"><span class="o">1</span><div><h3>Пересечения</h3><p>Вы встречаетесь на занятиях, событиях или через общие интересы</p></div></div>
@@ -507,7 +539,7 @@ a{color:inherit}
   </section>
 
   <section class="s" id="s-logo" data-ch="2">
-    <div class="eb r"><b>Метафора и бренд</b><span>Айдентика</span></div>
+    <div class="eb r"><b>Айдентика</b></div>
     <h2 class="h r" style="--d:1">Логотип</h2>
     <p class="ld r" style="--d:2">Нить проходит сквозь буквы и связывает их в одно слово. Иконка собрана из той же нити</p>
     <div class="fill r" style="--d:3">
@@ -519,7 +551,7 @@ a{color:inherit}
   </section>
 
   <section class="s" id="s-color" data-ch="2">
-    <div class="eb r"><b>Метафора и бренд</b><span>Дизайн-система</span></div>
+    <div class="eb r"><b>Дизайн-система</b></div>
     <h2 class="h r" style="--d:1">Цвет</h2>
     <div class="body r" style="--d:2;gap:0">
       <div class="grp"><span class="lb">Фон</span><div class="sw">
@@ -545,7 +577,7 @@ a{color:inherit}
   </section>
 
   <section class="s" id="s-comps" data-ch="2">
-    <div class="eb r"><b>Метафора и бренд</b><span>Дизайн-система</span></div>
+    <div class="eb r"><b>Дизайн-система</b></div>
     <h2 class="h r" style="--d:1">Компоненты</h2>
     <div class="body r" style="--d:2;gap:20px">
       <div><span class="lb">Кнопки и чипсы</span>
@@ -560,7 +592,7 @@ a{color:inherit}
   </section>
 
   <section class="s" id="s-type" data-ch="2">
-    <div class="eb r"><b>Метафора и бренд</b><span>Дизайн-система</span></div>
+    <div class="eb r"><b>Дизайн-система</b></div>
     <h2 class="h r" style="--d:1">Типографика</h2>
     <div class="body">
       <div class="face r" style="--d:2;font-family:var(--serif)"><div class="nm">Cormorant Garamond · заголовки</div><div class="aa">Аа</div>
@@ -582,7 +614,7 @@ a{color:inherit}
   </section>
 
   <section class="s" id="s-onb1" data-ch="3">
-    <div class="eb r"><b>Проектирование</b><span>Онбординг 1 из 2</span></div>
+    <div class="eb r"><b>Онбординг 1 из 2</b></div>
     <h2 class="h r" style="--d:1">Сначала ценность</h2>
     <p class="ld r" style="--d:2">Человек выбирает роль и сразу видит, что даёт Looma</p>
     <div class="fill r" style="--d:3">
@@ -592,7 +624,7 @@ a{color:inherit}
   </section>
 
   <section class="s" id="s-onb2" data-ch="3">
-    <div class="eb r"><b>Проектирование</b><span>Онбординг 2 из 2</span></div>
+    <div class="eb r"><b>Онбординг 2 из 2</b></div>
     <h2 class="h r" style="--d:1">Регистрация&nbsp;— последней</h2>
     <p class="ld r" style="--d:2">Вайб и направления собирают подборку, профиль создаётся в конце</p>
     <div class="fill r" style="--d:3">
@@ -602,7 +634,7 @@ a{color:inherit}
   </section>
 
   <section class="s" id="s-recs" data-ch="3">
-    <div class="eb r"><b>Проектирование</b><span>Главный экран</span></div>
+    <div class="eb r"><b>Главный экран</b></div>
     <h2 class="h r" style="--d:1">Лента «Для вас»</h2>
     <p class="ld r" style="--d:2">Занятия, люди и события подбираются под интересы</p>
     <div class="fill r" style="--d:3">
@@ -619,7 +651,7 @@ a{color:inherit}
   </section>
 
   <section class="s" id="s-stories" data-ch="3">
-    <div class="eb r"><b>Проектирование</b><span>Профиль педагога</span></div>
+    <div class="eb r"><b>Профиль педагога</b></div>
     <h2 class="h r" style="--d:1">Истории вместо анкеты</h2>
     <p class="ld r" style="--d:2">Педагог рассказывает о себе в коротких видео: кто он, что ждёт на занятиях и кому они подойдут</p>
     <div class="fill r" style="--d:3">
@@ -629,7 +661,7 @@ a{color:inherit}
   </section>
 
   <section class="s" id="s-links" data-ch="3">
-    <div class="eb r"><b>Проектирование</b><span>Знакомства</span></div>
+    <div class="eb r"><b>Знакомства</b></div>
     <h2 class="h r" style="--d:1">Связи</h2>
     <p class="ld r" style="--d:2">С кем были на одном занятии, можно предложить связь. Когда её подтвердят, появится «Ваша нить»</p>
     <div class="fill r" style="--d:3">
@@ -639,7 +671,7 @@ a{color:inherit}
   </section>
 
   <section class="s" id="s-follow" data-ch="3">
-    <div class="eb r"><b>Проектирование</b><span>Знакомства</span></div>
+    <div class="eb r"><b>Знакомства</b></div>
     <h2 class="h r" style="--d:1">А если не пересекались</h2>
     <p class="ld r" style="--d:2">Остальным можно отправить запрос через «Подписаться». Если его не примут, вы останетесь подписчиком</p>
     <div class="steps body r" style="--d:3;gap:0">
@@ -649,39 +681,43 @@ a{color:inherit}
   </section>
 
   <section class="s" id="s-proto" data-ch="3">
-    <div class="eb r"><b>Проектирование</b><span>Живой прототип</span></div>
+    <div class="eb r"><b>Живой прототип</b></div>
     <h2 class="h r" style="--d:1">Попробуйте Looma</h2>
     <p class="ld r" style="--d:2">Онбординг, запись на занятие, связь и кабинет педагога</p>
     <div class="fill r" style="--d:3"><a class="device" href="/looma/prototype/" target="_blank" rel="noopener" aria-label="Открыть прототип Looma"><img src="assets/looma-deck/ob1.webp" alt=""></a></div>
     <a class="btn main r" style="--d:4" href="/looma/prototype/" target="_blank" rel="noopener">Открыть прототип <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
   </section>
 
-  <section class="s" id="s-dec1" data-ch="3">
-    <div class="eb r"><b>Проектирование</b><span>Решение 1 из 4</span></div>
+  <section class="s pk" id="s-dec1" data-ch="3">
+    <div class="eb r"><b>Решение 1 из 4</b></div>
     <h2 class="h r" style="--d:1">Ценность до регистрации</h2>
     <p class="ld r" style="--d:2">Онбординг сначала показывает, что даёт Looma, и собирает направления. Регистрация&nbsp;— последней</p>
     <div class="card body r" style="--d:3"><span class="lb red">Цена решения</span><p style="color:var(--text)">Контакт узнаём позже, часть людей уйдёт без регистрации</p></div>
+      <div class="peek r" style="--d:4"><img src="assets/looma-deck/ob5.webp" alt="Онбординг: выбор направлений до регистрации"></div>
   </section>
 
-  <section class="s" id="s-dec2" data-ch="3">
-    <div class="eb r"><b>Проектирование</b><span>Решение 2 из 4</span></div>
+  <section class="s pk" id="s-dec2" data-ch="3">
+    <div class="eb r"><b>Решение 2 из 4</b></div>
     <h2 class="h r" style="--d:1">Две роли в одном аккаунте</h2>
     <p class="ld r" style="--d:2">Танцор и педагог&nbsp;— часто один человек. Роль выбирается на старте, её можно сменить</p>
     <div class="card body r" style="--d:3"><span class="lb red">Цена решения</span><p style="color:var(--text)">Нужен переключатель ролей. Чтобы не путать, в меню меняется только один пункт</p></div>
+      <div class="peek r" style="--d:4"><img src="assets/case/fig/07-onboarding.webp" alt="Онбординг: «Я хочу» — выбор роли"></div>
   </section>
 
-  <section class="s" id="s-dec3" data-ch="3">
-    <div class="eb r"><b>Проектирование</b><span>Решение 3 из 4</span></div>
+  <section class="s pk" id="s-dec3" data-ch="3">
+    <div class="eb r"><b>Решение 3 из 4</b></div>
     <h2 class="h r" style="--d:1">Истории вместо анкеты</h2>
     <p class="ld r" style="--d:2">Характер и энергию педагога видно до первого занятия</p>
     <div class="card body r" style="--d:3"><span class="lb red">Цена решения</span><p style="color:var(--text)">Педагогу нужно снять видео, порог входа выше</p></div>
+      <div class="peek r" style="--d:4"><img src="assets/looma-deck/st1.webp" alt="История педагога «Привет! Я Алина»"></div>
   </section>
 
-  <section class="s" id="s-dec4" data-ch="3">
-    <div class="eb r"><b>Проектирование</b><span>Решение 4 из 4</span></div>
+  <section class="s pk" id="s-dec4" data-ch="3">
+    <div class="eb r"><b>Решение 4 из 4</b></div>
     <h2 class="h r" style="--d:1">Связь&nbsp;— только по согласию</h2>
     <p class="ld r" style="--d:2">Связь появляется, когда её подтверждают оба. Затем открывается «Ваша нить»</p>
     <div class="card body r" style="--d:3"><span class="lb red">Цена решения</span><p style="color:var(--text)">Сеть растёт медленнее, зато без спама и навязчивых контактов</p></div>
+      <div class="peek r" style="--d:4"><img src="assets/looma-deck/request-ph.webp" alt="«Запрос отправлен»: связь появится после подтверждения"></div>
   </section>
 
   <!-- ===================== 04 ===================== -->
@@ -692,14 +728,19 @@ a{color:inherit}
   </section>
 
   <section class="s" id="s-test1" data-ch="4">
-    <div class="eb r"><b>Тестирование и итоги</b><span>Тест</span></div>
+    <div class="eb r"><b>Тест</b></div>
     <h2 class="h r" style="--d:1">Публикация занятия</h2>
     <p class="ld r" style="--d:2">Без занятий педагогов лента пустая, поэтому начала с них. 5 знакомых педагогов показали, как обычно публикуют анонсы, а затем сделали то же в прототипе</p>
-    <div class="low r" style="--d:3"><div class="ten">5/5</div><p class="lb" style="margin-top:14px">опубликовали занятие сами<br>юзабилити&#8209;тест с&nbsp;модератором</p></div>
+    <div class="peek r" style="--d:3"><img src="assets/case/fig/07-teacher.webp" alt="Кабинет педагога: «Мои занятия», 8 из 12 записались"></div>
+  </section>
+
+  <section class="s accent" id="s-five" data-ch="4">
+    <div class="eb r"><b>Результат</b></div>
+    <div class="r" style="--d:1;margin:auto 0"><div class="ten">5/5</div><p class="st" style="font-size:30px;margin-top:20px">опубликовали занятие сами</p><p class="who" style="margin-bottom:0">юзабилити&#8209;тест с&nbsp;модератором</p></div>
   </section>
 
   <section class="s" id="s-test2" data-ch="4">
-    <div class="eb r"><b>Тестирование и итоги</b><span>Как сейчас</span></div>
+    <div class="eb r"><b>Как сейчас</b></div>
     <h2 class="h r" style="--d:1">9 шагов в трёх местах</h2>
     <div class="card body r" style="--d:2">
       <div class="nums"><div>3<small>места</small></div><div>9<small>шагов</small></div><div>~6<small>минут</small></div></div>
@@ -708,7 +749,7 @@ a{color:inherit}
   </section>
 
   <section class="s" id="s-test3" data-ch="4">
-    <div class="eb r"><b>Тестирование и итоги</b><span>В Looma</span></div>
+    <div class="eb r"><b>В Looma</b></div>
     <h2 class="h r" style="--d:1">4 шага в одном месте</h2>
     <div class="card hot body r" style="--d:2">
       <div class="nums"><div>1<small>место</small></div><div>4<small>шага</small></div><div>~2<small>минуты</small></div></div>
@@ -718,7 +759,7 @@ a{color:inherit}
   </section>
 
   <section class="s" id="s-iter" data-ch="4">
-    <div class="eb r"><b>Тестирование и итоги</b><span>Итерация</span></div>
+    <div class="eb r"><b>Итерация</b></div>
     <h2 class="h r" style="--d:1">Поле «Мест» стало заметнее</h2>
     <p class="ld r" style="--d:2">Один педагог не сразу нашёл, где указать количество мест</p>
     <div class="fill r" style="--d:3">
@@ -728,7 +769,7 @@ a{color:inherit}
   </section>
 
   <section class="s" id="s-out1" data-ch="4">
-    <div class="eb r"><b>Тестирование и итоги</b><span>Итоги</span></div>
+    <div class="eb r"><b>Итоги</b></div>
     <h2 class="h r" style="--d:1">Что получилось</h2>
     <div class="list body r" style="--d:2;gap:0">
       <div><b>Нашла две проблемы: информация разбросана, и непонятно, актуальна ли она</b><span>На них построены карточка занятия и кабинет педагога</span></div>
@@ -738,7 +779,7 @@ a{color:inherit}
   </section>
 
   <section class="s" id="s-out2" data-ch="4">
-    <div class="eb r"><b>Тестирование и итоги</b><span>Итоги</span></div>
+    <div class="eb r"><b>Итоги</b></div>
     <h2 class="h r" style="--d:1">Что дальше</h2>
     <div class="list body r" style="--d:2;gap:0">
       <div><b>Проверить путь танцора на 5 людях</b><span>Найти занятие, записаться, отправить запрос на связь</span></div>
@@ -794,12 +835,13 @@ a{color:inherit}
 
   // progress: one segment per chapter, sized by its length; passed chapters full, the current one fills as you go
   const CH=[...new Set(S.map(s=>s.dataset.ch))];
+  const NAMES={'0':'Кейс','1':'01 · Исследование','2':'02 · Бренд','3':'03 · Проектирование','4':'04 · Тест и итоги','5':'Финал'};
   prog.innerHTML=CH.map(c=>'<i style="--n:'+S.filter(s=>s.dataset.ch===c).length+'"></i>').join('');
   const segs=[...prog.children];
   function bar(){
     const ci=CH.indexOf(S[cur].dataset.ch), inCh=S.filter(s=>s.dataset.ch===CH[ci]), k=inCh.indexOf(S[cur]);
     segs.forEach((g,i)=>{ g.classList.toggle('now',i===ci); g.style.setProperty('--p',i<ci?1:i>ci?0:(k+1)/inCh.length); });
-    cnt.textContent=String(cur+1).padStart(2,'0')+' / '+N;
+    cnt.textContent=NAMES[S[cur].dataset.ch]||'';
   }
 
   function go(i){
