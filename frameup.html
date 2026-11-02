@@ -168,10 +168,10 @@ button{font:inherit;color:inherit}
 /* how */
 .how-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s3);margin-top:var(--gap-content);align-items:start}
 .how-card{aspect-ratio:1012/1350;border-radius:var(--r-img);background-color:#222;background-size:300% 100%;background-position:0 0}
-.how-card.a{background-image:url(assets/frameup/heels-pro.jpg)}
-.how-card.c{background-image:url(assets/frameup/frame-pro.jpg)}
+.how-card.a{background-image:url(assets/frameup/heels-pro.webp)}
+.how-card.c{background-image:url(assets/frameup/frame-pro.webp)}
 .how-mid{position:relative;aspect-ratio:1012/1350;border-radius:var(--r-img);overflow:hidden;color:#fff;padding:var(--s3);display:flex;flex-direction:column;justify-content:flex-end;
-  background:linear-gradient(180deg,rgba(25,25,25,.05) 30%,rgba(25,25,25,.85)),url(assets/frameup/gen-silk.jpg) 50% 40%/cover no-repeat,#191919}
+  background:linear-gradient(180deg,rgba(25,25,25,.05) 30%,rgba(25,25,25,.85)),url(assets/frameup/gen-silk.webp) 50% 40%/cover no-repeat,#191919}
 .how-mid b{font:var(--t-sub);letter-spacing:var(--ls-sub)}
 .how-mid ol{list-style:none;margin-top:var(--s2);display:grid;gap:var(--s1);font:var(--t-small);opacity:.9}
 .how-mid ol li::before{content:"0" counter(list-item) "  ";opacity:.6}
@@ -180,7 +180,7 @@ button{font:inherit;color:inherit}
 
 /* feed — the one dark card */
 .feed{margin:var(--sec) max(var(--s3),calc((100% - var(--w-col)) / 2 - var(--s6))) 0;border-radius:var(--r-card);color:var(--dark-ink);padding:var(--pad-card) var(--gut);
-  background:linear-gradient(180deg,rgba(20,20,20,.88),rgba(20,20,20,.96)),url(assets/frameup/gen-floor.jpg) 35% 40%/cover no-repeat,var(--dark)}
+  background:linear-gradient(180deg,rgba(20,20,20,.88),rgba(20,20,20,.96)),url(assets/frameup/gen-floor.webp) 35% 40%/cover no-repeat,var(--dark)}
 .feed .hl .m{color:inherit}
 .phones{display:flex;justify-content:center;align-items:flex-start;gap:clamp(32px,6vw,96px);margin-top:var(--gap-content);perspective:2000px}
 .pcol{display:flex;flex-direction:column;align-items:center}
@@ -352,10 +352,10 @@ button{font:inherit;color:inherit}
           <filter id="mag-smear" filterUnits="userSpaceOnUse" x="-300" y="-100" width="2000" height="1120"><feGaussianBlur stdDeviation="36 1"/></filter>
           <linearGradient id="mag-fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset=".2" stop-color="#000" stop-opacity="0"/><stop offset=".8" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></linearGradient>
         </defs>
-        <image href="assets/frameup/gen-face.jpg" x="0" y="0" width="1400" height="920" preserveAspectRatio="xMidYMid slice" filter="url(#mag-smear)"/>
+        <image href="assets/frameup/gen-face.webp" x="0" y="0" width="1400" height="920" preserveAspectRatio="xMidYMid slice" filter="url(#mag-smear)"/>
         <rect width="1400" height="920" fill="#000000" opacity=".34"/>
         <g class="sharp" clip-path="url(#mag-clip)">
-          <image href="assets/frameup/gen-face.jpg" x="0" y="0" width="1400" height="920" preserveAspectRatio="xMidYMid slice" filter="url(#mag-bright)"/>
+          <image href="assets/frameup/gen-face.webp" x="0" y="0" width="1400" height="920" preserveAspectRatio="xMidYMid slice" filter="url(#mag-bright)"/>
           
         </g>
         <rect width="1400" height="920" fill="url(#mag-fade)"/>
@@ -367,10 +367,10 @@ button{font:inherit;color:inherit}
           <filter id="mag-smear-m" filterUnits="userSpaceOnUse" x="-300" y="-100" width="1500" height="1400"><feGaussianBlur stdDeviation="30 1"/></filter>
           <linearGradient id="mag-fade-m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".6"/><stop offset=".22" stop-color="#000" stop-opacity="0"/><stop offset=".8" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".6"/></linearGradient>
         </defs>
-        <image href="assets/frameup/gen-face.jpg" x="0" y="0" width="900" height="1200" preserveAspectRatio="xMidYMid slice" filter="url(#mag-smear-m)"/>
+        <image href="assets/frameup/gen-face.webp" x="0" y="0" width="900" height="1200" preserveAspectRatio="xMidYMid slice" filter="url(#mag-smear-m)"/>
         <rect width="900" height="1200" fill="#000000" opacity=".34"/>
         <g class="sharp" clip-path="url(#mag-clip-m)">
-          <image href="assets/frameup/gen-face.jpg" x="0" y="0" width="900" height="1200" preserveAspectRatio="xMidYMid slice" filter="url(#mag-bright-m)"/>
+          <image href="assets/frameup/gen-face.webp" x="0" y="0" width="900" height="1200" preserveAspectRatio="xMidYMid slice" filter="url(#mag-bright-m)"/>
           
         </g>
         <rect width="900" height="1200" fill="url(#mag-fade-m)"/>
@@ -387,10 +387,10 @@ button{font:inherit;color:inherit}
       </div>
       <div class="deck-col">
         <button class="deck" type="button" aria-label="Показать следующую обложку">
-          <span class="card" data-pos="0" data-acc="#4a40e0" data-n="01" data-name="High Heels Pro" data-date="11–12 октября" style="background-image:url(assets/frameup/heels-pro.jpg)"></span>
-          <span class="card" data-pos="1" data-acc="#c21a1a" data-n="02" data-name="Frame Up Beginners" data-date="18–19 октября" style="background-image:url(assets/frameup/frame-beg.jpg)"></span>
-          <span class="card" data-pos="2" data-acc="#a9b400" data-n="03" data-name="High Heels Beginners" data-date="8–9 ноября" style="background-image:url(assets/frameup/heels-beg.jpg)"></span>
-          <span class="card" data-pos="3" data-acc="#d4af37" data-n="04" data-name="Frame Up Pro" data-date="15–16 ноября" style="background-image:url(assets/frameup/frame-pro.jpg)"></span>
+          <span class="card" data-pos="0" data-acc="#4a40e0" data-n="01" data-name="High Heels Pro" data-date="11–12 октября" style="background-image:url(assets/frameup/heels-pro.webp)"></span>
+          <span class="card" data-pos="1" data-acc="#c21a1a" data-n="02" data-name="Frame Up Beginners" data-date="18–19 октября" style="background-image:url(assets/frameup/frame-beg.webp)"></span>
+          <span class="card" data-pos="2" data-acc="#a9b400" data-n="03" data-name="High Heels Beginners" data-date="8–9 ноября" style="background-image:url(assets/frameup/heels-beg.webp)"></span>
+          <span class="card" data-pos="3" data-acc="#d4af37" data-n="04" data-name="Frame Up Pro" data-date="15–16 ноября" style="background-image:url(assets/frameup/frame-pro.webp)"></span>
         </button>
         <div class="deck-meta" aria-live="polite"><p class="now"></p><p class="cap">Смахните или нажмите</p></div>
         <dl class="facts">
@@ -488,7 +488,7 @@ button{font:inherit;color:inherit}
 <!-- case-next -->
 <section class="case-next" aria-labelledby="cn-h">
   <div class="cn-top cn-cap"><span>Следующий проект</span><span>Екатерина Богданова · портфолио</span></div>
-  <a class="cn-go" href="looma.html"><span><span class="cn-t" id="cn-h">Looma<span class="ar" aria-hidden="true">→</span></span><span class="cn-d">Приложение, где танцоры находят занятия, события и друг друга</span></span><span class="cn-img"><img src="assets/looma.jpg" alt="" loading="lazy"></span></a>
+  <a class="cn-go" href="looma.html"><span><span class="cn-t" id="cn-h">Looma<span class="ar" aria-hidden="true">→</span></span><span class="cn-d">Приложение, где танцоры находят занятия, события и друг друга</span></span><span class="cn-img"><img src="assets/looma.webp" alt="" loading="lazy"></span></a>
   <div class="cn-row">
     <a class="cn-pill" href="./#looma"><i aria-hidden="true"></i>Все проекты</a>
     <a class="cn-pill" href="resume.html">Резюме</a>
@@ -543,10 +543,10 @@ button{font:inherit;color:inherit}
 
   // series: cards pick the carousel shown in the viewer
   var DATA = {
-    'heels-pro': { img: 'assets/frameup/heels-pro.jpg', name: 'HIGH HEELS', acct: 'high.heels_convention', av: 'hh', c: '#4a40e0', days: ['11 октября', '12 октября'], note: 'Светлый выпуск открывает сезон: фон в движении и пять педагогов на два дня' },
-    'frame-beg': { img: 'assets/frameup/frame-beg.jpg', name: 'FRAME UP', acct: 'frameup_official', av: 'fu', c: '#c21a1a', days: ['18 октября', '19 октября'], note: 'Полное погружение в стиль для начинающих: шесть педагогов, у каждого свой блок тем под фото' },
-    'heels-beg': { img: 'assets/frameup/heels-beg.jpg', name: 'HIGH HEELS', acct: 'high.heels_convention', av: 'hh', c: '#a9b400', days: ['8 ноября', '9 ноября'], note: 'Серия уходит в темноту: повёрнутые плашки и лаймовые уголки добавляют движения, сетка остаётся той же' },
-    'frame-pro': { img: 'assets/frameup/frame-pro.jpg', name: 'FRAME UP', acct: 'frameup_official', av: 'fu', c: '#d4af37', days: ['15 ноября', '16 ноября'], note: 'Финал сезона: строгая сетка, по три педагога в день и самый плотный набор тем' }
+    'heels-pro': { img: 'assets/frameup/heels-pro.webp', name: 'HIGH HEELS', acct: 'high.heels_convention', av: 'hh', c: '#4a40e0', days: ['11 октября', '12 октября'], note: 'Светлый выпуск открывает сезон: фон в движении и пять педагогов на два дня' },
+    'frame-beg': { img: 'assets/frameup/frame-beg.webp', name: 'FRAME UP', acct: 'frameup_official', av: 'fu', c: '#c21a1a', days: ['18 октября', '19 октября'], note: 'Полное погружение в стиль для начинающих: шесть педагогов, у каждого свой блок тем под фото' },
+    'heels-beg': { img: 'assets/frameup/heels-beg.webp', name: 'HIGH HEELS', acct: 'high.heels_convention', av: 'hh', c: '#a9b400', days: ['8 ноября', '9 ноября'], note: 'Серия уходит в темноту: повёрнутые плашки и лаймовые уголки добавляют движения, сетка остаётся той же' },
+    'frame-pro': { img: 'assets/frameup/frame-pro.webp', name: 'FRAME UP', acct: 'frameup_official', av: 'fu', c: '#d4af37', days: ['15 ноября', '16 ноября'], note: 'Финал сезона: строгая сетка, по три педагога в день и самый плотный набор тем' }
   };
   var view = document.querySelector('.view'), strip = view.querySelector('.strip'), slides = [].slice.call(strip.querySelectorAll('.s'));
   var win = view.querySelector('.window'), viewer = view.querySelector('.viewer'), dots = win.querySelectorAll('.ig-dots i');
@@ -590,10 +590,10 @@ button{font:inherit;color:inherit}
 
   // phones
   var POSTS = {
-    frameBeg: { img: 'assets/frameup/frame-beg.jpg', music: 'The Digital Cowboy · Born to Raise Hell', likes: 279, comments: 4, reposts: 0, shares: 64, cap: 'FRAME UP DEEP BEGINNERS 18-19 октября…', date: '20 августа 2025 г.' },
-    framePro: { img: 'assets/frameup/frame-pro.jpg', music: 'mona.pozitif · Оригинальное аудио', likes: 269, comments: 0, reposts: 3, shares: 48, cap: 'FRAME UP DEEP PRO 15-16 ноября…', date: '17 сентября 2025 г.' },
-    heelsPro: { img: 'assets/frameup/heels-pro.jpg', music: 'OtisMadeIt · Pink Panther', likes: 517, comments: 4, reposts: 1, shares: 197, cap: 'HIGH HEELS PRO 11-12 октября…', date: '20 августа 2025 г.' },
-    heelsBeg: { img: 'assets/frameup/heels-beg.jpg', music: 'Galatée · Oui', likes: 189, comments: 3, reposts: 1, shares: 48, cap: '8-9 НОЯБРЯ | MOSCOW, GRAND ZAL. 5 уникальных хореографов = 5 ключей к…', date: '26 сентября 2025 г.' }
+    frameBeg: { img: 'assets/frameup/frame-beg.webp', music: 'The Digital Cowboy · Born to Raise Hell', likes: 279, comments: 4, reposts: 0, shares: 64, cap: 'FRAME UP DEEP BEGINNERS 18-19 октября…', date: '20 августа 2025 г.' },
+    framePro: { img: 'assets/frameup/frame-pro.webp', music: 'mona.pozitif · Оригинальное аудио', likes: 269, comments: 0, reposts: 3, shares: 48, cap: 'FRAME UP DEEP PRO 15-16 ноября…', date: '17 сентября 2025 г.' },
+    heelsPro: { img: 'assets/frameup/heels-pro.webp', music: 'OtisMadeIt · Pink Panther', likes: 517, comments: 4, reposts: 1, shares: 197, cap: 'HIGH HEELS PRO 11-12 октября…', date: '20 августа 2025 г.' },
+    heelsBeg: { img: 'assets/frameup/heels-beg.webp', music: 'Galatée · Oui', likes: 189, comments: 3, reposts: 1, shares: 48, cap: '8-9 НОЯБРЯ | MOSCOW, GRAND ZAL. 5 уникальных хореографов = 5 ключей к…', date: '26 сентября 2025 г.' }
   };
   var SBAR = '<svg viewBox="0 0 44 12"><rect x="0" y="7" width="3" height="5" rx="1" fill="#f5f5f5"/><rect x="5" y="5" width="3" height="7" rx="1" fill="#f5f5f5"/><rect x="10" y="3" width="3" height="9" rx="1" fill="#f5f5f5"/><rect x="15" y="1" width="3" height="11" rx="1" fill="#f5f5f5"/><rect x="24" y="1" width="18" height="10" rx="3" fill="none" stroke="#f5f5f5"/><rect x="26" y="3" width="12" height="6" rx="1.5" fill="#f5f5f5"/></svg>';
   var IC = {
