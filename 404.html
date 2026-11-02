@@ -17,9 +17,9 @@
   --serif:"Playfair Display",Georgia,serif;--sans:"Onest",system-ui,sans-serif;--mono:"PT Mono",ui-monospace,Menlo,monospace;--hand:"Caveat",cursive}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
-body{background:var(--ink);color:var(--paper);font-family:var(--sans);overflow:hidden;-webkit-font-smoothing:antialiased}
+body{background:var(--ink);color:var(--paper);font-family:var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit}
-.home-mark{position:fixed;left:clamp(16px,3.4vw,48px);top:28px;z-index:5;display:inline-flex;align-items:center;gap:10px;font:400 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--paper)}
+.home-mark{position:absolute;left:clamp(16px,3.4vw,48px);top:28px;z-index:5;display:inline-flex;align-items:center;gap:10px;font:400 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--paper)}
 .home-mark i{width:8px;height:8px;border-radius:50%;background:#7E2625;box-shadow:0 0 0 1px rgba(243,230,211,.3)}
 .home-mark .ar{display:inline-block;transition:transform .3s}
 .home-mark:hover .ar{transform:translateX(-4px)}
@@ -30,7 +30,7 @@ svg.thread path{fill:none;stroke:var(--rose);stroke-width:1.6;stroke-linecap:rou
 svg.thread .end{fill:var(--paper);filter:drop-shadow(0 0 8px var(--rose))}
 .in{position:relative;text-align:center;max-width:760px}
 .kick{font:400 12px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--caramel)}
-h1{margin-top:20px;padding-bottom:.12em;font:400 clamp(120px,24vw,300px)/.9 var(--serif);letter-spacing:-.03em;color:var(--paper)}
+h1{margin-top:20px;padding-bottom:.12em;font:400 min(clamp(120px,24vw,300px),34vh)/.9 var(--serif);letter-spacing:-.03em;color:var(--paper)}
 h1 em{font-style:italic;color:var(--rose)}
 .lead{margin:20px auto 0;max-width:24ch;text-wrap:balance;font:400 clamp(26px,3.4vw,40px)/1.15 var(--serif);color:var(--paper)}
 .hand{display:inline-block;margin-top:14px;font:600 26px/1 var(--hand);color:var(--caramel);transform:rotate(-3deg)}
@@ -40,6 +40,7 @@ h1 em{font-style:italic;color:var(--rose)}
 .pill.solid{background:var(--paper);border-color:var(--paper);color:var(--ink)}
 .pill.solid:hover,.pill.solid:focus-visible{background:var(--caramel);border-color:var(--caramel)}
 .pill:focus-visible{outline:2px solid var(--rose);outline-offset:4px}
+@media (max-height:500px){.stage{padding-top:72px}.kick{display:none}h1{margin-top:0}.lead{margin-top:8px;font-size:24px}.go{margin-top:20px}}
 @media (max-width:560px){.pill{flex:1 1 100%;justify-content:center}.hand{font-size:22px}svg.thread{display:none}}
 @media (prefers-reduced-motion:reduce){svg.thread path{animation:none!important;stroke-dashoffset:0!important}}
 </style>
@@ -68,6 +69,7 @@ h1 em{font-style:italic;color:var(--rose)}
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,mx=0,my=0,tx=0,ty=0,first=true;
   function draw(){
     var H=innerHeight,h=document.querySelector('h1').getBoundingClientRect(),b=o.getBoundingClientRect();
+    svg.style.display=h.left<220?"none":"";if(h.left<220)return;
     var gx=Math.max(24,h.left-36),gy=b.top+b.height*.62; // обрыв слева от «404», не заходя на цифры
     var sx=-20,sy=H*.86,c1x=Math.min(gx*.35,180)+mx*.3,c1y=H*.98+my*.3,c2x=gx*.55+mx*.2,c2y=gy+Math.min(220,H*.25)+my*.2;
     var d='M'+sx+' '+sy+' C'+c1x+' '+c1y+' '+(gx*.1)+' '+(gy+40)+' '+(gx*.45)+' '+(gy+60)+' S'+(gx-24)+' '+(gy+8)+' '+gx+' '+gy;
