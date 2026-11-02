@@ -56,7 +56,7 @@ h2 em{font-style:normal;color:var(--acc)}
 .concept .sub{color:var(--concept-sub)}
 
 /* hero */
-.hero{padding:24px 0 0}
+.hero{padding-top:24px}
 .hero-top{display:flex;justify-content:space-between;align-items:center;gap:16px;color:var(--sub)}
 .hero-top .home-mark{color:var(--fg)}
 .hero h1{font-size:min(208px,13.4vw + 12px,calc((100vw - 2 * var(--side)) / 5.9));line-height:.88;margin-top:clamp(56px,8vw,112px);letter-spacing:-.01em}
@@ -243,6 +243,9 @@ figcaption{margin-top:12px;color:var(--sub)}
 .ds-nums .v i{font-style:normal;font-size:.5em;color:var(--concept-acc);transform:translateY(-.15em)}
 .ds-nums .v small{font:400 13px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--concept-sub);margin-left:4px}
 .ds-nums p{color:var(--concept-sub);font-size:15px;line-height:1.5;max-width:34ch}
+/* phones: the system sheets are desktop-sized, so they scroll sideways at a readable scale instead of shrinking to a blur */
+@media (max-width:700px){.ds>*{min-width:0}.ds-fig{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin}.ds-fig img{width:720px;max-width:none}}
+@media (max-width:420px){.hero-top>.cap{display:none}}
 @media (max-width:900px){.ds{grid-template-columns:1fr;gap:24px}.ds-nums{grid-template-columns:1fr}.ds-nums>div+div{padding-left:0;border-left:0;border-top:1px solid rgba(236,228,216,.14)}}
 
 /* ---------- HR layer: summary, chapters, before/after, flow video ---------- */
