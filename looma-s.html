@@ -2,8 +2,8 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<script>/* the stories are for touch screens in portrait; a computer or a wide landscape screen goes to the deck */(function(){try{if(!(matchMedia("(pointer:coarse)").matches||/iPhone|iPod|Android.+Mobile/.test(navigator.userAgent))||matchMedia("(min-width:900px) and (orientation:landscape)").matches)location.replace("looma.html"+location.hash.replace(/^#s-.*/,""))}catch(e){}})()</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script>/* the stories are for touch screens in portrait; a computer or a screen held sideways goes to the deck. Runs after the viewport meta, otherwise phones report 980px. A just-made jump is never answered with a jump back */(function(){try{var j=sessionStorage.getItem("loomaJump");if(j&&Date.now()-j<3000)return;if(!(matchMedia("(pointer:coarse)").matches||/iPhone|iPod|Android.+Mobile/.test(navigator.userAgent))||matchMedia("(orientation:landscape)").matches){sessionStorage.setItem("loomaJump",Date.now());location.replace("looma.html"+location.hash.replace(/^#s-.*/,""))}}catch(e){}})()</script>
 <title>Looma — продуктовый кейс Екатерины Богдановой</title>
 <meta name="description" content="Looma — приложение, где танцоры находят занятия, события и друг друга. Концепт-проект, соло, 2 месяца: исследование, гипотезы, скоуп MVP, метафора красной нити, тест с 5 педагогами">
 <meta name="author" content="Екатерина Богданова">
@@ -294,6 +294,10 @@ a{color:inherit}
 #stage.short .st{font-size:36px}
 #stage.short .st.q{font-size:27px}
 
+/* turned sideways after load: ask to hold the phone upright */
+.rot{display:none;position:fixed;inset:0;z-index:100;background:#0F0F0F;color:var(--text);flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;font:400 16px/1.5 var(--sans)}
+.rot svg{width:44px;height:44px;stroke:var(--red);fill:none;stroke-width:1.5}
+@media (orientation:landscape) and (max-height:520px){.rot{display:flex}}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
@@ -301,6 +305,7 @@ a{color:inherit}
 <script src="assets/metrics.js" defer></script>
 </head>
 <body>
+<div class="rot" role="status"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg>Поверните телефон вертикально,<br>чтобы листать кейс</div>
 <div id="app">
 <div id="stage">
 
