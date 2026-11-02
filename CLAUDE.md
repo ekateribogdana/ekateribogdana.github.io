@@ -6,7 +6,9 @@
 ## Страницы
 
 - `index.html` — главная: шоукейс проектов, ссылки на кейсы
-- `looma.html` — кейс Looma (чёрный + красный, Cormorant Garamond + Inter)
+- `looma.html` — кейс Looma (чёрный + красный, Cormorant Garamond + Inter): на десктопе горизонтальная презентация, на телефоне и вертикальном планшете переадресует на `looma-s.html`
+- `looma-s.html` — мобильная версия Looma в формате сторис (та же короткая презентация). В адресной строке подменяет себя на `looma.html`, чтобы у кейса была одна ссылка; noindex. Полная версия кейса — только в Figma
+- `looma-m.html` — заглушка-переадресация на `looma.html` (старая мобильная лента, её код в истории git)
 - `vidmer.html` — кейс Vidmer.dance: реальный сайт на Tilda (май 2024) + концепт редизайна 2026 года (чёрный/белый/#FF6600, Oswald + Onest; блок концепта тёмный, Jost)
 - `frameup.html` — кейс Frame Up (афиши для @frameup_official и @high.heels_convention); внутри своя система токенов `--t-*`, `--ls-*`, `--gap-*`, `--w-*`, Montserrat + Lexend Zetta (только для латинских названий событий)
 - `resume.html` — резюме (палитра главной, Playfair + Onest + PT Mono), PDF лежит рядом

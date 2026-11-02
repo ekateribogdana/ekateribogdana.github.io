@@ -820,6 +820,8 @@ a{color:inherit}
 
 <script>
 (function(){
+  // one public address for the case: show looma.html in the address bar, it sends phones back here
+  try{ if(/looma-s\.html$/.test(location.pathname)) history.replaceState(null,'',location.pathname.replace(/looma-s\.html$/,'looma.html')+location.hash); }catch(e){}
   const app=document.getElementById('app'), stage=document.getElementById('stage');
   const S=[...stage.querySelectorAll('.s')], N=S.length;
   const prog=document.getElementById('prog'), cnt=document.getElementById('cnt');
