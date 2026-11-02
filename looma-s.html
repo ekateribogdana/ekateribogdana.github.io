@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
+<script>/* the stories are for touch screens in portrait; a computer or a wide landscape screen goes to the deck */(function(){try{if(!matchMedia("(pointer:coarse)").matches||matchMedia("(min-width:900px) and (orientation:landscape)").matches)location.replace("looma.html"+location.hash.replace(/^#s-.*/,""))}catch(e){}})()</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Looma — продуктовый кейс Екатерины Богдановой</title>
 <meta name="description" content="Looma — приложение, где танцоры находят занятия, события и друг друга. Концепт-проект, соло, 2 месяца: исследование, гипотезы, скоуп MVP, метафора красной нити, тест с 5 педагогами">
@@ -867,6 +868,9 @@ a{color:inherit}
     (e.clientX-r.left)<r.width*0.3?prev():next();
   });
   stage.addEventListener('click',e=>{ const b=e.target.closest('[data-go]'); if(b){ const k=S.findIndex(s=>s.id===b.dataset.go); if(k>=0) go(k); } });
+  // wheel and trackpad: one story per gesture
+  let lock=0;
+  addEventListener('wheel',e=>{ const d=Math.abs(e.deltaY)>Math.abs(e.deltaX)?e.deltaY:e.deltaX; const now=Date.now(); if(now-lock<700||Math.abs(d)<25) return; lock=now; d>0?next():prev(); },{passive:true});
   addEventListener('keydown',e=>{
     if(['ArrowRight','PageDown',' '].includes(e.key)){ e.preventDefault(); next(); }
     if(['ArrowLeft','PageUp'].includes(e.key)){ e.preventDefault(); prev(); }
