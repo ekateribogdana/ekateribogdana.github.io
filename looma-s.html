@@ -42,9 +42,9 @@ a{color:inherit}
 /* ---------- top bar ---------- */
 .bar{position:absolute;left:0;right:0;top:0;z-index:20;padding:12px 24px 0;pointer-events:none}
 .prog{display:flex;gap:4px;height:2px}
-.prog i{flex:1;background:rgba(255,255,255,.22);border-radius:1px}
-.prog i.done{background:rgba(244,240,236,.85)}
-.prog i.now{background:var(--red)}
+.prog i{flex:var(--n,1);background:rgba(255,255,255,.22);border-radius:1px;position:relative;overflow:hidden}
+.prog i::after{content:"";position:absolute;inset:0;background:rgba(244,240,236,.85);transform:scaleX(var(--p,0));transform-origin:left;transition:transform .4s var(--ease)}
+.prog i.now::after{background:var(--red)}
 .row{display:flex;justify-content:space-between;align-items:center;margin-top:10px;height:28px}
 .home-mark{pointer-events:auto;display:inline-flex;align-items:center;gap:10px;font:400 11px/1.6 "PT Mono",ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:inherit;padding:6px 0;white-space:nowrap}
 .home-mark i{width:7px;height:7px;border-radius:50%;background:#7E2625;display:block;flex:none}
@@ -785,17 +785,20 @@ a{color:inherit}
   let cur=0;
 
   function fit(){
-    const w=innerWidth, h=innerHeight, s=Math.min(w/390,1.25);
+    const w=innerWidth, h=innerHeight, s=Math.min(w/390,1.6);
     stage.style.setProperty('--s',s);
     stage.style.setProperty('--sh',Math.min(h/s,1000)+'px');
     stage.classList.toggle('short',h/s<760);
   }
   addEventListener('resize',fit); fit();
 
-  // progress shows the segments of the current chapter only
+  // progress: one segment per chapter, sized by its length; passed chapters full, the current one fills as you go
+  const CH=[...new Set(S.map(s=>s.dataset.ch))];
+  prog.innerHTML=CH.map(c=>'<i style="--n:'+S.filter(s=>s.dataset.ch===c).length+'"></i>').join('');
+  const segs=[...prog.children];
   function bar(){
-    const ch=S[cur].dataset.ch, inCh=S.filter(s=>s.dataset.ch===ch), k=inCh.indexOf(S[cur]);
-    prog.innerHTML=inCh.map((_,i)=>'<i class="'+(i<k?'done':i===k?'now':'')+'"></i>').join('');
+    const ci=CH.indexOf(S[cur].dataset.ch), inCh=S.filter(s=>s.dataset.ch===CH[ci]), k=inCh.indexOf(S[cur]);
+    segs.forEach((g,i)=>{ g.classList.toggle('now',i===ci); g.style.setProperty('--p',i<ci?1:i>ci?0:(k+1)/inCh.length); });
     cnt.textContent=String(cur+1).padStart(2,'0')+' / '+N;
   }
 
