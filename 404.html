@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Страница потерялась — Екатерина Богданова</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#2A1610">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Mono&family=Onest:wght@400;500&family=Caveat:wght@600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/transitions.css"><script src="/assets/transitions.js"></script>
+<script src="/assets/metrics.js" defer></script>
+<style>
+:root{--paper:#F3E6D3;--ink:#2A1610;--olive:#5A3424;--leaf:#9A6A4E;--caramel:#C89B72;--bow:#7E2625;--rose:#D98A7E;
+  --serif:"Playfair Display",Georgia,serif;--sans:"Onest",system-ui,sans-serif;--mono:"PT Mono",ui-monospace,Menlo,monospace;--hand:"Caveat",cursive}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--ink);color:var(--paper);font-family:var(--sans);overflow:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.home-mark{position:fixed;left:clamp(16px,3.4vw,48px);top:28px;z-index:5;display:inline-flex;align-items:center;gap:10px;font:400 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--paper)}
+.home-mark i{width:8px;height:8px;border-radius:50%;background:#7E2625;box-shadow:0 0 0 1px rgba(243,230,211,.3)}
+.home-mark .ar{display:inline-block;transition:transform .3s}
+.home-mark:hover .ar{transform:translateX(-4px)}
+.stage{position:relative;min-height:100%;display:grid;place-items:center;padding:96px clamp(16px,3.4vw,48px) 64px;isolation:isolate}
+.stage::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(ellipse 60% 55% at 50% 45%,rgba(126,38,37,.45),transparent 70%)}
+svg.thread{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;overflow:visible}
+svg.thread path{fill:none;stroke:var(--rose);stroke-width:1.6;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(217,138,126,.7))}
+svg.thread .end{fill:var(--paper);filter:drop-shadow(0 0 8px var(--rose))}
+.in{position:relative;text-align:center;max-width:760px}
+.kick{font:400 12px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--caramel)}
+h1{margin-top:20px;padding-bottom:.12em;font:400 clamp(120px,24vw,300px)/.9 var(--serif);letter-spacing:-.03em;color:var(--paper)}
+h1 em{font-style:italic;color:var(--rose)}
+.lead{margin:20px auto 0;max-width:24ch;text-wrap:balance;font:400 clamp(26px,3.4vw,40px)/1.15 var(--serif);color:var(--paper)}
+.hand{display:inline-block;margin-top:14px;font:600 26px/1 var(--hand);color:var(--caramel);transform:rotate(-3deg)}
+.go{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:40px}
+.pill{display:inline-flex;align-items:center;gap:12px;min-height:48px;padding:12px 24px;border-radius:999px;font:400 13px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:1.5px solid var(--caramel);color:var(--paper);transition:background .2s,color .2s,border-color .2s}
+.pill:hover,.pill:focus-visible{background:var(--caramel);border-color:var(--caramel);color:var(--ink)}
+.pill.solid{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+.pill.solid:hover,.pill.solid:focus-visible{background:var(--caramel);border-color:var(--caramel)}
+.pill:focus-visible{outline:2px solid var(--rose);outline-offset:4px}
+@media (max-width:560px){.pill{flex:1 1 100%;justify-content:center}.hand{font-size:22px}svg.thread{display:none}}
+@media (prefers-reduced-motion:reduce){svg.thread path{animation:none!important;stroke-dashoffset:0!important}}
+</style>
+</head>
+<body>
+<a class="home-mark" href="/"><span class="ar" aria-hidden="true">←</span><i aria-hidden="true"></i>Екатерина Богданова</a>
+<main class="stage">
+  <svg class="thread" aria-hidden="true" focusable="false"><path id="th"/><circle class="end" id="th-end" r="4"/></svg>
+  <div class="in">
+    <p class="kick">Ошибка 404</p>
+    <h1>4<em>0</em>4</h1>
+    <p class="lead">Нить оборвалась — такой страницы нет</p>
+    <span class="hand">зато есть всё остальное</span>
+    <nav class="go" aria-label="Куда пойти">
+      <a class="pill solid" href="/">На главную</a>
+      <a class="pill" href="/looma.html">Кейс Looma</a>
+      <a class="pill" href="/resume.html">Резюме</a>
+      <a class="pill" href="https://t.me/ekateribog_dana" target="_blank" rel="noopener">Написать в телеграм ↗</a>
+    </nav>
+  </div>
+</main>
+<script>
+// красная нить тянется от края к «0» и обрывается рядом с ним; курсор слегка её тянет
+(function(){
+  var svg=document.querySelector('svg.thread'),p=document.getElementById('th'),end=document.getElementById('th-end'),o=document.querySelector('h1 em');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,mx=0,my=0,tx=0,ty=0,first=true;
+  function draw(){
+    var H=innerHeight,h=document.querySelector('h1').getBoundingClientRect(),b=o.getBoundingClientRect();
+    var gx=Math.max(24,h.left-36),gy=b.top+b.height*.62; // обрыв слева от «404», не заходя на цифры
+    var sx=-20,sy=H*.86,c1x=Math.min(gx*.35,180)+mx*.3,c1y=H*.98+my*.3,c2x=gx*.55+mx*.2,c2y=gy+Math.min(220,H*.25)+my*.2;
+    var d='M'+sx+' '+sy+' C'+c1x+' '+c1y+' '+(gx*.1)+' '+(gy+40)+' '+(gx*.45)+' '+(gy+60)+' S'+(gx-24)+' '+(gy+8)+' '+gx+' '+gy;
+    p.setAttribute('d',d);end.setAttribute('cx',gx);end.setAttribute('cy',gy);
+    if(first){first=false;var L=p.getTotalLength();if(!reduce){p.style.strokeDasharray=L;p.style.strokeDashoffset=L;p.getBoundingClientRect();p.style.transition='stroke-dashoffset 2.2s cubic-bezier(.2,.8,.2,1)';p.style.strokeDashoffset=0;}else{p.style.strokeDasharray='none';}}
+  }
+  function tick(){mx+=(tx-mx)*.08;my+=(ty-my)*.08;draw();if(Math.abs(tx-mx)+Math.abs(ty-my)>.5)requestAnimationFrame(tick);}
+  if(!reduce&&matchMedia('(pointer:fine)').matches)addEventListener('pointermove',function(e){tx=(e.clientX/innerWidth-.5)*80;ty=(e.clientY/innerHeight-.5)*80;requestAnimationFrame(tick);},{passive:true});
+  addEventListener('resize',function(){p.style.transition='none';p.style.strokeDasharray='none';draw();});
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(draw);draw();
+})();
+</script>
+</body>
+</html>
