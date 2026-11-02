@@ -87,9 +87,9 @@ a{color:inherit}
 .one .scr{width:auto;height:auto;max-height:100%;max-width:100%}
 .pair{position:absolute;inset:0 0 30px;display:flex;justify-content:center;align-items:center;gap:14px}
 .pair .scr{width:auto;height:auto;max-height:100%;max-width:47%}
-.fan{position:absolute;inset:0 0 34px}
-.fan .scr{position:absolute;left:50%;top:50%;height:100%;transform:translate(-50%,-50%)}
-.fan .scr.l,.fan .scr.r2{height:76%;filter:brightness(.45)}
+.fan{position:absolute;inset:0 0 34px;container-type:size}
+.fan .scr{position:absolute;left:50%;top:50%;height:min(100%,138cqw);transform:translate(-50%,-50%)}
+.fan .scr.l,.fan .scr.r2{height:min(76%,105cqw);filter:brightness(.45)}
 .fan .scr.l{transform:translate(-100%,-50%) rotate(-3deg)}
 .fan .scr.r2{transform:translate(0,-50%) rotate(3deg)}
 .caps{position:absolute;left:0;right:0;bottom:0;display:grid;grid-template-columns:1fr 1fr 1fr;text-align:center;font-size:12px;color:var(--faint)}
@@ -108,7 +108,7 @@ a{color:inherit}
 #s-cover .logo{width:290px;height:auto;margin-left:-16px;mix-blend-mode:screen;display:block}
 #s-cover .tag{font:italic 400 25px/1.25 var(--serif)}
 .facts{display:grid;grid-template-columns:1fr 1fr;gap:14px 16px;margin:4px 0 0}
-.facts dt{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.facts dt{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
 .facts dd{margin:4px 0 0;font-size:15px;line-height:1.35}
 
 /* ---------- chapter covers ---------- */
@@ -170,7 +170,7 @@ a{color:inherit}
 .step p{font-size:16px;line-height:1.5;color:var(--muted)}
 
 .tile{border-radius:20px;background:var(--bg2);border:1px solid var(--line);position:relative;display:grid;place-items:center;overflow:hidden}
-.tile .cap{position:absolute;left:16px;bottom:12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.tile .cap{position:absolute;left:16px;bottom:12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
 .tile .lg{width:96%;mix-blend-mode:screen;filter:saturate(1.8) brightness(1.25) contrast(1.1)}
 .tile .ic{width:120px;border-radius:26px;box-shadow:0 20px 50px rgba(0,0,0,.6)}
 .tiles{position:absolute;inset:0;display:grid;grid-template-rows:1fr 1fr;gap:12px}
@@ -178,8 +178,8 @@ a{color:inherit}
 .sw{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
 .sw div{display:flex;flex-direction:column;gap:4px;min-width:0}
 .sw i{display:block;height:52px;border-radius:12px;border:1px solid rgba(255,255,255,.10)}
-.sw span{font-size:11px;line-height:1.25;color:var(--text);overflow-wrap:anywhere}
-.sw small{font-size:10px;color:var(--faint);font-variant-numeric:tabular-nums}
+.sw span{font-size:12px;line-height:1.25;color:var(--text);overflow-wrap:anywhere}
+.sw small{font-size:12px;color:var(--faint);font-variant-numeric:tabular-nums}
 .grp+.grp{margin-top:18px}
 
 .k-btn{display:inline-grid;place-items:center;height:46px;padding:0 24px;border-radius:14px;font-size:15px}
@@ -222,7 +222,7 @@ a{color:inherit}
 
 .device{position:absolute;left:50%;top:0;bottom:0;transform:translateX(-50%);display:block}
 .device img{display:block;height:100%;aspect-ratio:630/1365;object-fit:cover;border-radius:14% / 6.46%;box-shadow:0 0 0 5px #1c1b1b,0 0 0 6px rgba(255,255,255,.14),0 30px 70px rgba(0,0,0,.85),0 0 60px rgba(254,93,87,.22)}
-.btn{display:flex;align-items:center;justify-content:center;gap:10px;height:54px;border-radius:27px;border:1px solid var(--line2);font-size:16px;text-decoration:none;color:var(--text);margin-top:24px}
+.btn{display:inline-flex;align-self:flex-start;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 24px;border-radius:26px;border:1px solid var(--line2);font-size:16px;text-decoration:none;color:var(--text);margin-top:24px}
 .btn.main{border-color:rgba(254,93,87,.75);background:rgba(254,93,87,.12)}
 .btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.7}
 
@@ -807,7 +807,7 @@ a{color:inherit}
         <div class="w"><span class="lb">Изображения и инструменты</span><p>ChatGPT (кроме фото групп), Claude, Figma Agent</p></div>
       </div>
       <a class="btn main" href="https://www.figma.com/proto/u447DlmzAF0nb9kqw5iXc9/Looma?node-id=2-561&amp;starting-point-node-id=2-561" target="_blank" rel="noopener">Полная версия в Figma <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
-      <p class="note" style="text-align:center;margin-top:8px">удобнее открыть на компьютере</p>
+      <p class="note" style="margin-top:8px">удобнее открыть на компьютере</p>
     </div>
   </section>
 
